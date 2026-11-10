@@ -4,84 +4,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+
+    <title>Walter Eric Peterson | Personal Website</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Georgia, serif;
-            background: #f8f3ed;
-            color: #493b32;
-            text-align: center;
+            background: #faf7f2;
+            color: #40352e;
         }
 
         header {
-            background: #e9d8c7;
-            padding: 60px 20px;
+            background: #eee2d4;
+            padding: 75px 20px;
+            text-align: center;
         }
 
-        h1 {
+        header h1 {
             font-size: 42px;
-            color: #805b36;
+            color: #87643f;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 18px;
+            font-style: italic;
         }
 
         nav {
-            padding: 20px;
-            background: #805b36;
+            background: #765637;
+            padding: 18px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 12px;
+            margin: 0 14px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #f3d49e;
         }
 
         section {
-            padding: 45px 20px;
+            max-width: 900px;
+            margin: auto;
+            padding: 65px 25px;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #98734b;
+            font-size: 30px;
+        }
+
+        section p {
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .welcome {
+            font-size: 19px;
+            color: #8a6a4b;
+        }
+
+        .divider {
+            width: 65px;
+            height: 2px;
+            background: #c5a16e;
+            margin: 20px auto;
         }
 
         footer {
-            background: #805b36;
+            background: #765637;
             color: white;
-            padding: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>Welcome to My World</h1>
-        <p>A little place about me, my life and my memories.</p>
+        <p>WELCOME TO MY PERSONAL WEBSITE</p>
+
+        <h1>Walter Eric Peterson</h1>
+
+        <div class="divider"></div>
+
+        <p>A little place to share my world, memories and journey.</p>
     </header>
 
     <nav>
+        <a href="#home">Home</a>
         <a href="#about">About Me</a>
-        <a href="#gallery">My Gallery</a>
-        <a href="#interests">My Interests</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#interests">Interests</a>
         <a href="#contact">Contact</a>
     </nav>
 
+    <section id="home">
+        <h2>Welcome to My World</h2>
+
+        <p class="welcome">
+            Every life has a story. This is where mine unfolds.
+        </p>
+
+        <p>
+            Welcome! Thank you for visiting my personal
+            corner of the internet.
+        </p>
+    </section>
+
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! Welcome to my personal website.</p>
+        <div class="divider"></div>
+
+        <p>
+            Hello! I am Walter Eric Peterson.
+            This website is a place where I can share
+            my story, experiences, photographs and
+            special moments in life.
+        </p>
     </section>
 
     <section id="gallery">
         <h2>My Gallery</h2>
-        <p>My favourite photographs and memories will appear here.</p>
+        <div class="divider"></div>
+
+        <p>
+            A collection of photographs, memories
+            and special moments.
+        </p>
     </section>
 
     <section id="interests">
         <h2>My Interests</h2>
-        <p>Things I love, enjoy and wish to explore.</p>
+        <div class="divider"></div>
+
+        <p>
+            A place to explore the things I enjoy,
+            my hobbies and my passions.
+        </p>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Welcome to my little corner of the internet.</p>
+        <div class="divider"></div>
+
+        <p>
+            Thank you for being part of my journey.
+        </p>
     </section>
 
     <footer>
-        <p>My Personal Website</p>
+        <p>© 2026 Walter Eric Peterson</p>
+        <p>Made with care.</p>
     </footer>
 
 </body>
