@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +7,7 @@
     <title>Walter Eric Peterson | Personal Website</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -20,15 +20,15 @@
             color: #333333;
         }
 
-        /* =========================
-           PROFILE / HERO SECTION
-        ========================== */
+        /* =====================
+           HERO / PROFILE
+        ===================== */
 
         header {
             max-width: 1200px;
             margin: 0 auto;
             min-height: 650px;
-            padding: 40px 60px;
+            padding: 60px;
 
             display: flex;
             align-items: center;
@@ -37,7 +37,7 @@
         }
 
         .profile-content {
-            width: 52%;
+            width: 50%;
         }
 
         .small-title {
@@ -47,22 +47,25 @@
         }
 
         header h1 {
-            header h1 {
-    font-size: 46px;
-    line-height: 1.15;
-    letter-spacing: -1.5px;
+            font-size: 46px;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
             margin: 0 0 30px;
             color: #333333;
             font-weight: 600;
         }
 
         .intro-text {
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.7;
             color: #666666;
-            max-width: 580px;
+            max-width: 550px;
             margin-bottom: 35px;
         }
+
+        /* =====================
+           BUTTONS
+        ===================== */
 
         .buttons {
             display: flex;
@@ -72,12 +75,13 @@
         }
 
         .button {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 210px;
 
+            width: 210px;
             padding: 14px 18px;
+
             border: 1px solid #dddddd;
             border-radius: 8px;
 
@@ -98,38 +102,37 @@
             font-size: 20px;
         }
 
-        /* PROFILE PHOTO */
+        /* =====================
+           PROFILE PHOTO
+        ===================== */
 
         .profile-image-container {
-            width: 48%;
+            width: 50%;
             display: flex;
             justify-content: center;
         }
 
         .profile-photo {
-            .profile-photo {
-    width: 100%;
-    max-width: 460px;
-    height: 580px;
+            width: 100%;
+            max-width: 460px;
+            height: 580px;
 
             object-fit: cover;
-            border-radius: 0;
-
             display: block;
         }
 
-        /* =========================
+        /* =====================
            NAVIGATION
-        ========================== */
+        ===================== */
 
         nav {
+            background: #ffffff;
             border-top: 1px solid #eeeeee;
             border-bottom: 1px solid #eeeeee;
 
             padding: 20px;
             text-align: center;
 
-            background: white;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -141,17 +144,15 @@
 
             margin: 0 18px;
             font-size: 14px;
-
-            transition: 0.3s;
         }
 
         nav a:hover {
             color: #000000;
         }
 
-        /* =========================
-           WEBSITE SECTIONS
-        ========================== */
+        /* =====================
+           CONTENT SECTIONS
+        ===================== */
 
         section {
             max-width: 900px;
@@ -172,10 +173,6 @@
             color: #666666;
         }
 
-        .welcome {
-            font-size: 19px;
-        }
-
         .divider {
             width: 60px;
             height: 2px;
@@ -183,9 +180,9 @@
             margin: 25px auto;
         }
 
-        /* =========================
+        /* =====================
            FOOTER
-        ========================== */
+        ===================== */
 
         footer {
             background: #222222;
@@ -199,9 +196,9 @@
             color: #dddddd;
         }
 
-        /* =========================
-           MOBILE DESIGN
-        ========================== */
+        /* =====================
+           MOBILE VERSION
+        ===================== */
 
         @media (max-width: 800px) {
 
@@ -211,8 +208,6 @@
 
                 flex-direction: column;
                 gap: 40px;
-
-                text-align: left;
             }
 
             .profile-content,
@@ -220,16 +215,8 @@
                 width: 100%;
             }
 
-            .profile-content {
-                order: 1;
-            }
-
-            .profile-image-container {
-                order: 2;
-            }
-
             header h1 {
-                font-size: 42px;
+                font-size: 40px;
             }
 
             .profile-photo {
@@ -251,17 +238,11 @@
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         PROFILE SECTION
-    ========================== -->
+    <!-- HERO / PROFILE -->
 
     <header id="home">
-
-        <!-- LEFT SIDE -->
 
         <div class="profile-content">
 
@@ -269,9 +250,9 @@
                 About Walter Eric Peterson
             </p>
 
-           <h1>
-    Walter Eric Peterson welcomes you to his personal world, memories and journey.
-</h1>
+            <h1>
+                Walter Eric Peterson welcomes you to his personal world, memories and journey.
+            </h1>
 
             <p class="intro-text">
                 This is a personal space where I share my story,
@@ -279,14 +260,12 @@
                 my journey through life.
             </p>
 
-
             <div class="buttons">
 
                 <a href="#about" class="button">
                     <span>About Me</span>
                     <span class="arrow">→</span>
                 </a>
-
 
                 <a href="#gallery" class="button">
                     <span>Explore My Gallery</span>
@@ -297,8 +276,6 @@
 
         </div>
 
-
-        <!-- RIGHT SIDE -->
 
         <div class="profile-image-container">
 
@@ -313,10 +290,7 @@
     </header>
 
 
-
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+    <!-- NAVIGATION -->
 
     <nav>
 
@@ -329,10 +303,7 @@
     </nav>
 
 
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <!-- ABOUT -->
 
     <section id="about">
 
@@ -342,18 +313,14 @@
 
         <p>
             Hello! I am Walter Eric Peterson.
-            This website is a place where I can share
-            my story, experiences, photographs and
-            special moments in life.
+            This website is a place where I can share my story,
+            experiences, photographs and special moments in life.
         </p>
 
     </section>
 
 
-
-    <!-- =========================
-         GALLERY
-    ========================== -->
+    <!-- GALLERY -->
 
     <section id="gallery">
 
@@ -369,10 +336,7 @@
     </section>
 
 
-
-    <!-- =========================
-         INTERESTS
-    ========================== -->
+    <!-- INTERESTS -->
 
     <section id="interests">
 
@@ -388,10 +352,7 @@
     </section>
 
 
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
+    <!-- CONTACT -->
 
     <section id="contact">
 
@@ -406,10 +367,7 @@
     </section>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -417,7 +375,6 @@
         <p>Made with care.</p>
 
     </footer>
-
 
 </body>
 </html>
