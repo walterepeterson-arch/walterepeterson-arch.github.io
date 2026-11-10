@@ -1,317 +1,439 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Walter Eric Peterson | Personal Website</title>
+<title>Walter Eric Peterson | Personal Website</title>
+<meta name="description" content="The personal website of Walter Eric Peterson, sharing his faith, career, interests and life journey.">
 
-    <style>
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
+    background: #ffffff;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #333333;
-        }
+/* NAVIGATION */
 
-        /* =====================
-           HERO / PROFILE
-        ===================== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid #eeeeee;
+    padding: 20px 12px;
+    text-align: center;
+}
 
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 650px;
-            padding: 60px;
+nav a {
+    display: inline-block;
+    color: #555555;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 5px 13px;
+    transition: 0.3s;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 70px;
-        }
+nav a:hover {
+    color: #b18a50;
+}
 
-        .profile-content {
-            width: 50%;
-        }
+/* HOME / HERO */
 
-        .small-title {
-            font-size: 14px;
-            color: #777777;
-            margin-bottom: 25px;
-        }
+header {
+    max-width: 1200px;
+    min-height: 650px;
+    margin: auto;
+    padding: 65px 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
 
-        header h1 {
-            font-size: 46px;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
-            margin: 0 0 30px;
-            color: #333333;
-            font-weight: 600;
-        }
+.profile-content {
+    width: 52%;
+}
 
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.7;
-            color: #666666;
-            max-width: 550px;
-            margin-bottom: 35px;
-        }
+.small-title {
+    color: #a17b45;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
 
-        /* =====================
-           BUTTONS
-        ===================== */
+header h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    font-weight: 600;
+    margin: 0 0 25px;
+}
 
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 14px;
-        }
+.intro-text {
+    color: #666666;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 30px;
+}
 
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
 
-            width: 210px;
-            padding: 14px 18px;
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 215px;
+    padding: 14px 18px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #444444;
+    font-size: 14px;
+    transition: 0.3s;
+}
 
-            border: 1px solid #dddddd;
-            border-radius: 8px;
+.button:hover {
+    background: #333333;
+    color: white;
+    border-color: #333333;
+}
 
-            color: #555555;
-            text-decoration: none;
-            font-size: 14px;
+.arrow {
+    font-size: 19px;
+}
 
-            transition: 0.3s;
-        }
+.profile-image-container {
+    width: 48%;
+    display: flex;
+    justify-content: center;
+}
 
-        .button:hover {
-            background: #333333;
-            color: white;
-            border-color: #333333;
-        }
+.profile-photo {
+    width: 100%;
+    max-width: 450px;
+    height: 560px;
+    object-fit: cover;
+    display: block;
+}
 
-        .arrow {
-            font-size: 20px;
-        }
+/* GENERAL SECTIONS */
 
-        /* =====================
-           PROFILE PHOTO
-        ===================== */
+section {
+    max-width: 950px;
+    margin: auto;
+    padding: 85px 30px;
+    text-align: center;
+    scroll-margin-top: 75px;
+}
 
-        .profile-image-container {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-        }
+section h2 {
+    font-size: 34px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0 0 18px;
+}
 
-        .profile-photo {
-            width: 100%;
-            max-width: 460px;
-            height: 580px;
+section h3 {
+    font-size: 19px;
+    color: #8c6b3e;
+    font-weight: 600;
+    margin: 38px 0 12px;
+}
 
-            object-fit: cover;
-            display: block;
-        }
+section p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #666666;
+    margin: 12px auto;
+    max-width: 800px;
+}
 
-        /* =====================
-           NAVIGATION
-        ===================== */
+.divider {
+    width: 55px;
+    height: 2px;
+    background: #b18a50;
+    margin: 22px auto 35px;
+}
 
-        nav {
-            background: #ffffff;
-            border-top: 1px solid #eeeeee;
-            border-bottom: 1px solid #eeeeee;
+.section-subtitle {
+    font-size: 15px;
+    color: #999999;
+    letter-spacing: 1px;
+}
 
-            padding: 20px;
-            text-align: center;
+/* ALTERNATE BACKGROUNDS */
 
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+#faith, #gallery {
+    background: #faf8f4;
+    max-width: 100%;
+}
 
-        nav a {
-            color: #555555;
-            text-decoration: none;
+#faith > *, #gallery > * {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-            margin: 0 18px;
-            font-size: 14px;
-        }
+/* FAITH VERSES */
 
-        nav a:hover {
-            color: #000000;
-        }
+.verse-card {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border: 1px solid #eee6da;
+    border-radius: 6px;
+}
 
-        /* =====================
-           CONTENT SECTIONS
-        ===================== */
+.verse-card h3 {
+    margin-top: 0;
+}
 
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 80px 25px;
-            text-align: center;
-        }
+.verse {
+    color: #5a4832;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    line-height: 1.6;
+    font-style: italic;
+}
 
-        section h2 {
-            color: #333333;
-            font-size: 34px;
-            margin-bottom: 20px;
-        }
+.verse-reference {
+    color: #a17b45;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 18px;
+}
 
-        section p {
-            font-size: 17px;
-            line-height: 1.9;
-            color: #666666;
-        }
+/* CAREER */
 
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: #999999;
-            margin: 25px auto;
-        }
+.career-note {
+    padding: 25px;
+    background: #faf8f4;
+    border-left: 3px solid #b18a50;
+    text-align: left;
+    margin-top: 30px;
+}
 
-        /* =====================
-           FOOTER
-        ===================== */
+/* INTERESTS */
 
-        footer {
-            background: #222222;
-            color: white;
-            padding: 35px 20px;
-            text-align: center;
-        }
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 35px;
+}
 
-        footer p {
-            margin: 8px;
-            color: #dddddd;
-        }
+.interest-card {
+    border: 1px solid #eeeeee;
+    padding: 28px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
 
-        /* =====================
-           MOBILE VERSION
-        ===================== */
+.interest-card:hover {
+    border-color: #b18a50;
+    transform: translateY(-3px);
+}
 
-        @media (max-width: 800px) {
+.interest-symbol {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
 
-            header {
-                min-height: auto;
-                padding: 50px 25px;
+.interest-card h3 {
+    margin: 8px 0;
+}
 
-                flex-direction: column;
-                gap: 40px;
-            }
+.interest-card p {
+    font-size: 14px;
+}
 
-            .profile-content,
-            .profile-image-container {
-                width: 100%;
-            }
+/* GALLERY */
 
-            header h1 {
-                font-size: 40px;
-            }
+.gallery-placeholder {
+    padding: 45px 20px;
+    border: 1px dashed #c9b99f;
+    background: white;
+    color: #888888;
+    border-radius: 5px;
+}
 
-            .profile-photo {
-                width: 100%;
-                height: auto;
-                max-height: 550px;
-            }
+/* CONTACT */
 
-            nav a {
-                display: inline-block;
-                margin: 8px 10px;
-            }
+.contact-panel {
+    background: #faf8f4;
+    padding: 35px 25px;
+    border-radius: 5px;
+}
 
-            section {
-                padding: 60px 25px;
-            }
-        }
+/* FOOTER */
 
-    </style>
+footer {
+    background: #252525;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer p {
+    color: #cccccc;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 8px;
+}
+
+.footer-name {
+    color: #d2b17b;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    header {
+        min-height: auto;
+        padding: 55px 25px;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .profile-content,
+    .profile-image-container {
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 39px;
+    }
+
+    .profile-photo {
+        height: auto;
+        max-height: 550px;
+    }
+
+    nav {
+        padding: 12px 8px;
+    }
+
+    nav a {
+        margin: 7px 9px;
+        font-size: 12px;
+    }
+
+    section {
+        padding: 65px 22px;
+    }
+
+    section h2 {
+        font-size: 29px;
+    }
+
+    .interest-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .verse {
+        font-size: 20px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- HERO / PROFILE -->
+<!-- NAVIGATION -->
 
-    <header id="home">
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#faith">My Faith</a>
+    <a href="#career">My Career</a>
+    <a href="#interests">Interests</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-        <div class="profile-content">
 
-            <p class="small-title">
-                About Walter Eric Peterson
-            </p>
+<!-- HOME -->
 
-            <h1>
-                Walter Eric Peterson welcomes you to his personal world, memories and journey.
-            </h1>
+<header id="home">
 
-            <p class="intro-text">
-                This is a personal space where I share my story,
-                experiences, photographs and special moments from
-                my journey through life.
-            </p>
+    <div class="profile-content">
 
-            <div class="buttons">
+        <p class="small-title">
+            Welcome to My Personal Website
+        </p>
 
-                <a href="#about" class="button">
-                    <span>About Me</span>
-                    <span class="arrow">→</span>
-                </a>
+        <h1>
+            Walter Eric Peterson
+        </h1>
 
-                <a href="#gallery" class="button">
-                    <span>Explore My Gallery</span>
-                    <span class="arrow">→</span>
-                </a>
+        <p class="intro-text">
+            A life guided by faith, shaped by experiences
+            and inspired by new opportunities. Welcome to
+            my personal space, where I share my journey,
+            professional life and interests.
+        </p>
 
-            </div>
+        <div class="buttons">
+
+            <a href="#about" class="button">
+                <span>Discover My Story</span>
+                <span class="arrow">→</span>
+            </a>
+
+            <a href="#faith" class="button">
+                <span>My Faith & Values</span>
+                <span class="arrow">→</span>
+            </a>
 
         </div>
 
+    </div>
 
-        <div class="profile-image-container">
+    <div class="profile-image-container">
 
-            <img
-                src="walter.png.jpg"
-                alt="Walter Eric Peterson"
-                class="profile-photo"
-            >
+        <img
+            src="walter.png.jpg"
+            alt="Walter Eric Peterson"
+            class="profile-photo"
+        >
 
-        </div>
+    </div>
 
-    </header>
-
-
-    <!-- NAVIGATION -->
-
-    <nav>
-
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#interests">Interests</a>
-        <a href="#contact">Contact</a>
-
-    </nav>
+</header>
 
 
-    <!-- ABOUT -->
-
+<!-- ABOUT ME -->
 
 <section id="about">
 
     <h2>About Me</h2>
+    <p class="section-subtitle">Personal Background</p>
     <div class="divider"></div>
 
     <h3>Personal Background</h3>
+
     <p>
         Originally from Kolkata, India, I value meaningful
         relationships, personal growth and the importance
@@ -321,6 +443,7 @@
     </p>
 
     <h3>Faith & Values</h3>
+
     <p>
         Christian faith plays a central role in my life
         and shapes my values and outlook. I believe in
@@ -329,26 +452,18 @@
         gratitude and respect in my everyday life.
     </p>
 
-    <h3>Professional Career</h3>
+    <h3>Professional Background</h3>
+
     <p>
         I am associated with the airline industry in the
-        capacity of a Subject Matter Expert (SME).
-        My professional journey reflects my interest
-        in aviation, industry knowledge, operational
-        excellence and continuous learning.
-    </p>
-
-    <h3>Interests & Lifestyle</h3>
-    <p>
-        My interests include travelling, exploring
-        different cultures, aviation, photography,
-        music and discovering new experiences.
-        I particularly value opportunities to connect
-        with people, broaden my perspectives and
-        create lasting memories.
+        capacity of an SME. My professional journey
+        reflects my interest in aviation, industry
+        knowledge, operational excellence and
+        continuous learning.
     </p>
 
     <h3>Personal Philosophy</h3>
+
     <p>
         I believe in living with purpose, maintaining
         a positive attitude, embracing opportunities
@@ -357,6 +472,7 @@
     </p>
 
     <h3>Purpose of This Website</h3>
+
     <p>
         This website serves as a personal platform
         to present my background, professional journey,
@@ -368,61 +484,270 @@
 </section>
 
 
-    <!-- GALLERY -->
+<!-- FAITH AND VALUES -->
 
-    <section id="gallery">
+<section id="faith">
 
-        <h2>My Gallery</h2>
+    <h2>My Faith & Values</h2>
 
-        <div class="divider"></div>
+    <p class="section-subtitle">
+        Faith · Hope · Purpose
+    </p>
 
-        <p>
-            A collection of photographs, memories
-            and special moments.
+    <div class="divider"></div>
+
+    <p>
+        My Christian faith is the foundation of my life.
+        I believe in God's promises, His perfect timing
+        and His guidance throughout every stage of
+        my journey. The teachings of the Bible inspire
+        me to live with faith, humility, gratitude and love.
+    </p>
+
+    <div class="verse-card">
+
+        <h3>Trusting God's Plan</h3>
+
+        <p class="verse">
+            "For I know the plans I have for you."
         </p>
 
-    </section>
-
-
-    <!-- INTERESTS -->
-
-    <section id="interests">
-
-        <h2>My Interests</h2>
-
-        <div class="divider"></div>
-
-        <p>
-            A place to explore the things I enjoy,
-            my hobbies and my passions.
+        <p class="verse-reference">
+            JEREMIAH 29:11
         </p>
 
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section id="contact">
-
-        <h2>Contact Me</h2>
-
-        <div class="divider"></div>
-
         <p>
-            Thank you for being part of my journey.
+            This verse reminds me that God has a purpose
+            for my life. Even when the future is uncertain,
+            I choose to trust His plans and timing.
         </p>
 
-    </section>
+    </div>
+
+    <div class="verse-card">
+
+        <h3>Treasure What Truly Matters</h3>
+
+        <p class="verse">
+            "Do not store up for yourselves treasures on earth."
+        </p>
+
+        <p class="verse-reference">
+            MATTHEW 6:19–21
+        </p>
+
+        <p>
+            This teaching reminds me that worldly possessions
+            are temporary, while faith, love, kindness and
+            spiritual values are treasures that truly last.
+        </p>
+
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<!-- CAREER -->
 
-    <footer>
+<section id="career">
 
-        <p>© 2026 Walter Eric Peterson</p>
-        <p>Made with care.</p>
+    <h2>My Professional Journey</h2>
 
-    </footer>
+    <p class="section-subtitle">
+        Career · Aviation · Continuous Learning
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>Airline Industry</h3>
+
+    <p>
+        My professional career is in the airline industry,
+        where I work in the capacity of an SME.
+        I value the knowledge, responsibilities and
+        professional experiences that come with
+        being part of the aviation sector.
+    </p>
+
+    <div class="career-note">
+
+        <h3>Professional Values</h3>
+
+        <p>
+            I believe in professionalism, continuous
+            improvement, teamwork, responsibility
+            and maintaining high standards in my work.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- INTERESTS -->
+
+<section id="interests">
+
+    <h2>Interests & Lifestyle</h2>
+
+    <p class="section-subtitle">
+        Exploring Life Beyond Work
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+        Beyond my professional commitments, I appreciate
+        experiences that encourage exploration,
+        creativity, personal development and
+        meaningful connections.
+    </p>
+
+    <div class="interest-grid">
+
+        <div class="interest-card">
+            <div class="interest-symbol">✈</div>
+            <h3>Aviation</h3>
+            <p>
+                An appreciation for the aviation industry,
+                its developments and the world of flight.
+            </p>
+        </div>
+
+        <div class="interest-card">
+            <div class="interest-symbol">🌍</div>
+            <h3>Travel & Exploration</h3>
+            <p>
+                Discovering destinations, experiencing
+                different cultures and gaining new perspectives.
+            </p>
+        </div>
+
+        <div class="interest-card">
+            <div class="interest-symbol">📷</div>
+            <h3>Photography</h3>
+            <p>
+                Capturing meaningful occasions,
+                beautiful places and lasting memories.
+            </p>
+        </div>
+
+        <div class="interest-card">
+            <div class="interest-symbol">♫</div>
+            <h3>Music & Entertainment</h3>
+            <p>
+                Enjoying music, entertainment and
+                experiences that bring happiness.
+            </p>
+        </div>
+
+        <div class="interest-card">
+            <div class="interest-symbol">🤝</div>
+            <h3>People & Relationships</h3>
+            <p>
+                Appreciating meaningful friendships,
+                conversations and positive connections.
+            </p>
+        </div>
+
+        <div class="interest-card">
+            <div class="interest-symbol">📖</div>
+            <h3>Personal Growth</h3>
+            <p>
+                Embracing lifelong learning,
+                self-improvement and new experiences.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <h2>My Gallery</h2>
+
+    <p class="section-subtitle">
+        Moments · Memories · Experiences
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="gallery-placeholder">
+
+        <h3>My Memories, Captured in Pictures</h3>
+
+        <p>
+            This space will soon feature a collection
+            of photographs, travel experiences,
+            special occasions and memorable moments.
+        </p>
+
+        <p>Photographs coming soon.</p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2>Contact Me</h2>
+
+    <p class="section-subtitle">
+        Stay Connected
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="contact-panel">
+
+        <h3>Thank You for Visiting</h3>
+
+        <p>
+            Thank you for taking the time to explore
+            my personal website. I appreciate your visit
+            and hope you enjoyed learning about my
+            background, faith, professional journey
+            and interests.
+        </p>
+
+        <p>
+            I look forward to sharing more experiences
+            and memories through this website.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p class="footer-name">
+        Walter Eric Peterson
+    </p>
+
+    <p>
+        Faith · Career · Experiences · Memories
+    </p>
+
+    <p>
+        © 2026 Walter Eric Peterson. All Rights Reserved.
+    </p>
+
+    <p>
+        Made with care.
+    </p>
+
+</footer>
 
 </body>
 </html>
