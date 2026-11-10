@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,142 +15,327 @@
 
         body {
             margin: 0;
-            font-family: Georgia, serif;
-            background: #faf7f2;
-            color: #40352e;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #333333;
         }
-.profile-photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #c5a16e;
-    margin: 20px auto;
-    display: block;
-}
+
+        /* =========================
+           PROFILE / HERO SECTION
+        ========================== */
+
         header {
-            background: #eee2d4;
-            padding: 75px 20px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 650px;
+            padding: 40px 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 70px;
+        }
+
+        .profile-content {
+            width: 52%;
+        }
+
+        .small-title {
+            font-size: 14px;
+            color: #777777;
+            margin-bottom: 25px;
         }
 
         header h1 {
-            font-size: 42px;
-            color: #87643f;
-            margin-bottom: 12px;
+            font-size: 54px;
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin: 0 0 30px;
+            color: #333333;
+            font-weight: 600;
         }
 
-        header p {
+        .intro-text {
             font-size: 18px;
-            font-style: italic;
+            line-height: 1.7;
+            color: #666666;
+            max-width: 580px;
+            margin-bottom: 35px;
         }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 210px;
+
+            padding: 14px 18px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+
+            color: #555555;
+            text-decoration: none;
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #333333;
+            color: white;
+            border-color: #333333;
+        }
+
+        .arrow {
+            font-size: 20px;
+        }
+
+        /* PROFILE PHOTO */
+
+        .profile-image-container {
+            width: 48%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            width: 100%;
+            max-width: 430px;
+            height: 540px;
+
+            object-fit: cover;
+            border-radius: 0;
+
+            display: block;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
 
         nav {
-            background: #765637;
-            padding: 18px 10px;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+
+            padding: 20px;
             text-align: center;
+
+            background: white;
             position: sticky;
             top: 0;
+            z-index: 1000;
         }
 
         nav a {
-            color: white;
+            color: #555555;
             text-decoration: none;
-            margin: 0 14px;
-            font-size: 15px;
+
+            margin: 0 18px;
+            font-size: 14px;
+
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #f3d49e;
+            color: #000000;
         }
+
+        /* =========================
+           WEBSITE SECTIONS
+        ========================== */
 
         section {
             max-width: 900px;
             margin: auto;
-            padding: 65px 25px;
+            padding: 80px 25px;
             text-align: center;
         }
 
         section h2 {
-            color: #98734b;
-            font-size: 30px;
+            color: #333333;
+            font-size: 34px;
+            margin-bottom: 20px;
         }
 
         section p {
             font-size: 17px;
             line-height: 1.9;
+            color: #666666;
         }
 
         .welcome {
             font-size: 19px;
-            color: #8a6a4b;
         }
 
         .divider {
-            width: 65px;
+            width: 60px;
             height: 2px;
-            background: #c5a16e;
-            margin: 20px auto;
+            background: #999999;
+            margin: 25px auto;
         }
 
+        /* =========================
+           FOOTER
+        ========================== */
+
         footer {
-            background: #765637;
+            background: #222222;
             color: white;
-            padding: 30px;
+            padding: 35px 20px;
             text-align: center;
         }
 
-        @media (max-width: 600px) {
+        footer p {
+            margin: 8px;
+            color: #dddddd;
+        }
+
+        /* =========================
+           MOBILE DESIGN
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            header {
+                min-height: auto;
+                padding: 50px 25px;
+
+                flex-direction: column;
+                gap: 40px;
+
+                text-align: left;
+            }
+
+            .profile-content,
+            .profile-image-container {
+                width: 100%;
+            }
+
+            .profile-content {
+                order: 1;
+            }
+
+            .profile-image-container {
+                order: 2;
+            }
+
             header h1 {
-                font-size: 30px;
+                font-size: 42px;
+            }
+
+            .profile-photo {
+                width: 100%;
+                height: auto;
+                max-height: 550px;
             }
 
             nav a {
                 display: inline-block;
-                margin: 7px;
+                margin: 8px 10px;
+            }
+
+            section {
+                padding: 60px 25px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <header>
-        <p>WELCOME TO MY PERSONAL WEBSITE</p>
 
-        <h1>Walter Eric Peterson</h1>
-        <img src="walter.png.jpg"
-     alt="Walter Eric Peterson"
-     class="profile-photo">
+    <!-- =========================
+         PROFILE SECTION
+    ========================== -->
 
-        <div class="divider"></div>
+    <header id="home">
 
-        <p>A little place to share my world, memories and journey.</p>
+        <!-- LEFT SIDE -->
+
+        <div class="profile-content">
+
+            <p class="small-title">
+                About Walter Eric Peterson
+            </p>
+
+            <h1>
+                Walter Eric Peterson welcomes you to his personal world, memories and journey.
+            </h1>
+
+            <p class="intro-text">
+                This is a personal space where I share my story,
+                experiences, photographs and special moments from
+                my journey through life.
+            </p>
+
+
+            <div class="buttons">
+
+                <a href="#about" class="button">
+                    <span>About Me</span>
+                    <span class="arrow">→</span>
+                </a>
+
+
+                <a href="#gallery" class="button">
+                    <span>Explore My Gallery</span>
+                    <span class="arrow">→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="profile-image-container">
+
+            <img
+                src="walter.png.jpg"
+                alt="Walter Eric Peterson"
+                class="profile-photo"
+            >
+
+        </div>
+
     </header>
 
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
     <nav>
+
         <a href="#home">Home</a>
         <a href="#about">About Me</a>
         <a href="#gallery">Gallery</a>
         <a href="#interests">Interests</a>
         <a href="#contact">Contact</a>
+
     </nav>
 
-    <section id="home">
-        <h2>Welcome to My World</h2>
 
-        <p class="welcome">
-            Every life has a story. This is where mine unfolds.
-        </p>
 
-        <p>
-            Welcome! Thank you for visiting my personal
-            corner of the internet.
-        </p>
-    </section>
+    <!-- =========================
+         ABOUT
+    ========================== -->
 
     <section id="about">
+
         <h2>About Me</h2>
+
         <div class="divider"></div>
 
         <p>
@@ -159,41 +344,78 @@
             my story, experiences, photographs and
             special moments in life.
         </p>
+
     </section>
 
+
+
+    <!-- =========================
+         GALLERY
+    ========================== -->
+
     <section id="gallery">
+
         <h2>My Gallery</h2>
+
         <div class="divider"></div>
 
         <p>
             A collection of photographs, memories
             and special moments.
         </p>
+
     </section>
 
+
+
+    <!-- =========================
+         INTERESTS
+    ========================== -->
+
     <section id="interests">
+
         <h2>My Interests</h2>
+
         <div class="divider"></div>
 
         <p>
             A place to explore the things I enjoy,
             my hobbies and my passions.
         </p>
+
     </section>
 
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
     <section id="contact">
+
         <h2>Contact Me</h2>
+
         <div class="divider"></div>
 
         <p>
             Thank you for being part of my journey.
         </p>
+
     </section>
 
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
+
         <p>© 2026 Walter Eric Peterson</p>
         <p>Made with care.</p>
+
     </footer>
+
 
 </body>
 </html>
