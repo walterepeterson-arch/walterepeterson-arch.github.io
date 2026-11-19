@@ -1,351 +1,282 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The personal website of Walter Eric Peterson, sharing his background, faith, professional journey and interests.">
-    <title>Walter Eric Peterson | Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Walter Eric Peterson — personal portfolio, faith, career, interests and Airline Corner.">
+<title>Walter Eric Peterson | Personal Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="site-header">
-    <div class="brand">Walter Eric Peterson</div>
-
-    <nav>
-        <a href="#home">HOME</a>
-        <a href="#about">ABOUT</a>
-        <a href="#faith">FAITH</a>
-        <a href="#career">CAREER</a>
-        <a href="#interests">INTERESTS</a>
-        <a href="#gallery">GALLERY</a>
-        <a href="airline-corner.html">AIRLINE CORNER</a>
-        <a href="#contact">CONTACT</a>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      Walter Eric Peterson
+      <small>PERSONAL PORTFOLIO · KOLKATA, INDIA</small>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="links" id="mainNav">
+      <a href="#about">About</a>
+      <a href="#faith">Faith</a>
+      <a href="#career">Career</a>
+      <a href="#interests">Interests</a>
+      <a href="#gallery">Gallery</a>
+      <a class="pill" href="#airline">Airline Corner ↗</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
 </header>
 
-<main>
+<main id="home">
 
-    <!-- HOME -->
-    <section id="home" class="hero">
-        <p class="eyebrow">WELCOME TO MY PERSONAL WEBSITE</p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">A PERSONAL PORTFOLIO · 2026</div>
+      <h1>A life shaped by <em>faith, purpose</em> & possibility.</h1>
+      <p class="intro">
+        Welcome to my personal space. I am Walter Eric Peterson,
+        originally from Kolkata, India. Here I share my values,
+        experiences, professional journey and interests.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#about">Discover my story ↗</a>
+        <a class="underlink" href="#faith">Faith & values</a>
+      </div>
+      <div class="hero-foot">Faith · Hope · Purpose</div>
+    </div>
 
-        <h1>Walter Eric Peterson</h1>
+    <div class="hero-art">
+      <div class="portrait">
+        <img class="portrait-photo" src="walter.png.jpg" alt="Walter Eric Peterson">
+        <div class="portrait-label">Walter Eric Peterson</div>
+      </div>
+      <div class="art-note">KOLKATA · INDIA · AVIATION</div>
+    </div>
+  </div>
+</section>
 
-        <p class="hero-subtitle">
-            Personal Background. Professional Purpose.
-        </p>
+<div class="ticker">
+  PERSONAL BACKGROUND <span>✳</span>
+  PROFESSIONAL PURPOSE <span>✳</span>
+  AVIATION & LEARNING
+</div>
 
-        <p class="hero-story">
-            Rooted in Kolkata, India, and continually inspired by the
-            people, experiences and opportunities that make life meaningful.
-        </p>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">01 — A LITTLE ABOUT ME</div>
+      <div>
+        <h2>Personal background.<br><em>Professional purpose.</em></h2>
+        <p>Rooted in Kolkata, India, and continually inspired by the people, experiences and opportunities that make life meaningful.</p>
+      </div>
+    </div>
 
-        <a class="gold-button" href="#about">EXPLORE MY WORLD</a>
-    </section>
+    <div class="about-grid">
+      <article class="tile">
+        <span class="num">01 / PERSONAL</span>
+        <h3>Personal Background</h3>
+        <p>Originally from Kolkata, India, I value meaningful relationships, personal growth and the importance of maintaining a positive outlook towards life. I consider myself an approachable, cheerful and optimistic individual.</p>
+      </article>
 
-    <!-- ABOUT -->
-    <section id="about" class="content-section">
-        <p class="eyebrow">MY STORY</p>
-        <h2>A Little About Me</h2>
-        <div class="gold-line"></div>
+      <article class="tile">
+        <span class="num">02 / VALUES</span>
+        <h3>Faith & Values</h3>
+        <p>Christian faith plays a central role in my life and shapes my values and outlook. I believe in God's guidance and grace, and strive to uphold principles of faith, integrity, compassion, gratitude and respect in my everyday life.</p>
+      </article>
 
-        <p class="section-intro">
-            Rooted in Kolkata, India, and continually inspired by the
-            people, experiences and opportunities that make life meaningful.
-        </p>
+      <article class="tile">
+        <span class="num">03 / CAREER</span>
+        <h3>Professional Background</h3>
+        <p>I am associated with the airline industry in the capacity of an SME. My professional journey reflects my interest in aviation, industry knowledge, operational excellence and continuous learning.</p>
+      </article>
 
-        <div class="info-grid">
+      <article class="tile">
+        <span class="num">04 / PHILOSOPHY</span>
+        <h3>Personal Philosophy</h3>
+        <p>I believe in living with purpose, maintaining a positive attitude, embracing opportunities for growth and appreciating the experiences that shape our lives.</p>
+      </article>
 
-            <article class="info-card">
-                <span class="card-number">01</span>
-                <h3>Personal Background</h3>
-                <p>
-                    Originally from Kolkata, India, I value meaningful
-                    relationships, personal growth and the importance
-                    of maintaining a positive outlook towards life.
-                    I consider myself an approachable, cheerful and
-                    optimistic individual.
-                </p>
-            </article>
+      <article class="tile">
+        <span class="num">05 / PURPOSE</span>
+        <h3>Purpose of This Website</h3>
+        <p>This website serves as a personal platform to present my background, professional journey, interests, experiences and memorable moments. It is a reflection of the values and experiences that define me.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-            <article class="info-card">
-                <span class="card-number">02</span>
-                <h3>Faith &amp; Values</h3>
-                <p>
-                    Christian faith plays a central role in my life
-                    and shapes my values and outlook. I believe in
-                    God's guidance and grace, and strive to uphold
-                    principles of faith, integrity, compassion,
-                    gratitude and respect in my everyday life.
-                </p>
-            </article>
+<section class="section faith" id="faith">
+  <div class="wrap faith-grid">
+    <div>
+      <div class="eyebrow">02 — FAITH · HOPE · PURPOSE</div>
+      <h2>My faith<br><em>& values.</em></h2>
+      <p class="faith-intro">
+        My Christian faith is the foundation of my life. I believe in God's promises, His perfect timing and His guidance throughout every stage of my journey. The teachings of the Bible inspire me to live with faith, humility, gratitude and love.
+      </p>
+    </div>
 
-            <article class="info-card">
-                <span class="card-number">03</span>
-                <h3>Professional Background</h3>
-                <p>
-                    I am associated with the airline industry in the
-                    capacity of an SME. My professional journey
-                    reflects my interest in aviation, industry
-                    knowledge, operational excellence and
-                    continuous learning.
-                </p>
-            </article>
+    <div>
+      <article class="verse">
+        <small>01 / TRUST</small>
+        <h3>Trusting God's Plan</h3>
+        <blockquote>“For I know the plans I have for you.”</blockquote>
+        <p>JEREMIAH 29:11 · This verse reminds me that God has a purpose for my life. Even when the future is uncertain, I choose to trust His plans and timing.</p>
+      </article>
 
-            <article class="info-card">
-                <span class="card-number">04</span>
-                <h3>Personal Philosophy</h3>
-                <p>
-                    I believe in living with purpose, maintaining a
-                    positive attitude, embracing opportunities for
-                    growth and appreciating the experiences that
-                    shape our lives.
-                </p>
-            </article>
+      <article class="verse">
+        <small>02 / PERSPECTIVE</small>
+        <h3>Treasure What Truly Matters</h3>
+        <blockquote>“Do not store up for yourselves treasures on earth.”</blockquote>
+        <p>MATTHEW 6:19–21 · This teaching reminds me that worldly possessions are temporary, while faith, love, kindness and spiritual values are treasures that truly last.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-            <article class="info-card full-card">
-                <span class="card-number">05</span>
-                <h3>Purpose of This Website</h3>
-                <p>
-                    This website serves as a personal platform to
-                    present my background, professional journey,
-                    interests, experiences and memorable moments.
-                    It is a reflection of the values and experiences
-                    that define me.
-                </p>
-            </article>
+<section class="section" id="career">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">03 — CAREER · AVIATION</div>
+      <div>
+        <h2>My professional <em>journey.</em></h2>
+        <p>A commitment to knowledge, responsibility, collaboration and ongoing development within the airline industry.</p>
+      </div>
+    </div>
 
+    <div class="career-panel">
+      <div>
+        <div class="eyebrow">PROFESSIONAL FIELD</div>
+        <h3>Airline<br>Industry</h3>
+      </div>
+
+      <div>
+        <p>My professional career is in the airline industry, where I work in the capacity of a Subject Matter Expert (SME). I value the knowledge, responsibilities and professional experiences that come with being part of the aviation sector.</p>
+        <p>I believe in professionalism, continuous improvement, teamwork, responsibility and maintaining high standards in my work.</p>
+        <div class="tags">
+          <span>Professionalism</span>
+          <span>Teamwork</span>
+          <span>Responsibility</span>
+          <span>Continuous learning</span>
+          <span>Operational excellence</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <p class="signature-line">Faith &nbsp;·&nbsp; Hope &nbsp;·&nbsp; Purpose</p>
-    </section>
+<section class="section interests" id="interests">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">04 — LIFE BEYOND WORK</div>
+      <div>
+        <h2>Interests <em>& lifestyle.</em></h2>
+        <p>Experiences that encourage exploration, creativity, personal development and meaningful connections.</p>
+      </div>
+    </div>
 
-    <!-- FAITH -->
-    <section id="faith" class="content-section alternate">
-        <p class="eyebrow">WHAT GUIDES MY LIFE</p>
-        <h2>My Faith &amp; Values</h2>
-        <div class="gold-line"></div>
+    <div class="interest-grid">
+      <article class="interest">
+        <b>✈</b>
+        <h3>Aviation</h3>
+        <p>An appreciation for the airline industry, its developments and the world of flight.</p>
+      </article>
 
-        <p class="section-intro">
-            My Christian faith is the foundation of my life. I believe
-            in God's promises, His perfect timing and His guidance
-            throughout every stage of my journey. The teachings of
-            the Bible inspire me to live with faith, humility,
-            gratitude and love.
-        </p>
+      <article class="interest">
+        <b>⌖</b>
+        <h3>Travel & Exploration</h3>
+        <p>Discovering destinations, experiencing different cultures and gaining new perspectives.</p>
+      </article>
 
-        <div class="verse-grid">
+      <article class="interest">
+        <b>▧</b>
+        <h3>Photography</h3>
+        <p>Capturing meaningful occasions, beautiful places and lasting memories.</p>
+      </article>
 
-            <article class="verse-card">
-                <span class="verse-number">01 / TRUST</span>
-                <h3>Trusting God's Plan</h3>
-                <blockquote>
-                    “For I know the plans I have for you.”
-                </blockquote>
-                <p class="bible-reference">JEREMIAH 29:11</p>
-                <p>
-                    This verse reminds me that God has a purpose
-                    for my life. Even when the future is uncertain,
-                    I choose to trust His plans and timing.
-                </p>
-            </article>
+      <article class="interest">
+        <b>♫</b>
+        <h3>Music & Entertainment</h3>
+        <p>Enjoying music, entertainment and experiences that bring happiness.</p>
+      </article>
 
-            <article class="verse-card">
-                <span class="verse-number">02 / PERSPECTIVE</span>
-                <h3>Treasure What Truly Matters</h3>
-                <blockquote>
-                    “Do not store up for yourselves treasures on earth.”
-                </blockquote>
-                <p class="bible-reference">MATTHEW 6:19–21</p>
-                <p>
-                    This teaching reminds me that worldly possessions
-                    are temporary, while faith, love, kindness and
-                    spiritual values are treasures that truly last.
-                </p>
-            </article>
+      <article class="interest">
+        <b>♡</b>
+        <h3>People & Relationships</h3>
+        <p>Appreciating meaningful friendships, conversations and positive connections.</p>
+      </article>
 
-        </div>
+      <article class="interest">
+        <b>✧</b>
+        <h3>Personal Growth</h3>
+        <p>Embracing lifelong learning, self-improvement and new experiences.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <p class="signature-line">Faith &nbsp;·&nbsp; Hope &nbsp;·&nbsp; Purpose</p>
-    </section>
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">05 — MOMENTS · MEMORIES</div>
+      <div>
+        <h2>My <em>gallery.</em></h2>
+        <p>A collection of moments and experiences that tell the story beyond words.</p>
+      </div>
+    </div>
 
-    <!-- CAREER -->
-    <section id="career" class="content-section">
-        <p class="eyebrow">CAREER · AVIATION · CONTINUOUS LEARNING</p>
-        <h2>My Professional Journey</h2>
-        <div class="gold-line"></div>
+    <div class="gallery-box">
+      <div>
+        <h3>My Memories, Captured in Pictures</h3>
+        <p>Travel experiences, special occasions and memorable moments — photographs coming soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <p class="section-intro">
-            A commitment to knowledge, responsibility, collaboration
-            and ongoing development within the airline industry.
-        </p>
+<section class="academy" id="airline">
+  <div class="wrap academy-grid">
+    <div>
+      <div class="eyebrow" style="color:#f8d6c9">
+        06 — CAREER · AVIATION · KNOWLEDGE
+      </div>
+      <h2>Explore the world of <em>Airline Corner.</em></h2>
+      <p>An independent learning space for airline and travel-industry knowledge. Explore training lessons, test your understanding and practise sample aviation concepts.</p>
+      <a class="btn" href="airline-corner.html">Enter Airline Corner ↗</a>
+    </div>
 
-        <div class="career-card">
-            <p class="card-label">PROFESSIONAL FIELD</p>
-            <h3>Airline Industry</h3>
+    <div class="academy-visual">
+      <div class="plane">✈</div>
+      <small>AIRLINE CORNER · INDEPENDENT LEARNING ACADEMY</small>
+    </div>
+  </div>
+</section>
 
-            <p>
-                My professional career is in the airline industry,
-                where I work in the capacity of a Subject Matter
-                Expert (SME). I value the knowledge, responsibilities
-                and professional experiences that come with being
-                part of the aviation sector.
-            </p>
-
-            <p>
-                I believe in professionalism, continuous improvement,
-                teamwork, responsibility and maintaining high
-                standards in my work.
-            </p>
-
-            <div class="skill-list">
-                <span>Professionalism</span>
-                <span>Teamwork</span>
-                <span>Responsibility</span>
-                <span>Continuous Learning</span>
-                <span>Operational Excellence</span>
-            </div>
-
-            <a href="airline-corner.html" class="text-link">
-                Explore Airline Corner →
-            </a>
-        </div>
-    </section>
-
-    <!-- INTERESTS -->
-    <section id="interests" class="content-section alternate">
-        <p class="eyebrow">EXPLORING LIFE BEYOND WORK</p>
-        <h2>Interests &amp; Lifestyle</h2>
-        <div class="gold-line"></div>
-
-        <p class="section-intro">
-            Experiences that encourage exploration, creativity,
-            personal development and meaningful connections.
-        </p>
-
-        <div class="interest-grid">
-
-            <article class="interest-card">
-                <div class="interest-icon">✈</div>
-                <h3>Aviation</h3>
-                <p>
-                    An appreciation for the aviation industry,
-                    its developments and the world of flight.
-                </p>
-            </article>
-
-            <article class="interest-card">
-                <div class="interest-icon">⌖</div>
-                <h3>Travel &amp; Exploration</h3>
-                <p>
-                    Discovering destinations, experiencing
-                    different cultures and gaining new perspectives.
-                </p>
-            </article>
-
-            <article class="interest-card">
-                <div class="interest-icon">◎</div>
-                <h3>Photography</h3>
-                <p>
-                    Capturing meaningful occasions, beautiful
-                    places and lasting memories.
-                </p>
-            </article>
-
-            <article class="interest-card">
-                <div class="interest-icon">♫</div>
-                <h3>Music &amp; Entertainment</h3>
-                <p>
-                    Enjoying music, entertainment and experiences
-                    that bring happiness.
-                </p>
-            </article>
-
-            <article class="interest-card">
-                <div class="interest-icon">♡</div>
-                <h3>People &amp; Relationships</h3>
-                <p>
-                    Appreciating meaningful friendships,
-                    conversations and positive connections.
-                </p>
-            </article>
-
-            <article class="interest-card">
-                <div class="interest-icon">✧</div>
-                <h3>Personal Growth</h3>
-                <p>
-                    Embracing lifelong learning, self-improvement
-                    and new experiences.
-                </p>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="content-section">
-        <p class="eyebrow">MOMENTS · MEMORIES · EXPERIENCES</p>
-        <h2>My Gallery</h2>
-        <div class="gold-line"></div>
-
-        <p class="section-intro">
-            A collection of moments and experiences that tell
-            the story beyond words.
-        </p>
-
-        <div class="gallery-panel">
-            <h3>My Memories, Captured in Pictures</h3>
-            <p>
-                This space is ready for a curated collection of
-                photographs, travel experiences, special occasions
-                and memorable moments.
-            </p>
-            <p class="coming-soon">Photographs coming soon.</p>
-        </div>
-    </section>
-
-    <!-- AIRLINE CORNER -->
-    <section class="airline-section">
-        <p class="eyebrow">AVIATION · KNOWLEDGE · LEARNING</p>
-        <h2>Airline Corner</h2>
-        <p>
-            Explore airline knowledge, training lessons, quizzes,
-            airport information and practical learning resources.
-        </p>
-        <a href="airline-corner.html" class="gold-button">
-            ENTER AIRLINE CORNER →
-        </a>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="content-section alternate">
-        <p class="eyebrow">STAY CONNECTED</p>
-        <h2>Thank You for Visiting</h2>
-        <div class="gold-line"></div>
-
-        <p class="section-intro">
-            Thank you for taking the time to explore my personal
-            website. I appreciate your visit and hope you enjoyed
-            learning about my background, faith, professional
-            journey and interests. I look forward to sharing more
-            experiences and memories through this website.
-        </p>
-
-        <h3 class="closing-name">Walter Eric Peterson</h3>
-
-        <p class="closing-motto">
-            FAITH · CAREER · EXPERIENCES · MEMORIES
-        </p>
-    </section>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#e9a08d">STAY CONNECTED</div>
+    <h2>Thank you for <em>visiting.</em></h2>
+    <p>Thank you for taking the time to explore my personal website. I appreciate your visit and hope you enjoyed learning about my background, faith, professional journey and interests. I look forward to sharing more experiences and memories through this website.</p>
+    <a class="btn" href="#home">Back to top ↑</a>
+  </div>
+</section>
 
 </main>
 
 <footer>
-    <p>© 2026 Walter Eric Peterson. All Rights Reserved.</p>
+  <div class="wrap footer">
+    <div>
+      <strong>Walter Eric Peterson</strong>
+      <div>FAITH · CAREER · EXPERIENCES · MEMORIES</div>
+    </div>
+    <div>© 2026 Walter Eric Peterson. All Rights Reserved. · Made with care.</div>
+  </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
