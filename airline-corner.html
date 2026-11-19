@@ -1,363 +1,918 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Airline Corner — independent airline and travel-industry learning academy.">
-<title>Airline Corner | Walter Eric Peterson</title>
+/* =========================================================
+   AIRLINE CORNER - PROFESSIONAL TRAINING HANDBOOK
+   File: training-book.js
+   Prepared: November 2026
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+   This file contains the textbook chapters, contents menu,
+   reading controls and chapter progress.
+========================================================= */
 
-<style>
-:root{--cream:#f4efe6;--paper:#fffdf9;--ink:#29241e;--muted:#746c60;--gold:#a9854b;--gold-light:#d8c39d;--line:#e7dece;--dark:#30291f;--dark2:#211d18;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;--green:#53775d;--red:#a64f43}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.75 var(--sans)}
-a{color:inherit;text-decoration:none}
-.container{width:min(1140px,calc(100% - 44px));margin:auto}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
-.topbar-inner{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;font:600 16px var(--serif)}
-.brand-mark{width:40px;height:40px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
-.brand small{display:block;color:var(--gold);font:700 8px var(--sans);letter-spacing:.18em}
-.back-link{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#655b4e}
-.back-link:hover{color:var(--gold)}
-.hero{position:relative;overflow:hidden;padding:68px 0 62px;background:var(--dark);color:white}
-.hero:after{content:'✈';position:absolute;right:8%;top:5px;color:rgba(216,195,157,.09);font-size:260px;transform:rotate(-13deg)}
-.hero-content{position:relative;z-index:1;max-width:760px}
-.eyebrow{color:var(--gold-light);font-size:9px;font-weight:700;letter-spacing:.22em}
-.hero h1{font:500 clamp(40px,5vw,62px)/1.1 var(--serif);margin:15px 0}
-.hero h1 em{color:var(--gold-light)}
-.hero p{max-width:700px;color:#ded4c6;font-size:13px;line-height:2}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.hero-meta span{border:1px solid rgba(216,195,157,.35);padding:8px 12px;color:#e8ddcc;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
-main{padding:48px 0 72px}
-.section-head{margin-bottom:25px}
-.section-head h2{font:500 34px var(--serif);margin:0 0 7px}
-.muted{color:var(--muted)}
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tile{min-height:160px;padding:23px;text-align:left;background:var(--paper);border:1px solid var(--line);cursor:pointer;transition:.2s;box-shadow:0 8px 25px rgba(48,41,31,.035)}
-.tile:hover{transform:translateY(-3px);border-color:var(--gold-light);box-shadow:0 14px 30px rgba(48,41,31,.08)}
-.tile .emoji{font-size:26px;color:var(--gold)}
-.tile h3{margin:8px 0 3px;color:var(--dark);font:600 19px var(--serif)}
-.tile p{margin:0;color:var(--muted);font-size:11px}
-.panel{display:none;margin-top:28px;padding:28px;background:#faf7f1;border:1px solid var(--line)}
-.panel.active{display:block}
-.panel h2{font:500 29px var(--serif);margin:0 0 6px}
-.panel>p{color:var(--muted);font-size:12px}
-.lesson-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
-.lesson{padding:19px;background:var(--paper);border:1px solid var(--line)}
-.lesson h3{margin:0 0 6px;font:600 17px var(--serif)}
-.lesson p{margin:0 0 12px;color:var(--muted);font-size:11px}
-.lesson button,.action,button.primary{background:var(--dark);color:white;border:0;padding:10px 15px;font:700 9px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.lesson button:hover,.action:hover,button.primary:hover{background:#55442f}
-.lesson .done{background:var(--green)}
-.quizbox{margin-top:18px;padding:22px;background:var(--paper);border:1px solid var(--line)}
-label{display:block;margin-bottom:6px;color:var(--muted);font-size:11px}
-input,select{padding:11px 12px;border:1px solid var(--line);background:white;color:var(--ink);font:12px var(--sans);max-width:100%}
-.bar{height:8px;background:#e9e1d5;overflow:hidden;margin:12px 0;border-radius:20px}
-.bar span{display:block;height:100%;width:0;background:var(--gold)}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}
-.choice{padding:13px;text-align:left;background:white;color:var(--ink);border:1px solid var(--line);cursor:pointer;font:12px var(--sans)}
-.choice:disabled{opacity:1;cursor:default}
-.choice.correct{border-color:var(--green);background:#edf4ed}
-.choice.wrong{border-color:var(--red);background:#fbefed}
-.feedback{padding:12px;background:#f2ece2;color:var(--dark);font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.stat{padding:19px;background:var(--paper);border:1px solid var(--line)}
-.stat strong{display:block;color:var(--gold);font:500 30px var(--serif)}
-.knowledge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.reference-card{padding:20px;background:var(--paper);border:1px solid var(--line)}
-.reference-card h3{font:600 18px var(--serif)}
-table{width:100%;border-collapse:collapse;font-size:11px}
-td,th{padding:8px;text-align:left;border-bottom:1px solid var(--line)}
-th{color:var(--gold);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
-.notice{margin-top:18px;padding:14px 16px;background:#f4eee3;border-left:3px solid var(--gold);color:#64543e;font-size:11px}
-.terminal{padding:20px;background:#27251f;color:#e9dfcf;font-family:monospace}
-.terminal label{color:#d8c39d}
-.terminal input{width:min(420px,100%);background:#38342c;color:white;border-color:#6c5a40}
-.terminal-output{min-height:90px;margin-top:14px;color:#d8e6d4;white-space:pre-wrap;font-size:12px}
-.modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(25,21,17,.75);padding:18px;place-items:center;overflow:auto}
-.modal.show{display:grid}
-.modal-card{width:min(680px,100%);max-height:90vh;overflow:auto;padding:28px;background:var(--paper);border:1px solid var(--gold-light)}
-.modal-card h2{font:500 28px var(--serif)}
-.modal-card p{color:var(--muted);font-size:13px}
-.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.close{float:right;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:20px;padding:3px 11px;cursor:pointer}
+(function () {
+  "use strict";
 
-/* DIGITAL TEXTBOOK DESIGN */
-.book-shell{margin-top:22px;background:#e9e1d4;padding:clamp(12px,3vw,30px);border:1px solid #d8cbb7}
-.book-cover{min-height:430px;padding:48px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(145deg,#30291f,#191611);color:#f8f0e4;border:8px double #b99a65;box-shadow:0 15px 35px rgba(40,30,18,.18)}
-.book-cover .cover-kicker{font-size:10px;letter-spacing:.25em;color:#d8c39d}
-.book-cover h2{max-width:650px;margin:24px 0;font:500 clamp(32px,5vw,54px)/1.12 var(--serif);color:#fff8ed}
-.book-cover h2 span{display:block;color:#d8c39d}
-.book-cover p{max-width:500px;color:#e3d8c8;font-size:13px}
-.cover-rule{width:90px;height:2px;background:#b99a65;margin:12px auto}
-.book-contents{margin:22px auto;padding:clamp(22px,4vw,42px);max-width:850px;background:#fffdf7;border:1px solid #d9cfbd;box-shadow:0 8px 22px rgba(40,30,18,.07)}
-.book-contents h3,.book-page h3{font:500 27px var(--serif);margin:0 0 18px}
-.contents-list{list-style:none;padding:0;margin:0;columns:2;column-gap:32px}
-.contents-list li{break-inside:avoid;border-bottom:1px dotted #c9bda9;padding:9px 0;font-size:12px}
-.contents-list button{width:100%;border:0;background:none;text-align:left;color:#3b3024;cursor:pointer;font:inherit;padding:0}
-.contents-list button:hover{color:#9a733c}
-.contents-list .unit{color:#a17c45;font-weight:700;margin-right:8px}
-.book-page{display:none;max-width:850px;margin:22px auto;padding:clamp(24px,5vw,54px);background:#fffdf7;border:1px solid #d9cfbd;box-shadow:0 8px 22px rgba(40,30,18,.07);min-height:520px}
-.book-page.active{display:block}
-.book-page .page-kicker{font-size:9px;letter-spacing:.18em;color:#9b7847;font-weight:700;text-transform:uppercase}
-.book-page h2{font:500 clamp(27px,4vw,38px)/1.2 var(--serif);margin:12px 0 20px;color:#30291f}
-.book-page h3{font-size:21px;margin:24px 0 8px}
-.book-page p,.book-page li{font-size:13px;line-height:1.9;color:#51483d}
-.book-page ul,.book-page ol{padding-left:22px}
-.book-page table{margin:14px 0 20px;background:#fff}
-.book-page th{background:#f2ebdf}
-.book-page .book-callout{margin:18px 0;padding:15px 17px;background:#f3ecdf;border-left:3px solid #a9854b;font-size:12px;color:#594a35}
-.book-page .book-warning{background:#f8eee9;border-left-color:#a64f43}
-.book-nav{display:flex;justify-content:space-between;gap:12px;max-width:850px;margin:0 auto 24px}
-.book-nav button{background:#30291f;color:#fff;border:0;padding:12px 18px;cursor:pointer;font:700 10px var(--sans);letter-spacing:.08em;text-transform:uppercase}
-.book-nav button:disabled{opacity:.35;cursor:not-allowed}
-.book-progress{max-width:850px;margin:0 auto 12px;display:flex;justify-content:space-between;color:#716554;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-.book-page-number{text-align:center;margin-top:35px;padding-top:14px;border-top:1px solid #e6ddce;color:#9b8b75;font:italic 12px var(--serif)}
-.book-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:850px;margin:0 auto 12px;flex-wrap:wrap}
-.book-toolbar button{border:1px solid #bda982;background:#fffdf7;color:#5c4930;padding:9px 13px;cursor:pointer;font-size:10px}
-.book-note{max-width:850px;margin:0 auto 18px;color:#746c60;font-size:11px}
-.site-footer{padding:24px 0;background:var(--dark2);color:#cfc5b7;text-align:center;font-size:9px;letter-spacing:.12em}
-.site-footer a{color:var(--gold-light)}
+  const chapters = [
 
-@media(max-width:760px){
-.tiles{grid-template-columns:repeat(2,1fr)}
-.hero{padding:52px 0}
-.lesson-list,.knowledge-grid{grid-template-columns:1fr}
-.stats{grid-template-columns:1fr 1fr}
-.hero:after{right:-60px;font-size:190px}
-}
-@media(max-width:480px){
-.container{width:calc(100% - 30px)}
-.topbar-inner{min-height:66px}
-.brand{font-size:14px}
-.tiles{grid-template-columns:1fr}
-.panel{padding:19px}
-.choices{grid-template-columns:1fr}
-.stats{grid-template-columns:1fr}
-.hero h1{font-size:40px}
-}
-</style>
-</head>
+    {
+      title: "Chapter 1: Aircraft Manufacturers and Aircraft Basics",
+      subtitle: "Understanding the aircraft used in commercial aviation",
+      content: `
+        <h2>1.1 Introduction to Commercial Aircraft</h2>
+        <p>Air travel depends on different types of aircraft designed to carry passengers and cargo safely. A professional travel sales agent should understand the basic differences between aircraft types.</p>
 
-<body class="airline-page">
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">WP</span>
-      <span>Walter Eric Peterson<small>PERSONAL PORTFOLIO</small></span>
-    </a>
-    <a class="back-link" href="index.html">← Back to my website</a>
-  </div>
-</header>
+        <h2>1.2 Major Aircraft Manufacturers</h2>
+        <table>
+          <tr><th>Manufacturer</th><th>Country</th><th>Examples</th></tr>
+          <tr><td>Airbus</td><td>Europe</td><td>A320, A321, A330, A350, A380</td></tr>
+          <tr><td>Boeing</td><td>United States</td><td>737, 747, 777, 787</td></tr>
+          <tr><td>Embraer</td><td>Brazil</td><td>E-Jets, E175, E190</td></tr>
+          <tr><td>ATR</td><td>France and Italy</td><td>ATR 42, ATR 72</td></tr>
+        </table>
 
-<section class="hero">
-  <div class="container hero-content">
-    <p class="eyebrow">INDEPENDENT LEARNING ACADEMY</p>
-    <h1>Amadeus Airline<br><em>Learning Academy.</em></h1>
-    <p>Learn airline and travel-industry knowledge step by step. Study training chapters, test yourself, practise sample commands and monitor your learning progress.</p>
-    <div class="hero-meta">
-      <span>12 handbook chapters</span>
-      <span>Knowledge quizzes</span>
-      <span>Practice terminal</span>
-      <span>Progress tracking</span>
-    </div>
-  </div>
-</section>
+        <h2>1.3 Aircraft Categories</h2>
+        <p><b>Narrow-body aircraft:</b> Usually have one aisle and are commonly used for short- and medium-haul routes. Examples include the Airbus A320 family and Boeing 737 family.</p>
+        <p><b>Wide-body aircraft:</b> Usually have two aisles and are commonly used for long-haul international routes. Examples include the Boeing 777 and Airbus A350.</p>
+        <p><b>Regional aircraft:</b> Often serve shorter routes and smaller airports. Examples include aircraft from Embraer and ATR.</p>
 
-<main class="container">
-<div class="section-head">
-  <p class="eyebrow">LEARN · PRACTISE · PROGRESS</p>
-  <h2>Welcome to Airline Corner</h2>
-  <p class="muted">Choose a learning area to begin your journey.</p>
-</div>
+        <h2>1.4 Important Aircraft Terms</h2>
+        <ul>
+          <li><b>Cabin:</b> The area where passengers sit.</li>
+          <li><b>Cockpit:</b> The flight deck where pilots operate the aircraft.</li>
+          <li><b>Fuselage:</b> The main body of the aircraft.</li>
+          <li><b>Wing:</b> The structure that produces lift.</li>
+          <li><b>Landing gear:</b> The wheels and supporting structure used during landing and ground movement.</li>
+          <li><b>Seat configuration:</b> The arrangement of seats in the aircraft.</li>
+        </ul>
 
-<div class="tiles">
-  <button class="tile" onclick="openPanel('learn')"><span class="emoji">📘</span><h3>Learn</h3><p>Read the professional training handbook.</p></button>
-  <button class="tile" onclick="openPanel('quiz')"><span class="emoji">✦</span><h3>Knowledge Quiz</h3><p>Test yourself at three difficulty levels.</p></button>
-  <button class="tile" onclick="openPanel('videos')"><span class="emoji">▶</span><h3>Video Learning</h3><p>Find video lessons by subject.</p></button>
-  <button class="tile" onclick="openPanel('knowledge')"><span class="emoji">⌖</span><h3>Airline Knowledge</h3><p>Airlines, aircraft and airport codes.</p></button>
-  <button class="tile" onclick="openPanel('practice')"><span class="emoji">⌨</span><h3>Amadeus Practice</h3><p>Practise sample commands in demo mode.</p></button>
-  <button class="tile" onclick="openPanel('progress')"><span class="emoji">♜</span><h3>My Progress</h3><p>Track completed lessons and quiz results.</p></button>
-</div>
+        <h2>1.5 Aircraft and Passenger Experience</h2>
+        <p>Aircraft type can influence cabin layout, seat availability, baggage storage, entertainment systems and passenger comfort. However, the same aircraft model can have different interiors depending on the airline.</p>
 
-<!-- LEARN: DIGITAL TRAINING HANDBOOK -->
-<section class="panel" id="learn">
-  <h2>The Airline Travel Sales Agent</h2>
-  <p class="muted">USA &amp; Canada Professional Training Handbook · Learning edition · November 2026</p>
+        <div class="book-tip"><b>Professional Tip:</b> Never promise a particular seat layout or entertainment facility based only on the aircraft model. Check the airline's current aircraft and seat-map information.</div>
 
-  <div class="book-shell">
-    <div id="bookCover" class="book-cover">
-      <div class="cover-kicker">USA &amp; CANADA · PROFESSIONAL TRAINING</div>
-      <h2>THE AIRLINE<br>TRAVEL SALES AGENT <span>USA &amp; CANADA</span></h2>
-      <div class="cover-rule"></div>
-      <p>A practical, visual guide to airline knowledge, ticketing basics, customer care and travel policies</p>
-      <p><strong>Prepared as an updated learning edition · November 2026</strong></p>
-      <p>Your Trainer · WALTER</p>
-    </div>
+        <h2>1.6 Knowledge Check</h2>
+        <ol>
+          <li>Name two major commercial aircraft manufacturers.</li>
+          <li>What is the difference between a narrow-body and wide-body aircraft?</li>
+          <li>What does the term cockpit mean?</li>
+        </ol>
+      `
+    },
 
-    <div id="bookContents" class="book-contents">
-      <h3>Contents</h3>
-      <ol class="contents-list" id="bookContentsList"></ol>
-    </div>
+    {
+      title: "Chapter 2: USA and Canada Geography and Time Zones",
+      subtitle: "Understanding North American destinations and local times",
+      content: `
+        <h2>2.1 Why Geography Matters</h2>
+        <p>Travel agents must understand the location of major cities, airports and time zones. A small mistake in time-zone calculations can result in a missed connection or incorrect travel advice.</p>
 
-    <div class="book-toolbar">
-      <span id="bookReadingLabel">HANDBOOK · CONTENTS</span>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button type="button" onclick="bookShowContents()">☷ Contents</button>
-        <button type="button" onclick="bookMarkComplete()">✓ Mark chapter complete</button>
-      </div>
-    </div>
+        <h2>2.2 Major Regions of the United States</h2>
+        <table>
+          <tr><th>Region</th><th>Example Cities</th></tr>
+          <tr><td>Northeast</td><td>New York, Boston, Philadelphia</td></tr>
+          <tr><td>Southeast</td><td>Miami, Atlanta, Charlotte</td></tr>
+          <tr><td>Midwest</td><td>Chicago, Detroit, Minneapolis</td></tr>
+          <tr><td>Southwest</td><td>Dallas, Houston, Phoenix</td></tr>
+          <tr><td>West</td><td>Los Angeles, San Francisco, Seattle</td></tr>
+        </table>
 
-    <div class="book-progress">
-      <span id="bookChapterLabel">Contents</span>
-      <span id="bookCompleteLabel">0 / 12 chapters completed</span>
-    </div>
+        <h2>2.3 Major Regions of Canada</h2>
+        <table>
+          <tr><th>Region</th><th>Example Cities</th></tr>
+          <tr><td>Atlantic Canada</td><td>Halifax, St. John's</td></tr>
+          <tr><td>Central Canada</td><td>Toronto, Ottawa, Montreal</td></tr>
+          <tr><td>Prairies</td><td>Winnipeg, Regina, Saskatoon</td></tr>
+          <tr><td>Western Canada</td><td>Calgary, Edmonton, Vancouver</td></tr>
+          <tr><td>Northern Canada</td><td>Yellowknife, Iqaluit, Whitehorse</td></tr>
+        </table>
 
-    <article id="bookPage" class="book-page"></article>
+        <h2>2.4 North American Time Zones</h2>
+        <p>The United States and Canada cover several time zones. Common time-zone names include:</p>
+        <ul>
+          <li>Eastern Time (ET)</li>
+          <li>Central Time (CT)</li>
+          <li>Mountain Time (MT)</li>
+          <li>Pacific Time (PT)</li>
+          <li>Atlantic Time (AT)</li>
+          <li>Newfoundland Time (NT)</li>
+        </ul>
+        <p>Not every region follows the same daylight-saving arrangements. Some locations have special time-zone rules.</p>
 
-    <div class="book-nav">
-      <button type="button" id="bookPrev" onclick="bookPrevious()" disabled>← Previous</button>
-      <button type="button" id="bookNext" onclick="bookNext()">Start reading →</button>
-    </div>
-  </div>
+        <h2>2.5 Understanding Flight Times</h2>
+        <p>Airline itineraries normally display departure and arrival times in the local time of each airport. Always check the date as well as the time, especially when a flight crosses midnight or several time zones.</p>
 
-  <p class="book-note">Training reminder: airline rules and fees can change. Always verify the exact carrier, operating airline, route, fare, ticket date and travel date before advising a customer.</p>
-</section>
+        <h2>2.6 Example</h2>
+        <p>A passenger departs New York in the evening and arrives in Los Angeles later that same evening by local clock time. This does not mean the flight took only a short time. The time-zone difference must be considered.</p>
 
-<!-- KNOWLEDGE QUIZ -->
-<section class="panel" id="quiz">
-  <h2>Airline Knowledge Quiz</h2>
-  <p>Choose a level and answer the questions. You will receive feedback and an explanation.</p>
-  <div class="quizbox">
-    <div id="quizStart">
-      <label for="level">Select difficulty</label>
-      <select id="level">
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-      </select>
-      <button class="primary" onclick="startQuiz()">Start quiz</button>
-    </div>
-    <div id="quizRun" hidden>
-      <div class="bar"><span id="quizBar"></span></div>
-      <p id="questionCount" class="muted"></p>
-      <h3 id="questionText"></h3>
-      <div class="choices" id="choices"></div>
-      <p class="feedback" id="feedback"></p>
-      <button class="primary" id="nextQuestion" hidden onclick="nextQuestion()">Next question</button>
-    </div>
-    <div id="quizResult" hidden></div>
-  </div>
-</section>
+        <div class="book-tip"><b>Professional Tip:</b> Use the airline itinerary or a reliable time-zone converter. Never calculate a complex international itinerary from memory.</div>
 
-<!-- VIDEO LEARNING -->
-<section class="panel" id="videos">
-  <h2>Video Learning Centre</h2>
-  <p>Use these subject links to find relevant video-learning material. These open YouTube search results, not official training endorsements.</p>
-  <div class="lesson-list" id="videoList"></div>
-  <div class="notice">You can add your own authorised training video links here later.</div>
-</section>
+        <h2>2.7 Knowledge Check</h2>
+        <ol>
+          <li>Name three major Canadian cities.</li>
+          <li>What does ET stand for?</li>
+          <li>Why must an agent check local arrival dates?</li>
+        </ol>
+      `
+    },
 
-<!-- AIRLINE KNOWLEDGE -->
-<section class="panel" id="knowledge">
-  <h2>Airline Knowledge Reference</h2>
-  <div class="knowledge-grid">
-    <div class="reference-card">
-      <h3>Aircraft manufacturers</h3>
-      <p><strong>Airbus:</strong> A220, A320 family, A330 and A350.</p>
-      <p><strong>Boeing:</strong> 737, 747, 767, 777 and 787 families.</p>
-    </div>
-    <div class="reference-card">
-      <h3>Airline IATA designators — examples</h3>
-      <table>
-        <tr><th>Airline</th><th>Code</th></tr>
-        <tr><td>American Airlines</td><td>AA</td></tr>
-        <tr><td>Delta Air Lines</td><td>DL</td></tr>
-        <tr><td>United Airlines</td><td>UA</td></tr>
-        <tr><td>Air Canada</td><td>AC</td></tr>
-        <tr><td>WestJet</td><td>WS</td></tr>
-        <tr><td>British Airways</td><td>BA</td></tr>
-        <tr><td>Lufthansa</td><td>LH</td></tr>
-        <tr><td>Air India</td><td>AI</td></tr>
-      </table>
-    </div>
-    <div class="reference-card">
-      <h3>Airport codes — examples</h3>
-      <table>
-        <tr><th>Airport</th><th>Code</th></tr>
-        <tr><td>Kolkata</td><td>CCU</td></tr>
-        <tr><td>Delhi</td><td>DEL</td></tr>
-        <tr><td>Mumbai</td><td>BOM</td></tr>
-        <tr><td>New York JFK</td><td>JFK</td></tr>
-        <tr><td>London Heathrow</td><td>LHR</td></tr>
-        <tr><td>Toronto Pearson</td><td>YYZ</td></tr>
-        <tr><td>Vancouver</td><td>YVR</td></tr>
-        <tr><td>Calgary</td><td>YYC</td></tr>
-      </table>
-    </div>
-    <div class="reference-card">
-      <h3>Learning reminder</h3>
-      <p>Airline designators, airport codes and ticket numeric prefixes are different identifiers. Always verify current operational details with an authoritative source.</p>
-    </div>
-  </div>
-  <p class="notice">These are introductory examples, not a complete operational reference. Always verify current airline codes, ticket prefixes and airport details using an authoritative source.</p>
-</section>
+    {
+      title: "Chapter 3: Airlines, Airline Codes and Ticket Stock",
+      subtitle: "Learning airline identification and ticket basics",
+      content: `
+        <h2>3.1 What Is an Airline Designator?</h2>
+        <p>An airline designator is a code used to identify an airline in reservations and flight information. IATA airline designators commonly contain two characters, which may be letters or a combination of letters and numbers.</p>
 
-<!-- AMADEUS PRACTICE -->
-<section class="panel" id="practice">
-  <h2>Amadeus Practice — Demo Terminal</h2>
-  <p>This is an educational simulator only. It is not connected to the real Amadeus system.</p>
-  <div class="terminal">
-    <label for="command">TRAINING TERMINAL — DEMO MODE</label><br>
-    <input id="command" placeholder="Type HELP, AIRLINE, AIRPORT or IG">
-    <button class="primary" onclick="runCommand()">Run command</button>
-    <div class="terminal-output" id="terminalOutput">Welcome to the Airline Corner demo terminal. Type HELP to see available commands.</div>
-  </div>
-  <p class="notice">This simulator cannot access live flights, passenger records, bookings or ticketing. It is only for introductory learning.</p>
-</section>
+        <h2>3.2 Examples of Airline Codes</h2>
+        <table>
+          <tr><th>Airline</th><th>IATA Code</th></tr>
+          <tr><td>American Airlines</td><td>AA</td></tr>
+          <tr><td>Air Canada</td><td>AC</td></tr>
+          <tr><td>Delta Air Lines</td><td>DL</td></tr>
+          <tr><td>United Airlines</td><td>UA</td></tr>
+          <tr><td>British Airways</td><td>BA</td></tr>
+          <tr><td>Air India</td><td>AI</td></tr>
+        </table>
 
-<!-- PROGRESS -->
-<section class="panel" id="progress">
-  <h2>My Learning Progress</h2>
-  <div class="stats">
-    <div class="stat"><strong id="completedCount">0</strong>Lessons completed</div>
-    <div class="stat"><strong id="quizCount">0</strong>Quiz attempts</div>
-    <div class="stat"><strong id="bestScore">0%</strong>Best score</div>
-  </div>
-  <p id="progressText" class="muted"></p>
-  <button class="primary" onclick="resetProgress()">Reset my progress</button>
-</section>
+        <h2>3.3 Flight Numbers</h2>
+        <p>A flight number normally combines an airline designator with a numerical flight identifier.</p>
+        <p><b>Example:</b> AA100 means an American Airlines flight identified by the number 100.</p>
 
-<div class="notice">
-  <strong>Important training notice:</strong> This is an independent educational project. It is not affiliated with or endorsed by Amadeus or any airline. Airline cancellation, change, baggage, pet and unaccompanied-minor policies change and depend on the ticket and itinerary. Always verify current official rules before advising a customer.
-</div>
-</main>
+        <h2>3.4 What Is Ticket Stock?</h2>
+        <p>Ticket stock identifies the airline whose ticket document is used to issue an electronic ticket. It is commonly associated with a three-digit ticket prefix.</p>
+        <p>The validating carrier and the operating carrier may be different. This can happen on codeshare or interline itineraries.</p>
 
-<footer class="site-footer">
-  AIRLINE CORNER · INDEPENDENT LEARNING ACADEMY · <a href="index.html">WALTER ERIC PETERSON</a>
-</footer>
+        <h2>3.5 Important Airline Roles</h2>
+        <ul>
+          <li><b>Marketing carrier:</b> The airline selling or marketing a flight under its flight number.</li>
+          <li><b>Operating carrier:</b> The airline actually operating the aircraft.</li>
+          <li><b>Validating carrier:</b> The airline whose ticket stock is used to issue the ticket.</li>
+          <li><b>Ticketing carrier:</b> The carrier responsible for ticket issuance under the applicable arrangements.</li>
+        </ul>
 
-<div class="modal" id="lessonModal">
-  <div class="modal-card">
-    <button class="close" onclick="closeLesson()" aria-label="Close">×</button>
-    <p class="eyebrow">AIRLINE CORNER · TRAINING CHAPTER</p>
-    <h2 id="modalTitle"></h2>
-    <div id="modalBody"></div>
-    <div class="modal-actions">
-      <button class="primary" id="completeButton" onclick="completeLesson()">Mark as completed ✓</button>
-      <button class="close" onclick="closeLesson()">Close</button>
-    </div>
-  </div>
-</div>
+        <h2>3.6 Codeshare Flights</h2>
+        <p>A codeshare is an arrangement where one airline markets a flight operated by another airline. A passenger may see one airline's flight number while travelling on another airline's aircraft.</p>
 
-<script src="training-question-bank.js"></script>
-<script src="training-book.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+        <div class="book-example"><b>Example:</b> A booking may display an airline's flight number but state that the service is operated by a partner airline. The agent must identify the operating carrier before advising on check-in, baggage or special services.</div>
+
+        <div class="book-tip"><b>Professional Tip:</b> Never assume that the marketing airline and operating airline are the same.</div>
+
+        <h2>3.7 Knowledge Check</h2>
+        <ol>
+          <li>What is an airline designator?</li>
+          <li>What does operating carrier mean?</li>
+          <li>Why is ticket stock important?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 4: Airport Codes: How to Read and Use Them",
+      subtitle: "Understanding airport identification codes",
+      content: `
+        <h2>4.1 What Is an Airport Code?</h2>
+        <p>Airport codes help identify airports in airline reservations, tickets, baggage tags and flight schedules.</p>
+
+        <h2>4.2 IATA Airport Codes</h2>
+        <p>IATA airport codes commonly contain three letters. They are widely used in commercial airline travel.</p>
+
+        <table>
+          <tr><th>City / Airport</th><th>Code</th><th>Country</th></tr>
+          <tr><td>New York JFK</td><td>JFK</td><td>USA</td></tr>
+          <tr><td>Los Angeles</td><td>LAX</td><td>USA</td></tr>
+          <tr><td>Chicago O'Hare</td><td>ORD</td><td>USA</td></tr>
+          <tr><td>Toronto Pearson</td><td>YYZ</td><td>Canada</td></tr>
+          <tr><td>Vancouver</td><td>YVR</td><td>Canada</td></tr>
+          <tr><td>Montreal Trudeau</td><td>YUL</td><td>Canada</td></tr>
+          <tr><td>Kolkata</td><td>CCU</td><td>India</td></tr>
+          <tr><td>Delhi</td><td>DEL</td><td>India</td></tr>
+          <tr><td>Mumbai</td><td>BOM</td><td>India</td></tr>
+        </table>
+
+        <h2>4.3 City Codes and Airport Codes</h2>
+        <p>Some cities have more than one airport. A city code may represent a metropolitan area rather than one specific airport. Always confirm the actual airport before booking.</p>
+
+        <h2>4.4 ICAO Codes</h2>
+        <p>ICAO airport identifiers generally contain four letters and are commonly used in flight operations and aviation planning. They are different from the three-letter IATA codes commonly seen by passengers.</p>
+
+        <h2>4.5 Reading an Itinerary</h2>
+        <p>Example: CCU – DEL – YYZ</p>
+        <ul>
+          <li>CCU: Kolkata</li>
+          <li>DEL: Delhi</li>
+          <li>YYZ: Toronto Pearson</li>
+        </ul>
+        <p>This itinerary indicates travel from Kolkata to Delhi and then to Toronto Pearson. The actual flight details, connection time and terminal information must also be checked.</p>
+
+        <div class="book-tip"><b>Professional Tip:</b> Always verify airport names, especially when a city has multiple airports or when a passenger has a connecting flight.</div>
+
+        <h2>4.6 Knowledge Check</h2>
+        <ol>
+          <li>How many letters are commonly used in IATA airport codes?</li>
+          <li>What is the airport code for Toronto Pearson?</li>
+          <li>What is the airport code for Kolkata?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 5: Cancellations, Refunds and Travel Credits",
+      subtitle: "Understanding ticket conditions and refund procedures",
+      content: `
+        <h2>5.1 Introduction</h2>
+        <p>Passengers may need to cancel a journey for personal, medical, business or operational reasons. An agent must explain the applicable ticket conditions accurately.</p>
+
+        <h2>5.2 Important Terms</h2>
+        <ul>
+          <li><b>Cancellation:</b> The passenger or airline cancels a booking or flight.</li>
+          <li><b>Refund:</b> Money returned to the passenger when permitted by the applicable rules.</li>
+          <li><b>Travel credit:</b> A value that may be used toward future travel, subject to its conditions.</li>
+          <li><b>Cancellation penalty:</b> A fee that may apply when a passenger cancels a ticket.</li>
+          <li><b>Non-refundable ticket:</b> A ticket whose base fare is generally not refundable, subject to applicable laws and exceptions.</li>
+        </ul>
+
+        <h2>5.3 Before Quoting a Refund</h2>
+        <ol>
+          <li>Identify the airline and ticket issuer.</li>
+          <li>Check the fare rules attached to the ticket.</li>
+          <li>Check whether the ticket has been partially used.</li>
+          <li>Check the current airline policy.</li>
+          <li>Check applicable passenger-protection laws.</li>
+          <li>Explain any cancellation fee, refund amount or credit conditions.</li>
+          <li>Record the information provided to the passenger.</li>
+        </ol>
+
+        <h2>5.4 Voluntary and Involuntary Changes</h2>
+        <p><b>Voluntary cancellation:</b> The passenger chooses to cancel the journey.</p>
+        <p><b>Involuntary cancellation:</b> The airline cancels the flight or makes a qualifying schedule change. Different rules or remedies may apply.</p>
+
+        <h2>5.5 Refunds Are Not Always Immediate</h2>
+        <p>Refund processing times depend on the airline, payment method, ticket issuer and applicable rules. An agent should never promise a specific payment date unless it has been confirmed by the responsible party.</p>
+
+        <div class="book-example"><b>Example:</b> A passenger asks for a full refund on a non-refundable ticket. The agent should review the fare conditions and applicable passenger rights before giving an answer. The agent must not automatically promise a full refund or reject the request without checking.</div>
+
+        <div class="book-tip"><b>Professional Tip:</b> Explain the difference between a refund to the original payment method and a travel credit. They are not the same.</div>
+
+        <h2>5.6 Knowledge Check</h2>
+        <ol>
+          <li>What is a travel credit?</li>
+          <li>What is the difference between voluntary and involuntary cancellation?</li>
+          <li>Which document should be checked before quoting a cancellation penalty?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 6: Changes, Delays, Cancellations and Rerouting",
+      subtitle: "Managing disrupted travel professionally",
+      content: `
+        <h2>6.1 Understanding Flight Disruptions</h2>
+        <p>Flight disruptions may be caused by weather, aircraft maintenance, operational problems, air-traffic restrictions, security issues or other circumstances.</p>
+
+        <h2>6.2 Common Disruption Terms</h2>
+        <ul>
+          <li><b>Delay:</b> A flight departs or arrives later than scheduled.</li>
+          <li><b>Cancellation:</b> A scheduled flight does not operate.</li>
+          <li><b>Rerouting:</b> A passenger is offered an alternative route.</li>
+          <li><b>Rebooking:</b> A passenger is moved to another flight.</li>
+          <li><b>Misconnection:</b> A passenger cannot make a planned connecting flight.</li>
+          <li><b>Schedule change:</b> The airline changes the published flight schedule.</li>
+        </ul>
+
+        <h2>6.3 Agent's Disruption Workflow</h2>
+        <ol>
+          <li>Check the latest flight status.</li>
+          <li>Confirm whether the disruption is airline-initiated or passenger-initiated.</li>
+          <li>Review the full itinerary and ticket conditions.</li>
+          <li>Identify available alternative flights.</li>
+          <li>Check connection times and airport changes.</li>
+          <li>Confirm whether additional payment or approval is required.</li>
+          <li>Explain the options clearly to the passenger.</li>
+          <li>Record the final action and reference details.</li>
+        </ol>
+
+        <h2>6.4 Connecting Flight Problems</h2>
+        <p>If a delay causes a passenger to miss a connection, the agent must check whether the flights are on one ticket or separate tickets. The applicable airline responsibilities and passenger rights may differ.</p>
+
+        <h2>6.5 Passenger Rights</h2>
+        <p>Passenger rights depend on the route, operating carrier, reason for disruption and applicable law. For journeys involving the United States or Canada, check the current official government rules and airline procedures before advising the passenger.</p>
+
+        <div class="book-tip"><b>Professional Tip:</b> Do not promise hotel accommodation, meals, compensation or a free replacement ticket until eligibility has been verified.</div>
+
+        <h2>6.6 Knowledge Check</h2>
+        <ol>
+          <li>What is rerouting?</li>
+          <li>What is a misconnection?</li>
+          <li>Why should an agent check whether flights are on one ticket or separate tickets?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 7: Name Corrections, Date of Birth and Codeshares",
+      subtitle: "Passenger information and booking accuracy",
+      content: `
+        <h2>7.1 Why Passenger Details Matter</h2>
+        <p>Passenger information must be entered accurately. Differences between a booking and the passenger's travel document can cause check-in or boarding problems.</p>
+
+        <h2>7.2 Name Corrections</h2>
+        <p>A minor spelling correction is not the same as replacing one passenger with another. Airlines may have specific procedures for correcting names, and some tickets may not permit certain changes.</p>
+
+        <h2>7.3 What to Check</h2>
+        <ul>
+          <li>Passenger's full name as shown on the travel document.</li>
+          <li>Airline name-correction policy.</li>
+          <li>Whether the ticket has already been issued.</li>
+          <li>Whether the itinerary includes partner airlines.</li>
+          <li>Whether a reissue or airline approval is required.</li>
+        </ul>
+
+        <h2>7.4 Date of Birth and Other Details</h2>
+        <p>Date of birth, gender information where required, passport details and other passenger data must be handled according to airline, destination and regulatory requirements. Never change passenger information without verifying the correct information and the permitted procedure.</p>
+
+        <h2>7.5 Codeshare Considerations</h2>
+        <p>On codeshare itineraries, the marketing carrier and operating carrier may have different procedures. Confirm which airline must approve or process the requested correction.</p>
+
+        <div class="book-example"><b>Example:</b> A passenger asks to change “Jonh” to “John”. The agent should check the airline's name-correction rules. The agent must not treat a request to replace John with another person as a spelling correction.</div>
+
+        <div class="book-tip"><b>Professional Tip:</b> Never guarantee that a name change is free or permitted until the airline or ticket issuer confirms it.</div>
+
+        <h2>7.6 Knowledge Check</h2>
+        <ol>
+          <li>Is a passenger substitution the same as a spelling correction?</li>
+          <li>Why should an agent check the travel document?</li>
+          <li>Why can codeshare bookings require extra verification?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 8: Pets and Service Animals",
+      subtitle: "Understanding animal travel requirements",
+      content: `
+        <h2>8.1 Introduction</h2>
+        <p>Passengers may wish to travel with pets or service animals. Acceptance rules differ between airlines, aircraft, routes and countries.</p>
+
+        <h2>8.2 Common Travel Arrangements</h2>
+        <ul>
+          <li><b>Cabin pet:</b> An eligible animal travelling in the passenger cabin under airline conditions.</li>
+          <li><b>Checked animal:</b> An animal accepted for transport in an approved aircraft hold, where offered.</li>
+          <li><b>Service animal:</b> An animal that may receive specific treatment under applicable laws and airline procedures.</li>
+        </ul>
+
+        <h2>8.3 Information to Verify</h2>
+        <ol>
+          <li>Animal type and breed.</li>
+          <li>Animal's weight and carrier dimensions.</li>
+          <li>Airline and aircraft acceptance rules.</li>
+          <li>Route restrictions and connecting-flight requirements.</li>
+          <li>Required health certificates and vaccinations.</li>
+          <li>Import, export and transit regulations.</li>
+          <li>Advance booking or approval requirements.</li>
+        </ol>
+
+        <h2>8.4 Service Animals</h2>
+        <p>Service-animal rules can differ from ordinary pet policies. The agent must follow the applicable legal requirements and airline procedures. Do not assume that every animal is automatically accepted as a service animal.</p>
+
+        <h2>8.5 International Travel</h2>
+        <p>International animal travel may require official health documentation, vaccinations, permits, microchips, quarantine arrangements or other entry requirements. Requirements depend on the destination and transit countries.</p>
+
+        <div class="book-tip"><b>Professional Tip:</b> Obtain confirmation from the airline and relevant government authorities before telling the passenger that an animal is approved to travel.</div>
+
+        <h2>8.6 Knowledge Check</h2>
+        <ol>
+          <li>Why should carrier dimensions be checked?</li>
+          <li>Are pet rules identical across all airlines?</li>
+          <li>Why should international entry requirements be verified?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 9: Unaccompanied Minors (UMNR)",
+      subtitle: "Assisting children travelling without an accompanying adult",
+      content: `
+        <h2>9.1 What Is an Unaccompanied Minor?</h2>
+        <p>An unaccompanied minor is a child travelling without a parent or qualifying accompanying adult under the airline's rules. Airlines may provide a supervised service for eligible children.</p>
+
+        <h2>9.2 Airline Rules Differ</h2>
+        <p>Minimum and maximum ages, mandatory service requirements, fees and route restrictions vary by airline. Some airlines may not accept unaccompanied minors on certain itineraries.</p>
+
+        <h2>9.3 Information to Collect</h2>
+        <ul>
+          <li>Child's full name and date of birth.</li>
+          <li>Age on each travel date.</li>
+          <li>Complete flight itinerary.</li>
+          <li>Parent or guardian contact details.</li>
+          <li>Details of the authorised person dropping off the child.</li>
+          <li>Details of the authorised person collecting the child.</li>
+          <li>Any required forms and identification documents.</li>
+        </ul>
+
+        <h2>9.4 Connecting Flights</h2>
+        <p>Some airlines restrict unaccompanied-minor travel involving connections, overnight stops, partner airlines or changes of airport. Confirm the full journey before ticketing.</p>
+
+        <h2>9.5 Agent's Checklist</h2>
+        <ol>
+          <li>Confirm the child's age on the date of travel.</li>
+          <li>Check the airline's current UMNR policy.</li>
+          <li>Check whether the service is mandatory or optional.</li>
+          <li>Check fees and availability.</li>
+          <li>Confirm connection and operating-carrier rules.</li>
+          <li>Explain required forms and airport procedures.</li>
+          <li>Obtain airline confirmation where required.</li>
+        </ol>
+
+        <div class="book-tip"><b>Professional Tip:</b> Never assume that a child can travel alone simply because the booking system allows a ticket to be issued.</div>
+
+        <h2>9.6 Knowledge Check</h2>
+        <ol>
+          <li>Why must the child's age be checked on the travel dates?</li>
+          <li>Why should connecting-flight rules be checked?</li>
+          <li>What information is required about the collecting adult?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 10: Baggage Basics and Security Screening",
+      subtitle: "Checked baggage, cabin baggage and passenger preparation",
+      content: `
+        <h2>10.1 Types of Baggage</h2>
+        <ul>
+          <li><b>Cabin baggage:</b> Items a passenger is permitted to carry into the aircraft cabin.</li>
+          <li><b>Checked baggage:</b> Baggage accepted by the airline and transported in the aircraft hold.</li>
+          <li><b>Personal item:</b> A smaller item that may be permitted in addition to cabin baggage, depending on the fare and airline.</li>
+        </ul>
+
+        <h2>10.2 Baggage Allowance</h2>
+        <p>Baggage allowance may depend on the airline, route, cabin class, fare type, frequent-flyer status and ticket conditions.</p>
+
+        <h2>10.3 Weight and Piece Concepts</h2>
+        <p><b>Weight concept:</b> The allowance is based on the total permitted weight.</p>
+        <p><b>Piece concept:</b> The allowance is based on the permitted number of bags and their individual limits.</p>
+
+        <h2>10.4 What an Agent Must Check</h2>
+        <ol>
+          <li>Full itinerary and ticket details.</li>
+          <li>Operating carriers on every segment.</li>
+          <li>Applicable baggage rule for the itinerary.</li>
+          <li>Number of permitted bags.</li>
+          <li>Weight and size limits.</li>
+          <li>Extra-baggage charges and purchase conditions.</li>
+          <li>Special baggage acceptance requirements.</li>
+        </ol>
+
+        <h2>10.5 Security Screening</h2>
+        <p>Passengers must follow airport security instructions and applicable restrictions on liquids, sharp objects, batteries and prohibited items. Rules vary by country and airport.</p>
+
+        <h2>10.6 Lithium Batteries and Special Items</h2>
+        <p>Portable batteries, power banks, mobility devices and other special items may have specific carriage rules. Check the airline and relevant aviation-security authority before advising the passenger.</p>
+
+        <h2>10.7 Baggage Problems</h2>
+        <p>For delayed, damaged or missing baggage, passengers should follow the airline's airport reporting procedure and retain the relevant report reference and supporting documents.</p>
+
+        <div class="book-tip"><b>Professional Tip:</b> Never quote baggage allowance based only on a route or an old screenshot. Check the actual ticket and current airline rules.</div>
+
+        <h2>10.8 Knowledge Check</h2>
+        <ol>
+          <li>What is the difference between cabin and checked baggage?</li>
+          <li>What is the piece concept?</li>
+          <li>Why must baggage rules be checked for every carrier?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 11: The Professional Agent Workflow",
+      subtitle: "From customer enquiry to completed booking",
+      content: `
+        <h2>11.1 The Role of a Professional Travel Sales Agent</h2>
+        <p>A professional agent helps passengers understand travel options, compare suitable itineraries, make reservations and obtain accurate information. Accuracy, communication and record keeping are essential.</p>
+
+        <h2>11.2 Step One: Understand the Passenger's Requirement</h2>
+        <p>Collect the origin, destination, travel dates, number of passengers, preferred cabin, baggage needs and any special requirements.</p>
+
+        <h2>11.3 Step Two: Search and Compare Flights</h2>
+        <p>Compare departure and arrival times, journey duration, connections, airport changes, baggage conditions, fare rules and operating carriers.</p>
+
+        <h2>11.4 Step Three: Explain the Fare</h2>
+        <p>Explain the total price and relevant conditions. Check change fees, cancellation rules, baggage allowance, seat selection and any additional charges.</p>
+
+        <h2>11.5 Step Four: Verify Passenger Details</h2>
+        <p>Check names and other required passenger information against the relevant travel documents. Confirm spelling before ticket issuance.</p>
+
+        <h2>11.6 Step Five: Booking and Ticketing</h2>
+        <p>Follow the approved booking and ticketing procedure. A reservation is not necessarily a ticket. Confirm that ticket issuance has actually taken place.</p>
+
+        <h2>11.7 Step Six: Final Quality Check</h2>
+        <ul>
+          <li>Passenger names are correct.</li>
+          <li>Travel dates are correct.</li>
+          <li>Origin and destination are correct.</li>
+          <li>All flight segments are confirmed as appropriate.</li>
+          <li>Connections are suitable.</li>
+          <li>Baggage conditions have been checked.</li>
+          <li>Ticket number and booking reference are recorded.</li>
+          <li>Important fare conditions have been explained.</li>
+        </ul>
+
+        <h2>11.8 Customer Communication</h2>
+        <p>Use simple, polite and accurate language. Avoid technical terms unless you explain them. If you do not know an answer, tell the passenger that you will verify it.</p>
+
+        <h2>11.9 Record Keeping</h2>
+        <p>Record important customer requests, airline confirmations, policy sources, dates checked and actions taken. Protect passenger information and follow company privacy procedures.</p>
+
+        <div class="book-tip"><b>Professional Tip:</b> A good agent does not guess. A good agent verifies, explains and records.</div>
+
+        <h2>11.10 Knowledge Check</h2>
+        <ol>
+          <li>Why is a reservation not always the same as a ticket?</li>
+          <li>What should be checked before ticket issuance?</li>
+          <li>Why should an agent record the source of policy information?</li>
+        </ol>
+      `
+    },
+
+    {
+      title: "Chapter 12: Knowledge Checks, Case Studies and Answer Key",
+      subtitle: "Putting your training into practice",
+      content: `
+        <h2>12.1 Case Study: Incorrect Passenger Name</h2>
+        <p><b>Situation:</b> A passenger notices that one letter in their surname is incorrect after ticket issuance.</p>
+        <p><b>Your task:</b> Explain the steps you would take.</p>
+        <p><b>Suggested approach:</b> Confirm the correct name from the travel document, identify the airline and ticket issuer, check the current name-correction procedure, obtain approval if required and explain any fee or limitation. Do not promise a correction before confirmation.</p>
+
+        <h2>12.2 Case Study: Missed Connection</h2>
+        <p><b>Situation:</b> A passenger's first flight is delayed and they may miss the connecting flight.</p>
+        <p><b>Your task:</b> Identify the information needed.</p>
+        <p><b>Suggested approach:</b> Check flight status, ticket structure, operating carriers, connection airport, alternative flights and the airline's disruption procedure. Explain confirmed options clearly.</p>
+
+        <h2>12.3 Case Study: Baggage Allowance</h2>
+        <p><b>Situation:</b> A passenger asks whether two checked bags are included.</p>
+        <p><b>Your task:</b> Identify what you must verify.</p>
+        <p><b>Suggested approach:</b> Review the ticket, fare, route, carriers and baggage conditions. Confirm the number of bags, weight limits and any applicable charges.</p>
+
+        <h2>12.4 Case Study: Child Travelling Alone</h2>
+        <p><b>Situation:</b> A parent wants to book a child travelling without an adult.</p>
+        <p><b>Your task:</b> Explain the checks required.</p>
+        <p><b>Suggested approach:</b> Check the child's age on travel dates, airline rules, route restrictions, connecting flights, service availability, forms and authorised drop-off and collection details.</p>
+
+        <h2>12.5 Final Professional Checklist</h2>
+        <ul>
+          <li>Understand the passenger's requirement.</li>
+          <li>Check current flight availability.</li>
+          <li>Confirm airport codes and local dates.</li>
+          <li>Verify operating and marketing carriers.</li>
+          <li>Explain fare conditions.</li>
+          <li>Check baggage allowance.</li>
+          <li>Verify special-service requests.</li>
+          <li>Confirm passenger details.</li>
+          <li>Check ticket issuance.</li>
+          <li>Record confirmations and advice.</li>
+        </ul>
+
+        <h2>12.6 Answer Key: Knowledge Checks</h2>
+        <p>Use these answers to review your understanding. Some questions require checking current airline rules rather than memorising one universal policy.</p>
+        <ol>
+          <li>Airbus and Boeing are two major aircraft manufacturers.</li>
+          <li>A narrow-body aircraft usually has one aisle; a wide-body aircraft usually has two.</li>
+          <li>The cockpit is the flight deck where pilots operate the aircraft.</li>
+          <li>ET means Eastern Time.</li>
+          <li>Air Canada uses the airline code AC.</li>
+          <li>IATA airport codes commonly contain three letters.</li>
+          <li>Toronto Pearson uses YYZ.</li>
+          <li>Kolkata uses CCU.</li>
+          <li>A travel credit is a value that may be used for future travel under its conditions.</li>
+          <li>A passenger substitution is not the same as a minor spelling correction.</li>
+        </ol>
+
+        <div class="book-tip"><b>Final Reminder:</b> Professional airline knowledge means knowing where to verify information, not simply memorising codes and policies.</div>
+      `
+    },
+
+    {
+      title: "Appendix A: United States Airport Code Study Directory",
+      subtitle: "A selection of important U.S. airports",
+      content: `
+        <h2>United States Airport Codes</h2>
+        <p>Use this directory for study and practice. Always verify the airport name and location before booking.</p>
+        <table>
+          <tr><th>City</th><th>Airport</th><th>Code</th></tr>
+          <tr><td>New York</td><td>John F. Kennedy International</td><td>JFK</td></tr>
+          <tr><td>New York</td><td>LaGuardia</td><td>LGA</td></tr>
+          <tr><td>Newark</td><td>Newark Liberty International</td><td>EWR</td></tr>
+          <tr><td>Los Angeles</td><td>Los Angeles International</td><td>LAX</td></tr>
+          <tr><td>San Francisco</td><td>San Francisco International</td><td>SFO</td></tr>
+          <tr><td>Chicago</td><td>O'Hare International</td><td>ORD</td></tr>
+          <tr><td>Dallas</td><td>Dallas/Fort Worth International</td><td>DFW</td></tr>
+          <tr><td>Houston</td><td>George Bush Intercontinental</td><td>IAH</td></tr>
+          <tr><td>Miami</td><td>Miami International</td><td>MIA</td></tr>
+          <tr><td>Atlanta</td><td>Hartsfield-Jackson Atlanta International</td><td>ATL</td></tr>
+          <tr><td>Boston</td><td>Logan International</td><td>BOS</td></tr>
+          <tr><td>Seattle</td><td>Seattle-Tacoma International</td><td>SEA</td></tr>
+          <tr><td>Washington, D.C.</td><td>Dulles International</td><td>IAD</td></tr>
+          <tr><td>Las Vegas</td><td>Harry Reid International</td><td>LAS</td></tr>
+          <tr><td>Orlando</td><td>Orlando International</td><td>MCO</td></tr>
+          <tr><td>Denver</td><td>Denver International</td><td>DEN</td></tr>
+          <tr><td>Philadelphia</td><td>Philadelphia International</td><td>PHL</td></tr>
+          <tr><td>Detroit</td><td>Detroit Metropolitan</td><td>DTW</td></tr>
+          <tr><td>Phoenix</td><td>Phoenix Sky Harbor</td><td>PHX</td></tr>
+          <tr><td>Charlotte</td><td>Charlotte Douglas International</td><td>CLT</td></tr>
+        </table>
+      `
+    },
+
+    {
+      title: "Appendix B: Canadian Airport Code Study Directory",
+      subtitle: "Important Canadian airports",
+      content: `
+        <h2>Canadian Airport Codes</h2>
+        <p>Learn these common Canadian airport codes and practise identifying the correct airport.</p>
+        <table>
+          <tr><th>City</th><th>Airport</th><th>Code</th></tr>
+          <tr><td>Toronto</td><td>Toronto Pearson International</td><td>YYZ</td></tr>
+          <tr><td>Vancouver</td><td>Vancouver International</td><td>YVR</td></tr>
+          <tr><td>Montreal</td><td>Montréal-Trudeau International</td><td>YUL</td></tr>
+          <tr><td>Calgary</td><td>Calgary International</td><td>YYC</td></tr>
+          <tr><td>Edmonton</td><td>Edmonton International</td><td>YEG</td></tr>
+          <tr><td>Ottawa</td><td>Ottawa International</td><td>YOW</td></tr>
+          <tr><td>Winnipeg</td><td>Winnipeg Richardson International</td><td>YWG</td></tr>
+          <tr><td>Halifax</td><td>Halifax Stanfield International</td><td>YHZ</td></tr>
+          <tr><td>Quebec City</td><td>Québec City Jean Lesage International</td><td>YQB</td></tr>
+          <tr><td>Victoria</td><td>Victoria International</td><td>YYJ</td></tr>
+          <tr><td>Kelowna</td><td>Kelowna International</td><td>YLW</td></tr>
+          <tr><td>Saskatoon</td><td>Saskatoon John G. Diefenbaker International</td><td>YXE</td></tr>
+          <tr><td>Regina</td><td>Regina International</td><td>YQR</td></tr>
+          <tr><td>St. John's</td><td>St. John's International</td><td>YYT</td></tr>
+          <tr><td>Yellowknife</td><td>Yellowknife Airport</td><td>YZF</td></tr>
+        </table>
+      `
+    },
+
+    {
+      title: "Appendix C: Policy Verification and Source Notes",
+      subtitle: "Where professional agents should verify information",
+      content: `
+        <h2>Why Verification Matters</h2>
+        <p>Airline rules, government regulations, baggage allowances, fees and passenger rights can change. This handbook is a learning resource, not a live airline policy database.</p>
+
+        <h2>Recommended Official Sources</h2>
+        <ul>
+          <li><b>IATA:</b> Airline and airport industry information.</li>
+          <li><b>ICAO:</b> International civil aviation standards and information.</li>
+          <li><b>Airline official websites:</b> Current baggage, pet, minor-travel and ticket policies.</li>
+          <li><b>U.S. Department of Transportation:</b> U.S. aviation consumer information and passenger protections.</li>
+          <li><b>Canadian Transportation Agency:</b> Canadian air passenger protection information.</li>
+          <li><b>Government travel and border authorities:</b> Passport, visa, animal-entry and security requirements.</li>
+        </ul>
+
+        <h2>Verification Record</h2>
+        <p>When checking a policy, record:</p>
+        <ol>
+          <li>The airline or authority consulted.</li>
+          <li>The exact policy or webpage checked.</li>
+          <li>The date and time of verification.</li>
+          <li>The itinerary or ticket to which the information applies.</li>
+          <li>The name or reference number of the airline representative, where applicable.</li>
+        </ol>
+
+        <div class="book-tip"><b>Important:</b> Do not rely on old screenshots, social-media posts or another airline's policy when advising a passenger.</div>
+
+        <h2>Training Disclaimer</h2>
+        <p>This handbook is for educational purposes. It does not replace airline instructions, official government regulations, ticket fare rules, professional system training or confirmation from the ticket issuer.</p>
+      `
+    },
+
+    {
+      title: "Thank You",
+      subtitle: "A message from your trainer",
+      content: `
+        <div style="text-align:center;padding:35px 10px;">
+          <h1 style="font-size:32px;">AIRLINE CORNER</h1>
+          <h2>Professional Airline Travel Sales Training</h2>
+          <p style="font-size:19px;">Congratulations on completing this handbook.</p>
+          <p>Continue practising airline codes, airport codes, itinerary reading, fare conditions and customer-service procedures.</p>
+          <p>Remember that accuracy, patience, honesty and continuous learning are the foundations of a professional travel agent.</p>
+          <br>
+          <h2>Best Wishes</h2>
+          <h1>WALTER</h1>
+          <p>Trainer – Airline Corner</p>
+          <p><i>Learn. Practise. Verify. Serve Professionally.</i></p>
+        </div>
+      `
+    }
+
+  ];
+
+  /* =========================================================
+     BOOK DISPLAY AND NAVIGATION
+  ========================================================= */
+
+  let currentChapter = 0;
+
+  function getElement(id) {
+    return document.getElementById(id);
+  }
+
+  function renderContents() {
+    const list = getElement("bookContentsList");
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    chapters.forEach(function (chapter, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "book-chapter-button";
+      button.textContent = chapter.title;
+      button.addEventListener("click", function () {
+        openChapter(index);
+      });
+      list.appendChild(button);
+    });
+  }
+
+  function updateProgress() {
+    let completed = [];
+
+    try {
+      completed = JSON.parse(
+        localStorage.getItem("airlineCornerBookProgress") || "[]"
+      );
+    } catch (error) {
+      completed = [];
+    }
+
+    const label = getElement("bookCompleteLabel");
+
+    if (label) {
+      label.textContent =
+        completed.length + " of " + chapters.length + " sections completed";
+    }
+  }
+
+  function markChapterComplete(index) {
+    let completed = [];
+
+    try {
+      completed = JSON.parse(
+        localStorage.getItem("airlineCornerBookProgress") || "[]"
+      );
+    } catch (error) {
+      completed = [];
+    }
+
+    if (!completed.includes(index)) {
+      completed.push(index);
+      localStorage.setItem(
+        "airlineCornerBookProgress",
+        JSON.stringify(completed)
+      );
+    }
+
+    updateProgress();
+  }
+
+  function openChapter(index) {
+    if (index < 0 || index >= chapters.length) return;
+
+    currentChapter = index;
+
+    const chapter = chapters[index];
+
+    const page = getElement("bookPage");
+    const cover = getElement("bookCover");
+    const chapterLabel = getElement("bookChapterLabel");
+    const readingLabel = getElement("bookReadingLabel");
+    const previous = getElement("bookPrev");
+    const next = getElement("bookNext");
+    const contents = getElement("bookContents");
+
+    if (cover) cover.style.display = "none";
+
+    if (contents) contents.style.display = "none";
+
+    if (page) {
+      page.style.display = "block";
+      page.innerHTML =
+        '<div class="book-reading-page">' +
+        '<h1>' + chapter.title + '</h1>' +
+        '<p class="book-subtitle">' + chapter.subtitle + '</p>' +
+        '<hr>' +
+        chapter.content +
+        '</div>';
+    }
+
+    if (chapterLabel) {
+      chapterLabel.textContent = chapter.title;
+    }
+
+    if (readingLabel) {
+      readingLabel.textContent =
+        "Section " + (index + 1) + " of " + chapters.length;
+    }
+
+    if (previous) previous.disabled = index === 0;
+
+    if (next) {
+      next.disabled = index === chapters.length - 1;
+      next.textContent =
+        index === chapters.length - 1 ? "End of Book" : "Next Chapter";
+    }
+
+    markChapterComplete(index);
+
+    const buttons = document.querySelectorAll(".book-chapter-button");
+
+    buttons.forEach(function (button, buttonIndex) {
+      button.classList.toggle("active", buttonIndex === index);
+    });
+  }
+
+  function showContents() {
+    const contents = getElement("bookContents");
+    const page = getElement("bookPage");
+    const cover = getElement("bookCover");
+
+    if (cover) cover.style.display = "none";
+    if (page) page.style.display = "none";
+    if (contents) contents.style.display = "block";
+  }
+
+  function showCover() {
+    const contents = getElement("bookContents");
+    const page = getElement("bookPage");
+    const cover = getElement("bookCover");
+
+    if (contents) contents.style.display = "none";
+    if (page) page.style.display = "none";
+    if (cover) cover.style.display = "block";
+  }
+
+  function nextChapter() {
+    if (currentChapter < chapters.length - 1) {
+      openChapter(currentChapter + 1);
+    }
+  }
+
+  function previousChapter() {
+    if (currentChapter > 0) {
+      openChapter(currentChapter - 1);
+    }
+  }
+
+  /* =========================================================
+     CONNECT TO THE AIRLINE CORNER HTML PAGE
+  ========================================================= */
+
+  function initialiseBook() {
+    renderContents();
+    updateProgress();
+
+    const previous = getElement("bookPrev");
+    const next = getElement("bookNext");
+    const contentsButton = getElement("bookContentsButton");
+    const startButton = getElement("bookStartButton");
+    const homeButton = getElement("bookHomeButton");
+
+    if (previous) {
+      previous.addEventListener("click", previousChapter);
+    }
+
+    if (next) {
+      next.addEventListener("click", nextChapter);
+    }
+
+    if (contentsButton) {
+      contentsButton.addEventListener("click", showContents);
+    }
+
+    if (startButton) {
+      startButton.addEventListener("click", function () {
+        openChapter(0);
+      });
+    }
+
+    if (homeButton) {
+      homeButton.addEventListener("click", showCover);
+    }
+
+    showCover();
+  }
+
+  /* Make functions available to the HTML page if needed. */
+  window.AIRLINE_CORNER_BOOK = {
+    chapters: chapters,
+    openChapter: openChapter,
+    showContents: showContents,
+    showCover: showCover,
+    nextChapter: nextChapter,
+    previousChapter: previousChapter
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialiseBook);
+  } else {
+    initialiseBook();
+  }
+
+})();
