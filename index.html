@@ -2,71 +2,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official personal website of Walter E Peterson">
-    <title>Walter E Peterson | Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Amadeus Airline Learning Academy - Airline and GDS training">
+<title>Amadeus Airline Learning Academy</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">Walter E Peterson</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="topbar">
+  <a class="brand" href="#home">
+    <span class="brand-icon">✈</span>
+    <span>AMADEUS <small>AIRLINE LEARNING ACADEMY</small></span>
+  </a>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <nav id="navigation">
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#videos">Videos</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#practice">Practice Lab</a>
+    <a href="#progress">My Progress</a>
+  </nav>
+</header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <p class="welcome">WELCOME TO MY WEBSITE</p>
-            <h1>Walter E Peterson</h1>
-            <h2>Personal Website & Digital Profile</h2>
-            <p>
-                A place to share my journey, interests,
-                experiences and personal profile.
-            </p>
-            <a href="#about" class="btn">Explore More</a>
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">YOUR JOURNEY INTO THE AIRLINE INDUSTRY</span>
+    <h1>Master the World of<br><span>Airline Reservations</span></h1>
+    <p>Learn Amadeus Cryptic, Altéa concepts, airline ticketing,
+       reservations and travel operations through interactive training.</p>
+    <div class="hero-buttons">
+      <a href="#courses" class="btn primary">Start Learning →</a>
+      <a href="#quiz" class="btn outline">Take a Quiz</a>
+    </div>
+    <div class="hero-note">LEARN · WATCH · PRACTISE · SUCCEED</div>
+  </div>
+  <div class="hero-plane">✈</div>
+</section>
+
+<section class="stats container">
+  <div class="stat"><strong id="statLessons">12</strong><span>Learning modules</span></div>
+  <div class="stat"><strong id="statCompleted">0</strong><span>Completed</span></div>
+  <div class="stat"><strong id="statPoints">0</strong><span>Points earned</span></div>
+  <div class="stat"><strong id="statAccuracy">0%</strong><span>Quiz accuracy</span></div>
+</section>
+
+<section class="section container" id="courses">
+  <div class="section-heading">
+    <div><span class="eyebrow">YOUR TRAINING PROGRAMME</span>
+    <h2>Explore Learning Modules</h2></div>
+    <span class="tag">12 MODULES</span>
+  </div>
+  <div class="course-grid" id="courseGrid"></div>
+</section>
+
+<section class="section video-section" id="videos">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="eyebrow">WATCH AND UNDERSTAND</span>
+      <h2>Video Learning Centre</h2></div>
+    </div>
+    <p class="muted">Watch lessons and demonstrations before attempting the quizzes.</p>
+    <div class="video-grid" id="videoGrid"></div>
+    <p class="notice">Video links are learning references. Availability and access depend on the original publisher. Add your own authorised training videos using the lesson editor in the code.</p>
+  </div>
+</section>
+
+<section class="section container" id="quiz">
+  <div class="section-heading">
+    <div><span class="eyebrow">TEST YOUR KNOWLEDGE</span>
+    <h2>Quiz Arena</h2></div>
+    <span class="tag">EARN POINTS</span>
+  </div>
+
+  <div class="quiz-panel">
+    <div class="quiz-top">
+      <div>
+        <span class="eyebrow">AIRLINE KNOWLEDGE TEST</span>
+        <h3 id="quizTitle">Amadeus Beginner Quiz</h3>
+      </div>
+      <span class="score-pill" id="quizScore">0 POINTS</span>
+    </div>
+    <div class="quiz-progress"><div id="quizBar"></div></div>
+    <div id="quizArea">
+      <p>Choose your quiz category and test your airline knowledge.</p>
+      <div class="quiz-categories">
+        <button class="category-btn active" data-category="all">All Topics</button>
+        <button class="category-btn" data-category="amadeus">Amadeus</button>
+        <button class="category-btn" data-category="airline">Airline</button>
+        <button class="category-btn" data-category="ticketing">Ticketing</button>
+      </div>
+      <button class="btn primary" id="startQuiz">Start Quiz →</button>
+    </div>
+  </div>
+</section>
+
+<section class="section practice-section" id="practice">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="eyebrow">HANDS-ON TRAINING</span>
+      <h2>Amadeus Practice Lab</h2></div>
+      <span class="tag">SIMULATED ENVIRONMENT</span>
+    </div>
+
+    <div class="lab-tabs">
+      <button class="lab-tab active" data-lab="cryptic">Cryptic Commands</button>
+      <button class="lab-tab" data-lab="altea">Altéa Concepts</button>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-head">
+        <span>● SIMULATED TRAINING TERMINAL</span>
+        <span>TRAINING MODE</span>
+      </div>
+      <div class="terminal-body">
+        <div id="terminalIntro">Welcome to Amadeus Cryptic Training Lab.<br>Type HELP to see available exercises.</div>
+        <div id="terminalOutput"></div>
+        <div class="terminal-input">
+          <span>AMADEUS &gt;</span>
+          <input id="commandInput" type="text" placeholder="Type a practice command..." autocomplete="off">
+          <button id="runCommand">RUN</button>
         </div>
-    </section>
+      </div>
+    </div>
+    <p class="notice">This is an educational simulator, not a live Amadeus terminal. It does not access airline inventory, create real bookings or issue tickets. Altéa exercises demonstrate concepts rather than reproduce proprietary production workflows.</p>
+    <div class="lab-help">
+      <h3>Try these commands</h3>
+      <div id="commandExamples"></div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <div class="underline"></div>
-        <p>
-            Welcome to my personal website.
-            This website is a space where I share information
-            about myself, my background, interests and experiences.
-        </p>
-    </section>
+<section class="section container" id="progress">
+  <div class="section-heading">
+    <div><span class="eyebrow">YOUR ACHIEVEMENTS</span>
+    <h2>My Learning Progress</h2></div>
+  </div>
+  <div class="progress-card">
+    <div class="progress-circle" id="progressCircle">
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-details">
+      <h3>Keep moving forward!</h3>
+      <p>You are building your airline industry knowledge one lesson at a time.</p>
+      <p><strong id="progressCount">0 of 12 lessons completed</strong></p>
+      <div class="progress-track"><div id="progressFill"></div></div>
+      <p>Total points: <strong id="totalPoints">0</strong></p>
+      <p>Best quiz score: <strong id="bestScore">0%</strong></p>
+      <button class="btn secondary" id="resetProgress">Reset My Progress</button>
+    </div>
+  </div>
+  <div class="achievement-list" id="achievements"></div>
+</section>
 
-    <section id="profile" class="section profile-section">
-        <h2>My Profile</h2>
-        <div class="underline"></div>
+<section class="section certificate-section">
+  <div class="container certificate">
+    <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+    <h2>Ready to become an Airline Professional?</h2>
+    <p>Complete your lessons, practise your commands and challenge yourself.</p>
+    <a href="#courses" class="btn primary">Continue Learning →</a>
+  </div>
+</section>
+</main>
 
-        <div class="profile-card">
-            <div class="profile-icon">WP</div>
-            <h3>Walter E Peterson</h3>
-            <p>Personal Profile</p>
-            <p>Welcome to my digital space.</p>
-        </div>
-    </section>
+<footer>
+  <div class="brand footer-brand">✈ AMADEUS <small>AIRLINE LEARNING ACADEMY</small></div>
+  <p>Independent educational learning project.</p>
+  <p>Not affiliated with or endorsed by Amadeus IT Group.</p>
+  <p>© 2026 Amadeus Airline Learning Academy</p>
+</footer>
 
-    <section id="contact" class="section">
-        <h2>Contact</h2>
-        <div class="underline"></div>
-        <p>Thank you for visiting my website.</p>
-    </section>
+<div class="modal" id="lessonModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeModal">×</button>
+    <span class="eyebrow" id="lessonCategory">TRAINING LESSON</span>
+    <h2 id="lessonTitle"></h2>
+    <div id="lessonContent"></div>
+    <div class="lesson-actions">
+      <button class="btn secondary" id="lessonQuiz">Take Related Quiz</button>
+      <button class="btn primary" id="completeLesson">Mark as Completed ✓</button>
+    </div>
+  </div>
+</div>
 
-    <footer>
-        <p>© 2026 Walter E Peterson. All Rights Reserved.</p>
-    </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
