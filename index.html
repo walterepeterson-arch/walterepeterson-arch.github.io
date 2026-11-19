@@ -2,126 +2,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Walter Peterson | Personal Website</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#203044;background:#f5f8fb;line-height:1.6}
-header{background:#10243a;color:white;padding:15px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-header h2{margin:0;font-size:21px}
-nav{display:flex;gap:18px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-weight:bold}
-nav a:hover{color:#f2c66d}
-.hero{background:linear-gradient(120deg,#10243a,#1769aa);color:white;padding:75px 7%;display:flex;align-items:center;justify-content:space-between;gap:35px;flex-wrap:wrap}
-.hero-text{max-width:650px}
-.hero h1{font-size:clamp(38px,6vw,65px);line-height:1.1;margin:10px 0}
-.hero p{font-size:18px;color:#e3edf5}
-.profile{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid #ffffff55;background:#dceaf3}
-.button{display:inline-block;background:#e3ad45;color:#14283b;text-decoration:none;padding:12px 20px;border-radius:7px;font-weight:bold;margin:8px 8px 0 0}
-.button.blue{background:#1769aa;color:white}
-section{padding:55px 7%}
-h2{color:#10243a;font-size:30px;margin-top:0}
-.intro{color:#637386;max-width:750px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:25px}
-.card{background:white;padding:23px;border-radius:12px;border:1px solid #dce5ec;box-shadow:0 5px 18px #10243a0b}
-.card h3{color:#1769aa;margin-top:0}
-.airline{background:linear-gradient(135deg,#eaf4fb,#fff);border:2px solid #c7dfef}
-.airline a{font-weight:bold;color:#1769aa;text-decoration:none}
-.contact{background:#10243a;color:white}
-.contact h2{color:white}
-footer{text-align:center;background:#091725;color:#cbd8e2;padding:22px}
-@media(max-width:650px){
- header{display:block}
- nav{margin-top:12px;gap:12px}
- .hero{padding:45px 6%}
- .profile{width:155px;height:155px}
- section{padding:40px 6%}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official personal website of Walter E Peterson">
+    <title>Walter E Peterson | Personal Website</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-<h2>WALTER PETERSON</h2>
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#interests">Interests</a>
-<a href="airline-corner.html">✈ Airline Corner</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Walter E Peterson</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="hero" id="home">
-<div class="hero-text">
-<p style="color:#f2c66d;font-weight:bold;letter-spacing:2px">WELCOME TO MY WEBSITE</p>
-<h1>Walter Peterson</h1>
-<p>Welcome to my personal website. This is where I share my background, interests, projects and learning journey.</p>
-<a class="button" href="#about">ABOUT ME</a>
-<a class="button blue" href="airline-corner.html">VISIT AIRLINE CORNER →</a>
-</div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="welcome">WELCOME TO MY WEBSITE</p>
+            <h1>Walter E Peterson</h1>
+            <h2>Personal Website & Digital Profile</h2>
+            <p>
+                A place to share my journey, interests,
+                experiences and personal profile.
+            </p>
+            <a href="#about" class="btn">Explore More</a>
+        </div>
+    </section>
 
-<div>
-<img class="profile" src="walter.png.jpg" alt="Walter Peterson"
-onerror="this.style.display='none'">
-</div>
-</div>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="underline"></div>
+        <p>
+            Welcome to my personal website.
+            This website is a space where I share information
+            about myself, my background, interests and experiences.
+        </p>
+    </section>
 
-<section id="about">
-<h2>About Me</h2>
-<p class="intro">
-Welcome to my personal portfolio. This section is for my personal introduction,
-background, experience and journey. I will continue adding more information here.
-</p>
-<div class="cards">
-<div class="card">
-<h3>My Background</h3>
-<p>Add your personal story, education and work experience here.</p>
-</div>
-<div class="card">
-<h3>My Journey</h3>
-<p>Share your experiences, achievements and important milestones.</p>
-</div>
-<div class="card">
-<h3>My Goals</h3>
-<p>Share your future plans, ambitions and things you are working towards.</p>
-</div>
-</div>
-</section>
+    <section id="profile" class="section profile-section">
+        <h2>My Profile</h2>
+        <div class="underline"></div>
 
-<section id="interests">
-<h2>My Interests & Projects</h2>
-<p class="intro">Explore my interests, learning activities and projects.</p>
-<div class="cards">
-<div class="card">
-<h3>Personal Interests</h3>
-<p>This section can introduce your hobbies and interests.</p>
-</div>
-<div class="card">
-<h3>My Projects</h3>
-<p>Showcase your work, ideas and personal projects here.</p>
-</div>
-<div class="card airline">
-<h3>✈ Airline Corner</h3>
-<p>Explore airline knowledge, travel training, quizzes and Amadeus practice.</p>
-<p><a href="airline-corner.html">ENTER AIRLINE CORNER →</a></p>
-</div>
-</div>
-</section>
+        <div class="profile-card">
+            <div class="profile-icon">WP</div>
+            <h3>Walter E Peterson</h3>
+            <p>Personal Profile</p>
+            <p>Welcome to my digital space.</p>
+        </div>
+    </section>
 
-<section class="contact" id="contact">
-<h2>Contact</h2>
-<p>Welcome to my website. More contact information can be added here.</p>
-<p><strong>Walter Peterson</strong></p>
-</section>
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <div class="underline"></div>
+        <p>Thank you for visiting my website.</p>
+    </section>
 
-<footer>
-© <span id="year"></span> Walter Peterson. All Rights Reserved.
-</footer>
+    <footer>
+        <p>© 2026 Walter E Peterson. All Rights Reserved.</p>
+    </footer>
 
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
 </body>
 </html>
