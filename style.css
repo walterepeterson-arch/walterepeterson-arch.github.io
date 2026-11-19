@@ -7,231 +7,450 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background: #f7f8fc;
-    line-height: 1.7;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #faf7f2;
+    color: #40352e;
+    line-height: 1.8;
 }
 
-.navbar {
-    background: #101d35;
-    color: white;
+/* NAVIGATION */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #40352e;
+    color: #faf7f2;
+    padding: 17px 4%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    gap: 15px;
     flex-wrap: wrap;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
 }
 
-.logo {
-    font-size: 23px;
+.brand {
+    color: #e2c18b;
+    font-size: 21px;
     font-weight: bold;
-    color: #e5bd76;
 }
 
-.navbar ul {
+nav {
     display: flex;
-    list-style: none;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
 }
 
-.navbar a {
-    color: white;
+nav a {
+    color: #faf7f2;
     text-decoration: none;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
 }
 
-.navbar a:hover {
-    color: #e5bd76;
+nav a:hover {
+    color: #e2c18b;
 }
+
+/* HOME */
 
 .hero {
-    min-height: 550px;
-    background: linear-gradient(135deg, #101d35, #263f66);
+    min-height: 490px;
+    padding: 100px 20px;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 70px 20px;
+    background: linear-gradient(135deg, #eee5d8, #faf7f2);
 }
 
-.hero-content {
-    max-width: 750px;
-}
-
-.welcome {
-    color: #e5bd76;
-    letter-spacing: 4px;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: 52px;
-    margin-bottom: 10px;
-}
-
-.hero h2 {
-    font-size: 22px;
-    font-weight: normal;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    background: #e5bd76;
-    color: #101d35;
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
+.eyebrow {
+    color: #a17b48;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
     font-weight: bold;
-}
-
-.btn:hover {
-    background: white;
-}
-
-.section {
-    padding: 75px 10%;
-    text-align: center;
-}
-
-.section h2,
-.airline-section h2 {
-    font-size: 32px;
-    color: #101d35;
-}
-
-.underline {
-    width: 65px;
-    height: 4px;
-    background: #d5a84f;
-    margin: 15px auto 30px;
-    border-radius: 5px;
-}
-
-.section > p {
-    max-width: 750px;
-    margin: auto;
-    white-space: pre-line;
-}
-
-.profile-section,
-.interests-section {
-    background: #edf0f6;
-}
-
-.profile-card {
-    max-width: 380px;
-    margin: 30px auto 0;
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #e5bd76;
-    margin-bottom: 20px;
-}
-
-.profile-card h3 {
-    color: #101d35;
-    margin-bottom: 8px;
-}
-
-.gallery-grid,
-.interest-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 35px;
-}
-
-.gallery-card,
-.interest-card {
-    background: white;
-    width: 280px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-}
-
-.gallery-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.gallery-card p {
-    margin-top: 12px;
-}
-
-.interest-card span {
-    font-size: 38px;
-}
-
-.interest-card h3 {
-    color: #101d35;
-    margin: 12px 0;
-}
-
-.airline-section {
-    background: #101d35;
-    color: white;
-    text-align: center;
-    padding: 65px 20px;
-}
-
-.airline-section h2 {
-    color: #e5bd76;
+    letter-spacing: 3px;
     margin-bottom: 15px;
 }
 
-.airline-section p {
-    margin-bottom: 25px;
+.hero h1 {
+    color: #40352e;
+    font-size: clamp(38px, 6vw, 60px);
+    margin-bottom: 12px;
 }
+
+.hero-subtitle {
+    font-size: 21px;
+    color: #756454;
+}
+
+.hero-story {
+    max-width: 680px;
+    font-size: 17px;
+    margin: 22px 0 30px;
+}
+
+.gold-button {
+    display: inline-block;
+    background: #a17b48;
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.gold-button:hover {
+    background: #40352e;
+}
+
+/* GENERAL SECTIONS */
+
+.content-section {
+    padding: 85px 9%;
+    text-align: center;
+}
+
+.content-section h2,
+.airline-section h2 {
+    font-size: 36px;
+    color: #40352e;
+    margin-bottom: 12px;
+}
+
+.alternate {
+    background: #eee5d8;
+}
+
+.gold-line {
+    width: 65px;
+    height: 3px;
+    background: #c5a16e;
+    margin: 18px auto 28px;
+}
+
+.section-intro {
+    max-width: 850px;
+    margin: 0 auto 38px;
+    color: #756454;
+    font-size: 17px;
+}
+
+/* ABOUT CARDS */
+
+.info-grid {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    text-align: left;
+}
+
+.info-card {
+    background: #fffdfa;
+    padding: 30px;
+    border: 1px solid #e7dac7;
+    border-radius: 5px;
+    box-shadow: 0 5px 18px rgba(64,53,46,0.05);
+}
+
+.info-card h3,
+.verse-card h3,
+.interest-card h3 {
+    color: #40352e;
+    font-size: 22px;
+    margin: 8px 0 12px;
+}
+
+.info-card p,
+.verse-card p,
+.interest-card p {
+    color: #756454;
+    font-size: 15px;
+}
+
+.card-number {
+    color: #a17b48;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.full-card {
+    grid-column: 1 / -1;
+}
+
+.signature-line {
+    margin-top: 45px;
+    color: #a17b48;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* FAITH */
+
+.verse-grid {
+    max-width: 1050px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    text-align: left;
+}
+
+.verse-card {
+    background: #faf7f2;
+    padding: 35px;
+    border-left: 4px solid #c5a16e;
+    box-shadow: 0 5px 18px rgba(64,53,46,0.05);
+}
+
+.verse-number {
+    color: #a17b48;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.verse-card blockquote {
+    color: #8b704e;
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px 0 10px;
+}
+
+.bible-reference {
+    font-family: Arial, sans-serif;
+    font-size: 12px !important;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #a17b48 !important;
+}
+
+/* CAREER */
+
+.career-card {
+    max-width: 850px;
+    margin: 40px auto 0;
+    padding: 40px;
+    background: #fffdfa;
+    border: 1px solid #e7dac7;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0 5px 18px rgba(64,53,46,0.05);
+}
+
+.card-label {
+    font-family: Arial, sans-serif;
+    color: #a17b48;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.career-card h3 {
+    font-size: 27px;
+    margin: 8px 0 18px;
+}
+
+.career-card p {
+    color: #756454;
+    margin-bottom: 18px;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.skill-list span {
+    background: #eee5d8;
+    color: #705638;
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #946d3e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* INTERESTS */
+
+.interest-grid {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    text-align: center;
+}
+
+.interest-card {
+    background: #faf7f2;
+    padding: 30px 22px;
+    border: 1px solid #e7dac7;
+    border-radius: 5px;
+}
+
+.interest-icon {
+    color: #a17b48;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+/* GALLERY */
+
+.gallery-panel {
+    max-width: 850px;
+    margin: 40px auto 0;
+    padding: 55px 30px;
+    background: #fffdfa;
+    border: 1px solid #d8c6aa;
+}
+
+.gallery-panel h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.gallery-panel p {
+    color: #756454;
+}
+
+.coming-soon {
+    margin-top: 25px;
+    color: #a17b48 !important;
+    font-style: italic;
+}
+
+/* AIRLINE CORNER */
+
+.airline-section {
+    padding: 75px 20px;
+    text-align: center;
+    background: #40352e;
+    color: #faf7f2;
+}
+
+.airline-section h2 {
+    color: #e2c18b;
+}
+
+.airline-section > p:not(.eyebrow) {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #eee5d8;
+}
+
+.airline-section .eyebrow {
+    color: #e2c18b;
+}
+
+/* CONTACT */
+
+.closing-name {
+    color: #40352e;
+    font-size: 27px;
+    margin-top: 45px;
+}
+
+.closing-motto {
+    color: #a17b48;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* FOOTER */
 
 footer {
-    background: #101d35;
-    color: white;
+    background: #40352e;
+    color: #e8dfd2;
     text-align: center;
     padding: 25px;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
 }
 
-@media (max-width: 800px) {
-    .navbar {
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+    .site-header {
         justify-content: center;
-        gap: 15px;
+        text-align: center;
     }
 
-    .navbar ul {
+    nav {
         justify-content: center;
-        gap: 15px;
     }
 
-    .hero h1 {
-        font-size: 36px;
+    .interest-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .content-section {
+        padding: 60px 7%;
     }
 
-    .hero h2 {
-        font-size: 18px;
+    .info-grid,
+    .verse-grid,
+    .interest-grid {
+        grid-template-columns: 1fr;
     }
 
-    .section {
-        padding: 55px 7%;
+    .full-card {
+        grid-column: auto;
+    }
+
+    .hero {
+        min-height: 400px;
+        padding: 65px 18px;
+    }
+
+    .content-section h2,
+    .airline-section h2 {
+        font-size: 29px;
+    }
+
+    .career-card {
+        padding: 25px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 10px;
     }
 }
