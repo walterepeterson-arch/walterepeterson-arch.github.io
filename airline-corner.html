@@ -4,569 +4,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Airline Corner | Walter Peterson</title>
+<meta name="description" content="Airline Corner — independent airline and travel-industry learning academy.">
+<title>Airline Corner | Walter Eric Peterson</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--cream:#f4efe6;
+--paper:#fffdf9;
+--ink:#29241e;
+--muted:#746c60;
+--gold:#a9854b;
+--gold-light:#d8c39d;
+--line:#e7dece;
+--dark:#30291f;
+--dark2:#211d18;
+--serif:'Playfair Display',Georgia,serif;
+--sans:'DM Sans',Arial,sans-serif;
+--green:#53775d;
+--red:#a64f43
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#203044;line-height:1.6}
-header{background:#10243a;color:white;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-header a{color:#f2c66d;text-decoration:none;font-weight:bold}
-.hero{background:linear-gradient(120deg,#10243a,#1769aa);color:white;padding:55px 7%}
-.hero small{color:#f2c66d;letter-spacing:2px;font-weight:bold}
-.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.1;margin:12px 0}
-.hero p{max-width:750px;color:#e2edf5}
-main{max-width:1150px;margin:auto;padding:35px 22px 65px}
-h2{color:#10243a}
-.muted{color:#647487}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin:25px 0}
-.tile{background:white;border:1px solid #dce5ec;border-radius:13px;padding:22px;text-align:left;cursor:pointer;box-shadow:0 5px 18px #10243a0b}
-.tile:hover{border-color:#1769aa;transform:translateY(-2px)}
-.tile .emoji{font-size:30px}
-.tile h3{margin:5px 0;color:#1769aa}
-.tile p{margin:0;color:#647487}
-.panel{display:none;background:white;border:1px solid #dce5ec;border-radius:13px;padding:23px;margin-top:25px}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.75 var(--sans)}
+a{color:inherit;text-decoration:none}
+.container{width:min(1140px,calc(100% - 44px));margin:auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.topbar-inner{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font:600 16px var(--serif)}
+.brand-mark{width:40px;height:40px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
+.brand small{display:block;color:var(--gold);font:700 8px var(--sans);letter-spacing:.18em}
+.back-link{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#655b4e}
+.back-link:hover{color:var(--gold)}
+.hero{position:relative;overflow:hidden;padding:68px 0 62px;background:var(--dark);color:white}
+.hero:after{content:'✈';position:absolute;right:8%;top:5px;color:rgba(216,195,157,.09);font-size:260px;transform:rotate(-13deg)}
+.hero-content{position:relative;z-index:1;max-width:760px}
+.eyebrow{color:var(--gold-light);font-size:9px;font-weight:700;letter-spacing:.22em}
+.hero h1{font:500 clamp(40px,5vw,62px)/1.1 var(--serif);margin:15px 0}
+.hero h1 em{color:var(--gold-light)}
+.hero p{max-width:700px;color:#ded4c6;font-size:13px;line-height:2}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-meta span{border:1px solid rgba(216,195,157,.35);padding:8px 12px;color:#e8ddcc;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+main{padding:48px 0 72px}
+.section-head{margin-bottom:25px}
+.section-head h2{font:500 34px var(--serif);margin:0 0 7px}
+.muted{color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tile{min-height:160px;padding:23px;text-align:left;background:var(--paper);border:1px solid var(--line);cursor:pointer;transition:.2s;box-shadow:0 8px 25px rgba(48,41,31,.035)}
+.tile:hover{transform:translateY(-3px);border-color:var(--gold-light);box-shadow:0 14px 30px rgba(48,41,31,.08)}
+.tile .emoji{font-size:26px;color:var(--gold)}
+.tile h3{margin:8px 0 3px;color:var(--dark);font:600 19px var(--serif)}
+.tile p{margin:0;color:var(--muted);font-size:11px}
+.panel{display:none;margin-top:28px;padding:28px;background:#faf7f1;border:1px solid var(--line)}
 .panel.active{display:block}
-.lesson-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.lesson{border:1px solid #dce5ec;border-radius:9px;padding:15px;background:#fff}
-.lesson h3{font-size:16px;margin:0 0 8px;color:#1769aa}
-button,.action{background:#1769aa;color:white;border:0;padding:11px 16px;border-radius:7px;cursor:pointer;font-weight:bold}
-button:hover{opacity:.88}
-button:disabled{opacity:.6;cursor:not-allowed}
-.done{background:#237a55}
-input,select{padding:11px;border:1px solid #cbd7e1;border-radius:7px;font:inherit;max-width:100%;width:100%;margin:5px 0 12px}
-label{font-weight:bold;display:block;margin-top:10px}
-.quizbox{background:#f8fbfd;border:1px solid #dce5ec;border-radius:10px;padding:18px}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}
-.choice{background:white;color:#203044;border:1px solid #cbd7e1;text-align:left}
+.panel h2{font:500 29px var(--serif);margin:0 0 6px}
+.panel>p{color:var(--muted);font-size:12px}
+.lesson-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.lesson{padding:19px;background:var(--paper);border:1px solid var(--line)}
+.lesson h3{margin:0 0 6px;font:600 17px var(--serif)}
+.lesson p{margin:0 0 12px;color:var(--muted);font-size:11px}
+.lesson button,.action,button.primary{background:var(--dark);color:white;border:0;padding:10px 15px;font:700 9px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.lesson button:hover,.action:hover,button.primary:hover{background:#55442f}
+.lesson .done{background:var(--green)}
+.quizbox{margin-top:18px;padding:22px;background:var(--paper);border:1px solid var(--line)}
+label{display:block;margin-bottom:6px;color:var(--muted);font-size:11px}
+input,select{padding:11px 12px;border:1px solid var(--line);background:white;color:var(--ink);font:12px var(--sans);max-width:100%}
+.bar{height:8px;background:#e9e1d5;overflow:hidden;margin:12px 0;border-radius:20px}
+.bar span{display:block;height:100%;width:0;background:var(--gold)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}
+.choice{padding:13px;text-align:left;background:white;color:var(--ink);border:1px solid var(--line);cursor:pointer;font:12px var(--sans)}
 .choice:disabled{opacity:1;cursor:default}
-.feedback{font-weight:bold;margin:15px 0}
-.bar{height:9px;background:#e4ebf0;border-radius:10px;overflow:hidden}
-.bar span{display:block;height:100%;background:#237a55;width:0}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{background:#eaf4fb;border-radius:9px;padding:15px}
-.stat strong{display:block;color:#1769aa;font-size:25px}
-.terminal{background:#101b25;color:#d8f3e2;border-radius:10px;padding:18px;font-family:monospace}
-.terminal input{background:#1c2b38;color:white;border-color:#526474}
-.terminal-output{white-space:pre-wrap;color:#c7e8d1;margin-top:15px}
-.notice{background:#fff8e8;border-left:4px solid #e3ad45;padding:13px;border-radius:6px;color:#59451f;margin:20px 0}
-.modal{display:none;position:fixed;inset:0;background:#071522bb;z-index:10;padding:20px;overflow:auto;place-items:center}
+.choice.correct{border-color:var(--green);background:#edf4ed}
+.choice.wrong{border-color:var(--red);background:#fbefed}
+.feedback{padding:12px;background:#f2ece2;color:var(--dark);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.stat{padding:19px;background:var(--paper);border:1px solid var(--line)}
+.stat strong{display:block;color:var(--gold);font:500 30px var(--serif)}
+.knowledge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.reference-card{padding:20px;background:var(--paper);border:1px solid var(--line)}
+.reference-card h3{font:600 18px var(--serif)}
+table{width:100%;border-collapse:collapse;font-size:11px}
+td,th{padding:8px;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--gold);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.notice{margin-top:18px;padding:14px 16px;background:#f4eee3;border-left:3px solid var(--gold);color:#64543e;font-size:11px}
+.terminal{padding:20px;background:#27251f;color:#e9dfcf;font-family:monospace}
+.terminal label{color:#d8c39d}
+.terminal input{width:min(420px,100%);background:#38342c;color:white;border-color:#6c5a40}
+.terminal-output{min-height:90px;margin-top:14px;color:#d8e6d4;white-space:pre-wrap;font-size:12px}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(25,21,17,.75);padding:18px;place-items:center;overflow:auto}
 .modal.show{display:grid}
-.modal-card{background:white;border-radius:12px;padding:25px;max-width:700px;width:100%;max-height:90vh;overflow:auto}
-.close{float:right;background:#eaf0f4;color:#203044;border-radius:50%;font-size:20px;padding:4px 12px}
-.reference-table{width:100%;border-collapse:collapse;margin:12px 0 25px}
-.reference-table th,.reference-table td{border:1px solid #dce5ec;padding:9px;text-align:left}
-.reference-table th{background:#eaf4fb}
-footer{background:#091725;color:#cbd8e2;text-align:center;padding:23px}
-@media(max-width:600px){.choices{grid-template-columns:1fr}main{padding:25px 15px}.hero{padding:40px 6%}}
+.modal-card{width:min(680px,100%);max-height:90vh;overflow:auto;padding:28px;background:var(--paper);border:1px solid var(--gold-light)}
+.modal-card h2{font:500 28px var(--serif)}
+.modal-card p{color:var(--muted);font-size:13px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.close{float:right;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:20px;padding:3px 11px;cursor:pointer}
+.site-footer{padding:24px 0;background:var(--dark2);color:#cfc5b7;text-align:center;font-size:9px;letter-spacing:.12em}
+.site-footer a{color:var(--gold-light)}
+@media(max-width:760px){
+.tiles{grid-template-columns:repeat(2,1fr)}
+.hero{padding:52px 0}
+.lesson-list,.knowledge-grid{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr 1fr}
+.hero:after{right:-60px;font-size:190px}
+}
+@media(max-width:480px){
+.container{width:calc(100% - 30px)}
+.topbar-inner{min-height:66px}
+.brand{font-size:14px}
+.tiles{grid-template-columns:1fr}
+.panel{padding:19px}
+.choices{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr}
+.hero h1{font-size:40px}
+}
 </style>
 </head>
 
-<body>
+<body class="airline-page">
 
-<header>
-<a href="index.html">← WALTER PETERSON'S WEBSITE</a>
-<strong>✈ AIRLINE CORNER</strong>
+<header class="topbar">
+<div class="container topbar-inner">
+<a class="brand" href="index.html">
+<span class="brand-mark">WP</span>
+<span>Walter Eric Peterson<small>PERSONAL PORTFOLIO</small></span>
+</a>
+<a class="back-link" href="index.html">← Back to my website</a>
+</div>
 </header>
 
-<div class="hero">
-<small>INDEPENDENT LEARNING ACADEMY</small>
-<h1>Airline & Travel<br>Learning Academy</h1>
-<p>Learn airline knowledge, USA and Canada geography, airline codes, airport codes, ticketing, passenger policies and travel sales skills.</p>
+<section class="hero">
+<div class="container hero-content">
+<p class="eyebrow">INDEPENDENT LEARNING ACADEMY</p>
+<h1>Amadeus Airline<br><em>Learning Academy.</em></h1>
+<p>Learn airline and travel-industry knowledge step by step. Study training chapters, test yourself, practise sample commands and monitor your learning progress.</p>
+<div class="hero-meta">
+<span>14 learning chapters</span>
+<span>Knowledge quizzes</span>
+<span>Practice terminal</span>
+<span>Progress tracking</span>
 </div>
+</div>
+</section>
 
-<main>
+<main class="container">
 
+<div class="section-head">
+<p class="eyebrow">LEARN · PRACTISE · PROGRESS</p>
 <h2>Welcome to Airline Corner</h2>
-<p class="muted">Choose a section below to begin your learning journey.</p>
+<p class="muted">Choose a learning area to begin your journey.</p>
+</div>
 
 <div class="tiles">
 <button class="tile" onclick="openPanel('learn')">
-<div class="emoji">📘</div><h3>LEARN</h3><p>Study training chapters.</p>
+<span class="emoji">📘</span>
+<h3>Learn</h3>
+<p>Study 14 airline training chapters.</p>
 </button>
+
 <button class="tile" onclick="openPanel('quiz')">
-<div class="emoji">🧠</div><h3>QUIZ & QUESTION POOLS</h3><p>Practise questions by subject.</p>
+<span class="emoji">✦</span>
+<h3>Knowledge Quiz</h3>
+<p>Test yourself at three difficulty levels.</p>
 </button>
+
 <button class="tile" onclick="openPanel('videos')">
-<div class="emoji">▶️</div><h3>VIDEO LEARNING</h3><p>Find training videos.</p>
+<span class="emoji">▶</span>
+<h3>Video Learning</h3>
+<p>Find video lessons by subject.</p>
 </button>
+
 <button class="tile" onclick="openPanel('knowledge')">
-<div class="emoji">🌍</div><h3>AIRLINE KNOWLEDGE</h3><p>Airlines, aircraft and codes.</p>
+<span class="emoji">⌖</span>
+<h3>Airline Knowledge</h3>
+<p>Airlines, aircraft and airport codes.</p>
 </button>
+
 <button class="tile" onclick="openPanel('practice')">
-<div class="emoji">⌨️</div><h3>PRACTICE TERMINAL</h3><p>Practise sample commands.</p>
+<span class="emoji">⌨</span>
+<h3>Amadeus Practice</h3>
+<p>Practise sample commands in demo mode.</p>
 </button>
+
 <button class="tile" onclick="openPanel('progress')">
-<div class="emoji">🏆</div><h3>MY PROGRESS</h3><p>Track lessons and quiz scores.</p>
+<span class="emoji">♜</span>
+<h3>My Progress</h3>
+<p>Track completed lessons and quiz results.</p>
 </button>
 </div>
 
-<!-- LESSONS -->
 <section class="panel" id="learn">
-<h2>📘 Training Chapters</h2>
-<p class="muted">Open a chapter to study its training notes.</p>
+<h2>Training Chapters</h2>
+<p>Select a chapter to read its introductory notes and mark it complete when you finish.</p>
 <div class="lesson-list" id="lessonList"></div>
 </section>
 
-<!-- QUIZ -->
 <section class="panel" id="quiz">
-<h2>🧠 Airline Knowledge Quiz</h2>
-<p>Select a question pool and difficulty. The quiz will randomly select up to five questions from your selection.</p>
+<h2>Airline Knowledge Quiz</h2>
+<p>Choose a level and answer the questions. You will receive feedback and an explanation.</p>
 
 <div class="quizbox">
 <div id="quizStart">
-
-<label for="poolSelect">Select Question Pool:</label>
-<select id="poolSelect">
-<option value="all">All Question Pools</option>
-<option value="aircraft">Aircraft Manufacturers</option>
-<option value="geography">USA & Canada Geography</option>
-<option value="usairlines">USA Airlines</option>
-<option value="canadaairlines">Canada Airlines</option>
-<option value="airlinecodes">IATA Airline Codes & Ticket Prefixes</option>
-<option value="international">International Airlines</option>
-<option value="usairports">USA Airport Codes</option>
-<option value="canadaairports">Canada Airport Codes</option>
-<option value="cancellation">Cancellation Policies</option>
-<option value="changes">Changes, Delays & Rebooking</option>
-<option value="names">Passenger Name Corrections</option>
-<option value="pets">Pets & Service Animals</option>
-<option value="umnr">Unaccompanied Minors</option>
-<option value="baggage">Baggage Rules</option>
-</select>
-
-<label for="level">Select Difficulty:</label>
+<label for="level">Select difficulty</label>
 <select id="level">
-<option value="all">All Levels</option>
 <option value="beginner">Beginner</option>
 <option value="intermediate">Intermediate</option>
 <option value="advanced">Advanced</option>
 </select>
-
-<button onclick="startQuiz()">START QUIZ</button>
+<button class="primary" onclick="startQuiz()">Start quiz</button>
 </div>
 
 <div id="quizRun" hidden>
 <div class="bar"><span id="quizBar"></span></div>
-<p id="questionCount"></p>
+<p id="questionCount" class="muted"></p>
 <h3 id="questionText"></h3>
 <div class="choices" id="choices"></div>
 <p class="feedback" id="feedback"></p>
-<button id="nextQuestion" hidden onclick="nextQuestion()">NEXT QUESTION</button>
+<button class="primary" id="nextQuestion" hidden onclick="nextQuestion()">Next question</button>
 </div>
 
 <div id="quizResult" hidden></div>
 </div>
 </section>
 
-<!-- VIDEOS -->
 <section class="panel" id="videos">
-<h2>▶️ Video Learning Centre</h2>
-<p>Use these links to find training videos and tutorials.</p>
-<div class="lesson-list">
-<div class="lesson"><h3>Amadeus GDS</h3><a href="https://www.youtube.com/results?search_query=Amadeus+GDS+training" target="_blank" rel="noopener">Find Amadeus training videos ↗</a></div>
-<div class="lesson"><h3>Airline Ticketing</h3><a href="https://www.youtube.com/results?search_query=airline+ticketing+training" target="_blank" rel="noopener">Find ticketing videos ↗</a></div>
-<div class="lesson"><h3>USA & Canada Geography</h3><a href="https://www.youtube.com/results?search_query=USA+Canada+states+provinces+geography" target="_blank" rel="noopener">Find geography videos ↗</a></div>
-<div class="lesson"><h3>Airline Codes</h3><a href="https://www.youtube.com/results?search_query=IATA+airline+airport+codes+training" target="_blank" rel="noopener">Find code training videos ↗</a></div>
-<div class="lesson"><h3>Travel Sales</h3><a href="https://www.youtube.com/results?search_query=travel+agent+customer+service+training" target="_blank" rel="noopener">Find sales training videos ↗</a></div>
-</div>
+<h2>Video Learning Centre</h2>
+<p>Use these subject links to find relevant video-learning material. These open YouTube search results, not official training endorsements.</p>
+<div class="lesson-list" id="videoList"></div>
+<div class="notice">You can add your own authorised training video links here later.</div>
 </section>
 
-<!-- KNOWLEDGE -->
 <section class="panel" id="knowledge">
-<h2>🌍 Airline Knowledge Reference</h2>
+<h2>Airline Knowledge Reference</h2>
 
-<h3>Aircraft Manufacturers</h3>
-<table class="reference-table">
-<tr><th>Manufacturer</th><th>Examples of aircraft families</th></tr>
-<tr><td>Airbus</td><td>A220, A320, A330, A350</td></tr>
-<tr><td>Boeing</td><td>737, 747, 767, 777, 787</td></tr>
-</table>
+<div class="knowledge-grid">
 
-<h3>USA Airline IATA Codes — Examples</h3>
-<table class="reference-table">
-<tr><th>Airline</th><th>IATA Code</th></tr>
+<div class="reference-card">
+<h3>Aircraft manufacturers</h3>
+<p><strong>Airbus:</strong> A220, A320 family, A330 and A350.</p>
+<p><strong>Boeing:</strong> 737, 747, 767, 777 and 787 families.</p>
+</div>
+
+<div class="reference-card">
+<h3>Airline IATA designators — examples</h3>
+<table>
+<tr><th>Airline</th><th>Code</th></tr>
 <tr><td>American Airlines</td><td>AA</td></tr>
 <tr><td>Delta Air Lines</td><td>DL</td></tr>
 <tr><td>United Airlines</td><td>UA</td></tr>
-<tr><td>Alaska Airlines</td><td>AS</td></tr>
-<tr><td>JetBlue</td><td>B6</td></tr>
-<tr><td>Southwest Airlines</td><td>WN</td></tr>
-</table>
-
-<h3>Canada Airline IATA Codes — Examples</h3>
-<table class="reference-table">
-<tr><th>Airline</th><th>IATA Code</th></tr>
 <tr><td>Air Canada</td><td>AC</td></tr>
 <tr><td>WestJet</td><td>WS</td></tr>
-<tr><td>Porter Airlines</td><td>PD</td></tr>
-<tr><td>Air Transat</td><td>TS</td></tr>
-</table>
-
-<h3>International Airline Codes — Examples</h3>
-<table class="reference-table">
-<tr><th>Airline</th><th>IATA Code</th></tr>
 <tr><td>British Airways</td><td>BA</td></tr>
 <tr><td>Lufthansa</td><td>LH</td></tr>
-<tr><td>Emirates</td><td>EK</td></tr>
-<tr><td>Qatar Airways</td><td>QR</td></tr>
-<tr><td>Singapore Airlines</td><td>SQ</td></tr>
 <tr><td>Air India</td><td>AI</td></tr>
 </table>
+</div>
 
-<h3>Airport Code Examples</h3>
-<table class="reference-table">
-<tr><th>Airport / City</th><th>Code</th></tr>
+<div class="reference-card">
+<h3>Airport codes — examples</h3>
+<table>
+<tr><th>Airport</th><th>Code</th></tr>
+<tr><td>Kolkata</td><td>CCU</td></tr>
+<tr><td>Delhi</td><td>DEL</td></tr>
+<tr><td>Mumbai</td><td>BOM</td></tr>
 <tr><td>New York JFK</td><td>JFK</td></tr>
-<tr><td>Los Angeles</td><td>LAX</td></tr>
-<tr><td>Chicago O'Hare</td><td>ORD</td></tr>
+<tr><td>London Heathrow</td><td>LHR</td></tr>
 <tr><td>Toronto Pearson</td><td>YYZ</td></tr>
 <tr><td>Vancouver</td><td>YVR</td></tr>
-<tr><td>Montreal</td><td>YUL</td></tr>
 <tr><td>Calgary</td><td>YYC</td></tr>
-<tr><td>Kolkata</td><td>CCU</td></tr>
 </table>
-
-<div class="notice">
-<strong>Important:</strong> Airline ticket prefixes, airline operating status, airport details and airline policies must be checked against current authoritative sources before advising a customer. The examples here are for learning.
 </div>
+
+<div class="reference-card">
+<h3>Learning reminder</h3>
+<p>Airline designators, airport codes and ticket numeric prefixes are different identifiers. Always verify current operational details with an authoritative source.</p>
+</div>
+
+</div>
+
+<p class="notice">These are introductory examples, not a complete operational reference. Always verify current airline codes, ticket prefixes and airport details using an authoritative source.</p>
 </section>
 
-<!-- PRACTICE -->
 <section class="panel" id="practice">
-<h2>⌨️ Practice Terminal — Demo Mode</h2>
-<p>This is an educational simulator. It is not connected to the real Amadeus system.</p>
+<h2>Amadeus Practice — Demo Terminal</h2>
+<p>This is an educational simulator only. It is not connected to the real Amadeus system.</p>
+
 <div class="terminal">
-<p>TRAINING TERMINAL — DEMO MODE</p>
-<input id="command" placeholder="Type HELP, AIRLINE or AIRPORT">
-<button onclick="runCommand()">RUN COMMAND</button>
-<div class="terminal-output" id="terminalOutput"></div>
+<label for="command">TRAINING TERMINAL — DEMO MODE</label>
+<br>
+<input id="command" placeholder="Type HELP, AIRLINE, AIRPORT or IG">
+<button class="primary" onclick="runCommand()">Run command</button>
+<div class="terminal-output" id="terminalOutput">Welcome to the Airline Corner demo terminal. Type HELP to see available commands.</div>
 </div>
-<div class="notice">This simulator cannot access live flights, passenger records, bookings or ticketing.</div>
+
+<p class="notice">This simulator cannot access live flights, passenger records, bookings or ticketing. It is only for introductory learning.</p>
 </section>
 
-<!-- PROGRESS -->
 <section class="panel" id="progress">
-<h2>🏆 My Learning Progress</h2>
+<h2>My Learning Progress</h2>
 <div class="stats">
 <div class="stat"><strong id="completedCount">0</strong>Lessons completed</div>
 <div class="stat"><strong id="quizCount">0</strong>Quiz attempts</div>
 <div class="stat"><strong id="bestScore">0%</strong>Best score</div>
 </div>
-<p id="progressText"></p>
-<button onclick="resetProgress()">RESET MY PROGRESS</button>
+<p id="progressText" class="muted"></p>
+<button class="primary" onclick="resetProgress()">Reset my progress</button>
 </section>
 
 <div class="notice">
-<strong>Training Notice:</strong> This is an independent educational project. It is not affiliated with or endorsed by Amadeus or any airline. Airline policies change and vary by carrier, route, fare and ticket. Always verify current official rules before advising customers.
+<strong>Important training notice:</strong>
+This is an independent educational project. It is not affiliated with or endorsed by Amadeus or any airline. Airline cancellation, change, baggage, pet and unaccompanied-minor policies change and depend on the ticket and itinerary. Always verify current official rules before advising a customer.
 </div>
 
 </main>
 
-<footer>Airline Corner · Independent Learning Academy · Walter Peterson</footer>
+<footer class="site-footer">
+AIRLINE CORNER · INDEPENDENT LEARNING ACADEMY ·
+<a href="index.html">WALTER ERIC PETERSON</a>
+</footer>
 
 <div class="modal" id="lessonModal">
 <div class="modal-card">
-<button class="close" onclick="closeLesson()">×</button>
+<button class="close" onclick="closeLesson()" aria-label="Close">×</button>
+<p class="eyebrow">AIRLINE CORNER · TRAINING CHAPTER</p>
 <h2 id="modalTitle"></h2>
 <div id="modalBody"></div>
-<button id="completeButton" onclick="completeLesson()">MARK AS COMPLETED ✓</button>
+<div class="modal-actions">
+<button class="primary" id="completeButton" onclick="completeLesson()">Mark as completed ✓</button>
+<button class="close" onclick="closeLesson()">Close</button>
 </div>
 </div>
+</div>
 
-<script>
-/* TRAINING CHAPTERS */
-const lessons = [
-["Aircraft Manufacturers","Airbus and Boeing are major commercial aircraft manufacturers. Learn to recognise their aircraft families and understand that the aircraft assigned to a flight can change."],
-["USA Geography","Study the 50 US states, their capitals, major cities and time zones. Learn the locations of important airports."],
-["Canada Geography","Study Canada's provinces and territories, their capitals, major cities and time zones."],
-["USA Airlines","Learn major US airlines, their IATA designators and the services they provide."],
-["Canada Airlines","Learn major Canadian airlines, their IATA designators and their networks."],
-["IATA Airline Codes and Ticket Prefixes","An airline's two-character IATA designator is different from its numeric ticket accounting code. Learn the difference and verify codes from an authorised reference."],
-["International Airlines","Study international airline names, countries, IATA codes and operating status."],
-["USA Airport Codes","Learn major US airports and their three-letter IATA location codes."],
-["Canada Airport Codes","Learn major Canadian airports and their three-letter IATA location codes."],
-["Cancellation Policies","Cancellation and refund conditions depend on airline, route, fare type, ticket issue date and applicable law."],
-["Changes, Delays and Rebooking","Learn about change fees, fare differences, rebooking, waivers and airline schedule changes."],
-["Passenger Name Corrections","A minor spelling correction is not necessarily the same as changing a ticket to another traveller."],
-["Pets and Service Animals","Pet and service-animal acceptance depends on airline, route, animal, carrier and destination requirements."],
-["Unaccompanied Minors","Age limits, fees, connection restrictions and service requirements differ between airlines."],
-["Baggage Rules","Check personal-item, cabin-bag and checked-bag limits. Rules depend on fare, route, cabin and operating carrier."]
-];
-
-/* QUESTION BANK
-   Each question belongs to a subject pool and difficulty level.
-   Policies are tested as general agent knowledge, not fixed promises.
-*/
-const questionBank = [
-{p:"aircraft",l:"beginner",q:"Which two companies are major commercial aircraft manufacturers?",a:["Airbus and Boeing","Delta and United","IATA and ICAO","Air Canada and WestJet"],c:0,e:"Airbus and Boeing are major commercial aircraft manufacturers."},
-{p:"aircraft",l:"beginner",q:"Which manufacturer makes the A320 family?",a:["Boeing","Airbus","Embraer","Bombardier"],c:1,e:"The A320 family is manufactured by Airbus."},
-{p:"aircraft",l:"intermediate",q:"Which aircraft family is manufactured by Boeing?",a:["A350","A330","737","A220"],c:2,e:"The 737 is a Boeing aircraft family."},
-
-{p:"geography",l:"beginner",q:"How many states are there in the United States?",a:["50","48","52","60"],c:0,e:"The United States has 50 states."},
-{p:"geography",l:"beginner",q:"What is the capital of Canada?",a:["Toronto","Vancouver","Ottawa","Montreal"],c:2,e:"Ottawa is the capital of Canada."},
-{p:"geography",l:"intermediate",q:"Why must a travel agent consider time zones when arranging connections?",a:["Local times differ between locations","All airports use one time","Time zones determine ticket prefixes","Time zones replace flight numbers"],c:0,e:"North America spans several time zones, so local departure and arrival times matter."},
-{p:"geography",l:"advanced",q:"Which is the correct approach when checking a connection across time zones?",a:["Compare local airport times and elapsed travel time","Assume all times are in one zone","Ignore date changes","Use the agent's local time only"],c:0,e:"Check local times, time-zone differences and possible date changes."},
-
-{p:"usairlines",l:"beginner",q:"What is the IATA code for American Airlines?",a:["AA","AC","DL","UA"],c:0,e:"American Airlines uses the IATA designator AA."},
-{p:"usairlines",l:"beginner",q:"Which airline uses the code DL?",a:["United Airlines","Delta Air Lines","American Airlines","Alaska Airlines"],c:1,e:"DL is the IATA designator for Delta Air Lines."},
-{p:"usairlines",l:"intermediate",q:"Which code is used by Southwest Airlines?",a:["WN","WS","B6","AS"],c:0,e:"Southwest Airlines uses WN."},
-
-{p:"canadaairlines",l:"beginner",q:"What is the IATA code for Air Canada?",a:["AC","AA","AI","WS"],c:0,e:"Air Canada's IATA designator is AC."},
-{p:"canadaairlines",l:"beginner",q:"Which airline uses the code WS?",a:["WestJet","Air Canada","Porter Airlines","Air Transat"],c:0,e:"WS is the IATA designator for WestJet."},
-{p:"canadaairlines",l:"intermediate",q:"Which code is associated with Porter Airlines?",a:["PD","AC","WS","TS"],c:0,e:"Porter Airlines uses the IATA designator PD."},
-
-{p:"airlinecodes",l:"beginner",q:"How many characters are commonly used in an IATA airline designator?",a:["Two","Three","Four","Five"],c:0,e:"IATA airline designators generally contain two characters."},
-{p:"airlinecodes",l:"beginner",q:"What is an airline ticket numeric prefix used for?",a:["Identifying the ticketing airline's accounting code","Identifying the passenger's seat","Showing the airport terminal","Showing the aircraft type"],c:0,e:"The numeric ticket prefix is an accounting identifier associated with ticketing."},
-{p:"airlinecodes",l:"advanced",q:"Are an airline's IATA designator and numeric ticket prefix the same thing?",a:["Yes, always","No, they are different identifiers","Only on domestic flights","Only on paper tickets"],c:1,e:"The two-character airline designator and numeric ticket prefix serve different purposes."},
-
-{p:"international",l:"beginner",q:"Which airline uses the IATA code BA?",a:["British Airways","Air India","Lufthansa","Emirates"],c:0,e:"BA is the IATA designator for British Airways."},
-{p:"international",l:"beginner",q:"Which airline uses the code EK?",a:["Qatar Airways","Emirates","Singapore Airlines","Lufthansa"],c:1,e:"EK is the IATA designator for Emirates."},
-{p:"international",l:"intermediate",q:"Which airline uses the IATA code SQ?",a:["Singapore Airlines","Qatar Airways","British Airways","Air India"],c:0,e:"SQ is the IATA designator for Singapore Airlines."},
-
-{p:"usairports",l:"beginner",q:"What is the airport code for New York JFK?",a:["JFK","LAX","ORD","MIA"],c:0,e:"JFK is the IATA code for John F. Kennedy International Airport."},
-{p:"usairports",l:"beginner",q:"What is the airport code for Los Angeles International Airport?",a:["LAS","LAX","LGA","SFO"],c:1,e:"LAX is the IATA code for Los Angeles International Airport."},
-{p:"usairports",l:"intermediate",q:"Which airport uses the code ORD?",a:["Chicago O'Hare","Boston Logan","Miami International","Seattle-Tacoma"],c:0,e:"ORD is the code for Chicago O'Hare International Airport."},
-
-{p:"canadaairports",l:"beginner",q:"What is the airport code for Toronto Pearson?",a:["YVR","YYZ","YYC","YUL"],c:1,e:"YYZ is the code for Toronto Pearson International Airport."},
-{p:"canadaairports",l:"beginner",q:"What is the airport code for Vancouver International Airport?",a:["YVR","YYZ","YOW","YHZ"],c:0,e:"YVR is the code for Vancouver International Airport."},
-{p:"canadaairports",l:"intermediate",q:"Which Canadian city is served by airport code YYC?",a:["Calgary","Montreal","Ottawa","Toronto"],c:0,e:"YYC is the airport code for Calgary International Airport."},
-
-{p:"cancellation",l:"beginner",q:"What should an agent check before quoting a cancellation penalty?",a:["The ticket's fare conditions and current airline rules","A standard fee for every airline","A guess","Another passenger's ticket"],c:0,e:"Cancellation conditions depend on the specific ticket and current policy."},
-{p:"cancellation",l:"intermediate",q:"Does every airline ticket qualify for a full refund?",a:["Yes","No, refundability depends on conditions and applicable rules","Only international tickets","Only tickets booked online"],c:1,e:"Refundability depends on the fare conditions and applicable regulations."},
-{p:"cancellation",l:"advanced",q:"A customer asks for a refund amount but the fare rules are unclear. What should you do?",a:["Promise a full refund","Verify with the airline or ticket issuer","Invent an estimate","Ignore the request"],c:1,e:"Verify the applicable conditions before promising a refund amount."},
-
-{p:"changes",l:"beginner",q:"What is a fare difference?",a:["The change in fare amount when an itinerary is changed","An airport code","A baggage tag","A flight number"],c:0,e:"A new itinerary may have a different fare from the original ticket."},
-{p:"changes",l:"intermediate",q:"What should an agent check before changing a ticket?",a:["Fare rules, availability, penalties and fare difference","Only the passenger's age","Only the aircraft model","Nothing"],c:0,e:"Check all applicable ticket conditions and availability."},
-{p:"changes",l:"advanced",q:"An airline changes a flight schedule. What should the agent do first?",a:["Check the airline's schedule-change rules and available options","Immediately promise compensation","Delete the booking","Charge a new fee without checking"],c:0,e:"Review the airline's current schedule-change policy and the customer's options."},
-
-{p:"names",l:"beginner",q:"Why must passenger names be checked carefully?",a:["They must meet travel-document and airline requirements","They determine baggage colour","They determine aircraft type","They replace the ticket number"],c:0,e:"Passenger names must comply with travel-document requirements and airline rules."},
-{p:"names",l:"intermediate",q:"Is correcting a minor spelling error always the same as changing the passenger?",a:["Yes","No, they are different situations","Only for domestic flights","Only for children"],c:1,e:"A correction and a passenger substitution are not necessarily treated the same way."},
-{p:"names",l:"advanced",q:"A customer wants to replace the traveller with another person. What should you do?",a:["Check the airline and ticket rules before advising","Assume it is free","Change the name immediately","Promise it is permitted"],c:0,e:"Passenger substitution may not be permitted. Verify the applicable rules."},
-
-{p:"pets",l:"beginner",q:"What should be checked before accepting a pet for travel?",a:["Airline rules, route and carrier requirements","Only the pet's name","Only the passenger's seat","The ticket colour"],c:0,e:"Pet acceptance depends on airline, route, animal and carrier requirements."},
-{p:"pets",l:"intermediate",q:"Why should an agent check the destination's animal-entry requirements?",a:["The destination may have its own import and health rules","It determines the flight number","It replaces the airline policy","It changes the airport code"],c:0,e:"Destination countries or regions may have additional animal-entry requirements."},
-{p:"pets",l:"advanced",q:"Can an agent assume every airline has the same service-animal policy?",a:["Yes","No, policies and legal requirements can differ","Only on international flights","Only for large aircraft"],c:1,e:"Check the current rules for the specific airline and itinerary."},
-
-{p:"umnr",l:"beginner",q:"What does UMNR commonly refer to?",a:["Unaccompanied Minor","United Member Number Record","Universal Meal Request","Urgent Medical Notice"],c:0,e:"UMNR is commonly used for an unaccompanied minor service."},
-{p:"umnr",l:"intermediate",q:"What should be checked for an unaccompanied minor?",a:["The child's age on travel dates and airline rules","Only the child's seat number","Only the parent's occupation","The aircraft colour"],c:0,e:"Age limits and service requirements vary by airline."},
-{p:"umnr",l:"advanced",q:"Why must connecting-flight restrictions be checked for an unaccompanied minor?",a:["Some airlines restrict connections or certain itineraries","Connections are always free","It changes the child's name","It removes passport requirements"],c:0,e:"Airlines may have specific restrictions for connections and travel arrangements."},
-
-{p:"baggage",l:"beginner",q:"What is checked baggage?",a:["Baggage accepted by the airline for carriage in the aircraft hold","A small bag under the seat","A passport","A boarding pass"],c:0,e:"Checked baggage is handed to the airline and carried in the aircraft hold."},
-{p:"baggage",l:"beginner",q:"What is cabin baggage?",a:["Baggage carried into the aircraft cabin","Baggage sent as cargo only","A checked suitcase","A ticket receipt"],c:0,e:"Cabin baggage is carried by the passenger into the aircraft cabin."},
-{p:"baggage",l:"advanced",q:"A passenger has two airlines on one itinerary. What should you check about baggage?",a:["The ticket itinerary and applicable carrier rules","Only the first airline's social media","Only the passenger's age","Nothing"],c:0,e:"Baggage handling may depend on the itinerary, ticket and relevant carrier rules."}
-];
-
-/* PROGRESS STORAGE */
-let saved;
-try{
-saved=JSON.parse(localStorage.getItem("airlineCornerProgress")||"null");
-}catch(e){saved=null}
-if(!saved || !Array.isArray(saved.done)){
-saved={done:[],attempts:0,best:0};
-}
-
-let selectedLesson=0;
-let questions=[];
-let qIndex=0;
-let correct=0;
-let answered=false;
-
-/* OPEN SECTIONS */
-function openPanel(id){
-document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-if(id==="progress")renderProgress();
-}
-
-/* LESSON DISPLAY */
-function renderLessons(){
-document.getElementById("lessonList").innerHTML=lessons.map((lesson,i)=>`
-<div class="lesson">
-<h3>${i+1}. ${lesson[0]}</h3>
-<p>${saved.done.includes(i)?"✓ Completed":"Not completed"}</p>
-<button class="${saved.done.includes(i)?"done":""}" onclick="showLesson(${i})">
-${saved.done.includes(i)?"REVIEW CHAPTER":"OPEN CHAPTER"}
-</button>
-</div>`).join("");
-}
-
-function showLesson(i){
-selectedLesson=i;
-document.getElementById("modalTitle").textContent=lessons[i][0];
-document.getElementById("modalBody").innerHTML=
-"<p>"+lessons[i][1]+"</p><p><strong>Study activity:</strong> Write down three important points from this chapter in your notebook.</p>";
-document.getElementById("completeButton").textContent=
-saved.done.includes(i)?"COMPLETED ✓":"MARK AS COMPLETED ✓";
-document.getElementById("lessonModal").classList.add("show");
-}
-
-function closeLesson(){
-document.getElementById("lessonModal").classList.remove("show");
-}
-
-function completeLesson(){
-if(!saved.done.includes(selectedLesson)){
-saved.done.push(selectedLesson);
-saveData();
-renderLessons();
-}
-document.getElementById("completeButton").textContent="COMPLETED ✓";
-}
-
-function saveData(){
-localStorage.setItem("airlineCornerProgress",JSON.stringify(saved));
-renderProgress();
-}
-
-function renderProgress(){
-document.getElementById("completedCount").textContent=saved.done.length;
-document.getElementById("quizCount").textContent=saved.attempts;
-document.getElementById("bestScore").textContent=saved.best+"%";
-document.getElementById("progressText").textContent=
-saved.done.length+" of "+lessons.length+" lessons completed.";
-}
-
-/* QUIZ ENGINE */
-function startQuiz(){
-const pool=document.getElementById("poolSelect").value;
-const level=document.getElementById("level").value;
-
-let filtered=questionBank.filter(q=>
-(pool==="all" || q.p===pool) &&
-(level==="all" || q.l===level)
-);
-
-if(filtered.length===0){
-alert("There are no questions for this selection yet. Please choose another difficulty or question pool.");
-return;
-}
-
-questions=filtered.sort(()=>Math.random()-.5).slice(0,5);
-qIndex=0;
-correct=0;
-
-document.getElementById("quizStart").hidden=true;
-document.getElementById("quizResult").hidden=true;
-document.getElementById("quizRun").hidden=false;
-
-showQuestion();
-}
-
-function showQuestion(){
-answered=false;
-const q=questions[qIndex];
-
-document.getElementById("questionCount").textContent=
-"Question "+(qIndex+1)+" of "+questions.length;
-
-document.getElementById("questionText").textContent=q.q;
-document.getElementById("quizBar").style.width=
-(qIndex/questions.length*100)+"%";
-
-document.getElementById("feedback").textContent="";
-document.getElementById("nextQuestion").hidden=true;
-
-document.getElementById("choices").innerHTML=q.a.map((answer,i)=>
-`<button class="choice" onclick="answerQuestion(${i})">${String.fromCharCode(65+i)}. ${answer}</button>`
-).join("");
-}
-
-function answerQuestion(n){
-if(answered)return;
-answered=true;
-
-const q=questions[qIndex];
-
-if(n===q.c){
-correct++;
-document.getElementById("feedback").textContent="Correct! "+q.e;
-document.getElementById("feedback").style.color="#237a55";
-}else{
-document.getElementById("feedback").textContent=
-"Incorrect. Correct answer: "+q.a[q.c]+". "+q.e;
-document.getElementById("feedback").style.color="#a13d32";
-}
-
-document.querySelectorAll(".choice").forEach((button,i)=>{
-button.disabled=true;
-if(i===q.c)button.style.borderColor="#237a55";
-});
-
-document.getElementById("nextQuestion").hidden=false;
-document.getElementById("nextQuestion").textContent=
-qIndex===questions.length-1?"SEE RESULTS":"NEXT QUESTION";
-}
-
-function nextQuestion(){
-qIndex++;
-if(qIndex<questions.length){
-showQuestion();
-return;
-}
-
-const score=Math.round(correct/questions.length*100);
-saved.attempts++;
-saved.best=Math.max(saved.best,score);
-saveData();
-
-document.getElementById("quizRun").hidden=true;
-document.getElementById("quizResult").hidden=false;
-document.getElementById("quizResult").innerHTML=
-`<h3>Quiz completed!</h3>
-<p>Your score: <strong>${correct} out of ${questions.length} (${score}%)</strong></p>
-<button onclick="againQuiz()">TRY AGAIN</button>
-<button onclick="openPanel('progress')">VIEW MY PROGRESS</button>`;
-}
-
-function againQuiz(){
-document.getElementById("quizStart").hidden=false;
-document.getElementById("quizResult").hidden=true;
-document.getElementById("quizRun").hidden=true;
-}
-
-/* DEMO PRACTICE TERMINAL */
-function runCommand(){
-const input=document.getElementById("command");
-const command=input.value.trim().toUpperCase();
-let output="";
-
-if(command==="HELP"||command==="HE"){
-output="DEMO COMMANDS:\nHELP — show commands\nAIRLINE — sample airline codes\nAIRPORT — sample airport codes\nAIRCRAFT — aircraft manufacturers\nTIMEZONE — time-zone reminder";
-}else if(command==="AIRLINE"){
-output="AA — American Airlines\nDL — Delta Air Lines\nUA — United Airlines\nAC — Air Canada\nWS — WestJet\nBA — British Airways\nLH — Lufthansa\nEK — Emirates";
-}else if(command==="AIRPORT"){
-output="JFK — New York JFK\nLAX — Los Angeles\nORD — Chicago O'Hare\nYYZ — Toronto Pearson\nYVR — Vancouver\nYYC — Calgary\nCCU — Kolkata";
-}else if(command==="AIRCRAFT"){
-output="AIRBUS: A220, A320, A330, A350\nBOEING: 737, 747, 767, 777, 787";
-}else if(command==="TIMEZONE"){
-output="USA and Canada span several time zones.\nAlways verify local departure and arrival times and date changes.";
-}else{
-output="Command not included in this beginner demo. Type HELP.";
-}
-
-document.getElementById("terminalOutput").textContent=output;
-input.value="";
-}
-
-document.getElementById("command").addEventListener("keydown",function(e){
-if(e.key==="Enter")runCommand();
-});
-
-/* RESET PROGRESS */
-function resetProgress(){
-if(confirm("Are you sure you want to reset all your saved progress?")){
-saved={done:[],attempts:0,best:0};
-saveData();
-renderLessons();
-}
-}
-
-/* START ACADEMY */
-renderLessons();
-renderProgress();
-</script>
+<script src="training-question-bank.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
