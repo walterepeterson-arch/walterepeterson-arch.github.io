@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
+    padding: 20px 5%;
     flex-wrap: wrap;
 }
 
@@ -32,13 +32,14 @@ body {
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .navbar a:hover {
@@ -101,7 +102,8 @@ body {
     text-align: center;
 }
 
-.section h2 {
+.section h2,
+.airline-section h2 {
     font-size: 32px;
     color: #101d35;
 }
@@ -117,9 +119,11 @@ body {
 .section > p {
     max-width: 750px;
     margin: auto;
+    white-space: pre-line;
 }
 
-.profile-section {
+.profile-section,
+.interests-section {
     background: #edf0f6;
 }
 
@@ -132,23 +136,72 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-.profile-icon {
-    width: 100px;
-    height: 100px;
+.profile-photo {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background: #101d35;
-    color: #e5bd76;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-    margin: 0 auto 20px;
+    object-fit: cover;
+    border: 4px solid #e5bd76;
+    margin-bottom: 20px;
 }
 
 .profile-card h3 {
     color: #101d35;
     margin-bottom: 8px;
+}
+
+.gallery-grid,
+.interest-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.gallery-card,
+.interest-card {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.gallery-card p {
+    margin-top: 12px;
+}
+
+.interest-card span {
+    font-size: 38px;
+}
+
+.interest-card h3 {
+    color: #101d35;
+    margin: 12px 0;
+}
+
+.airline-section {
+    background: #101d35;
+    color: white;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.airline-section h2 {
+    color: #e5bd76;
+    margin-bottom: 15px;
+}
+
+.airline-section p {
+    margin-bottom: 25px;
 }
 
 footer {
@@ -159,7 +212,7 @@ footer {
     font-size: 14px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
     .navbar {
         justify-content: center;
         gap: 15px;
@@ -167,7 +220,6 @@ footer {
 
     .navbar ul {
         justify-content: center;
-        flex-wrap: wrap;
         gap: 15px;
     }
 
