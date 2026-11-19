@@ -419,6 +419,7 @@
   }
 
   function showQuestion() {
+     answered = false;
     const area = document.getElementById("acQuizArea");
     const question = questions[currentQuestion];
 
