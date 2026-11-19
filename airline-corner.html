@@ -12,21 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
-:root{
---cream:#f4efe6;
---paper:#fffdf9;
---ink:#29241e;
---muted:#746c60;
---gold:#a9854b;
---gold-light:#d8c39d;
---line:#e7dece;
---dark:#30291f;
---dark2:#211d18;
---serif:'Playfair Display',Georgia,serif;
---sans:'DM Sans',Arial,sans-serif;
---green:#53775d;
---red:#a64f43
-}
+:root{--cream:#f4efe6;--paper:#fffdf9;--ink:#29241e;--muted:#746c60;--gold:#a9854b;--gold-light:#d8c39d;--line:#e7dece;--dark:#30291f;--dark2:#211d18;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;--green:#53775d;--red:#a64f43}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.75 var(--sans)}
@@ -101,8 +87,44 @@ th{color:var(--gold);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
 .modal-card p{color:var(--muted);font-size:13px}
 .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .close{float:right;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:20px;padding:3px 11px;cursor:pointer}
+
+/* DIGITAL TEXTBOOK DESIGN */
+.book-shell{margin-top:22px;background:#e9e1d4;padding:clamp(12px,3vw,30px);border:1px solid #d8cbb7}
+.book-cover{min-height:430px;padding:48px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(145deg,#30291f,#191611);color:#f8f0e4;border:8px double #b99a65;box-shadow:0 15px 35px rgba(40,30,18,.18)}
+.book-cover .cover-kicker{font-size:10px;letter-spacing:.25em;color:#d8c39d}
+.book-cover h2{max-width:650px;margin:24px 0;font:500 clamp(32px,5vw,54px)/1.12 var(--serif);color:#fff8ed}
+.book-cover h2 span{display:block;color:#d8c39d}
+.book-cover p{max-width:500px;color:#e3d8c8;font-size:13px}
+.cover-rule{width:90px;height:2px;background:#b99a65;margin:12px auto}
+.book-contents{margin:22px auto;padding:clamp(22px,4vw,42px);max-width:850px;background:#fffdf7;border:1px solid #d9cfbd;box-shadow:0 8px 22px rgba(40,30,18,.07)}
+.book-contents h3,.book-page h3{font:500 27px var(--serif);margin:0 0 18px}
+.contents-list{list-style:none;padding:0;margin:0;columns:2;column-gap:32px}
+.contents-list li{break-inside:avoid;border-bottom:1px dotted #c9bda9;padding:9px 0;font-size:12px}
+.contents-list button{width:100%;border:0;background:none;text-align:left;color:#3b3024;cursor:pointer;font:inherit;padding:0}
+.contents-list button:hover{color:#9a733c}
+.contents-list .unit{color:#a17c45;font-weight:700;margin-right:8px}
+.book-page{display:none;max-width:850px;margin:22px auto;padding:clamp(24px,5vw,54px);background:#fffdf7;border:1px solid #d9cfbd;box-shadow:0 8px 22px rgba(40,30,18,.07);min-height:520px}
+.book-page.active{display:block}
+.book-page .page-kicker{font-size:9px;letter-spacing:.18em;color:#9b7847;font-weight:700;text-transform:uppercase}
+.book-page h2{font:500 clamp(27px,4vw,38px)/1.2 var(--serif);margin:12px 0 20px;color:#30291f}
+.book-page h3{font-size:21px;margin:24px 0 8px}
+.book-page p,.book-page li{font-size:13px;line-height:1.9;color:#51483d}
+.book-page ul,.book-page ol{padding-left:22px}
+.book-page table{margin:14px 0 20px;background:#fff}
+.book-page th{background:#f2ebdf}
+.book-page .book-callout{margin:18px 0;padding:15px 17px;background:#f3ecdf;border-left:3px solid #a9854b;font-size:12px;color:#594a35}
+.book-page .book-warning{background:#f8eee9;border-left-color:#a64f43}
+.book-nav{display:flex;justify-content:space-between;gap:12px;max-width:850px;margin:0 auto 24px}
+.book-nav button{background:#30291f;color:#fff;border:0;padding:12px 18px;cursor:pointer;font:700 10px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.book-nav button:disabled{opacity:.35;cursor:not-allowed}
+.book-progress{max-width:850px;margin:0 auto 12px;display:flex;justify-content:space-between;color:#716554;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.book-page-number{text-align:center;margin-top:35px;padding-top:14px;border-top:1px solid #e6ddce;color:#9b8b75;font:italic 12px var(--serif)}
+.book-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:850px;margin:0 auto 12px;flex-wrap:wrap}
+.book-toolbar button{border:1px solid #bda982;background:#fffdf7;color:#5c4930;padding:9px 13px;cursor:pointer;font-size:10px}
+.book-note{max-width:850px;margin:0 auto 18px;color:#746c60;font-size:11px}
 .site-footer{padding:24px 0;background:var(--dark2);color:#cfc5b7;text-align:center;font-size:9px;letter-spacing:.12em}
 .site-footer a{color:var(--gold-light)}
+
 @media(max-width:760px){
 .tiles{grid-template-columns:repeat(2,1fr)}
 .hero{padding:52px 0}
@@ -124,222 +146,218 @@ th{color:var(--gold);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
 </head>
 
 <body class="airline-page">
-
 <header class="topbar">
-<div class="container topbar-inner">
-<a class="brand" href="index.html">
-<span class="brand-mark">WP</span>
-<span>Walter Eric Peterson<small>PERSONAL PORTFOLIO</small></span>
-</a>
-<a class="back-link" href="index.html">← Back to my website</a>
-</div>
+  <div class="container topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">WP</span>
+      <span>Walter Eric Peterson<small>PERSONAL PORTFOLIO</small></span>
+    </a>
+    <a class="back-link" href="index.html">← Back to my website</a>
+  </div>
 </header>
 
 <section class="hero">
-<div class="container hero-content">
-<p class="eyebrow">INDEPENDENT LEARNING ACADEMY</p>
-<h1>Amadeus Airline<br><em>Learning Academy.</em></h1>
-<p>Learn airline and travel-industry knowledge step by step. Study training chapters, test yourself, practise sample commands and monitor your learning progress.</p>
-<div class="hero-meta">
-<span>14 learning chapters</span>
-<span>Knowledge quizzes</span>
-<span>Practice terminal</span>
-<span>Progress tracking</span>
-</div>
-</div>
+  <div class="container hero-content">
+    <p class="eyebrow">INDEPENDENT LEARNING ACADEMY</p>
+    <h1>Amadeus Airline<br><em>Learning Academy.</em></h1>
+    <p>Learn airline and travel-industry knowledge step by step. Study training chapters, test yourself, practise sample commands and monitor your learning progress.</p>
+    <div class="hero-meta">
+      <span>12 handbook chapters</span>
+      <span>Knowledge quizzes</span>
+      <span>Practice terminal</span>
+      <span>Progress tracking</span>
+    </div>
+  </div>
 </section>
 
 <main class="container">
-
 <div class="section-head">
-<p class="eyebrow">LEARN · PRACTISE · PROGRESS</p>
-<h2>Welcome to Airline Corner</h2>
-<p class="muted">Choose a learning area to begin your journey.</p>
+  <p class="eyebrow">LEARN · PRACTISE · PROGRESS</p>
+  <h2>Welcome to Airline Corner</h2>
+  <p class="muted">Choose a learning area to begin your journey.</p>
 </div>
 
 <div class="tiles">
-<button class="tile" onclick="openPanel('learn')">
-<span class="emoji">📘</span>
-<h3>Learn</h3>
-<p>Study 14 airline training chapters.</p>
-</button>
-
-<button class="tile" onclick="openPanel('quiz')">
-<span class="emoji">✦</span>
-<h3>Knowledge Quiz</h3>
-<p>Test yourself at three difficulty levels.</p>
-</button>
-
-<button class="tile" onclick="openPanel('videos')">
-<span class="emoji">▶</span>
-<h3>Video Learning</h3>
-<p>Find video lessons by subject.</p>
-</button>
-
-<button class="tile" onclick="openPanel('knowledge')">
-<span class="emoji">⌖</span>
-<h3>Airline Knowledge</h3>
-<p>Airlines, aircraft and airport codes.</p>
-</button>
-
-<button class="tile" onclick="openPanel('practice')">
-<span class="emoji">⌨</span>
-<h3>Amadeus Practice</h3>
-<p>Practise sample commands in demo mode.</p>
-</button>
-
-<button class="tile" onclick="openPanel('progress')">
-<span class="emoji">♜</span>
-<h3>My Progress</h3>
-<p>Track completed lessons and quiz results.</p>
-</button>
+  <button class="tile" onclick="openPanel('learn')"><span class="emoji">📘</span><h3>Learn</h3><p>Read the professional training handbook.</p></button>
+  <button class="tile" onclick="openPanel('quiz')"><span class="emoji">✦</span><h3>Knowledge Quiz</h3><p>Test yourself at three difficulty levels.</p></button>
+  <button class="tile" onclick="openPanel('videos')"><span class="emoji">▶</span><h3>Video Learning</h3><p>Find video lessons by subject.</p></button>
+  <button class="tile" onclick="openPanel('knowledge')"><span class="emoji">⌖</span><h3>Airline Knowledge</h3><p>Airlines, aircraft and airport codes.</p></button>
+  <button class="tile" onclick="openPanel('practice')"><span class="emoji">⌨</span><h3>Amadeus Practice</h3><p>Practise sample commands in demo mode.</p></button>
+  <button class="tile" onclick="openPanel('progress')"><span class="emoji">♜</span><h3>My Progress</h3><p>Track completed lessons and quiz results.</p></button>
 </div>
 
+<!-- LEARN: DIGITAL TRAINING HANDBOOK -->
 <section class="panel" id="learn">
-<h2>Training Chapters</h2>
-<p>Select a chapter to read its introductory notes and mark it complete when you finish.</p>
-<div class="lesson-list" id="lessonList"></div>
+  <h2>The Airline Travel Sales Agent</h2>
+  <p class="muted">USA &amp; Canada Professional Training Handbook · Learning edition · November 2026</p>
+
+  <div class="book-shell">
+    <div id="bookCover" class="book-cover">
+      <div class="cover-kicker">USA &amp; CANADA · PROFESSIONAL TRAINING</div>
+      <h2>THE AIRLINE<br>TRAVEL SALES AGENT <span>USA &amp; CANADA</span></h2>
+      <div class="cover-rule"></div>
+      <p>A practical, visual guide to airline knowledge, ticketing basics, customer care and travel policies</p>
+      <p><strong>Prepared as an updated learning edition · November 2026</strong></p>
+      <p>Your Trainer · WALTER</p>
+    </div>
+
+    <div id="bookContents" class="book-contents">
+      <h3>Contents</h3>
+      <ol class="contents-list" id="bookContentsList"></ol>
+    </div>
+
+    <div class="book-toolbar">
+      <span id="bookReadingLabel">HANDBOOK · CONTENTS</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" onclick="bookShowContents()">☷ Contents</button>
+        <button type="button" onclick="bookMarkComplete()">✓ Mark chapter complete</button>
+      </div>
+    </div>
+
+    <div class="book-progress">
+      <span id="bookChapterLabel">Contents</span>
+      <span id="bookCompleteLabel">0 / 12 chapters completed</span>
+    </div>
+
+    <article id="bookPage" class="book-page"></article>
+
+    <div class="book-nav">
+      <button type="button" id="bookPrev" onclick="bookPrevious()" disabled>← Previous</button>
+      <button type="button" id="bookNext" onclick="bookNext()">Start reading →</button>
+    </div>
+  </div>
+
+  <p class="book-note">Training reminder: airline rules and fees can change. Always verify the exact carrier, operating airline, route, fare, ticket date and travel date before advising a customer.</p>
 </section>
 
+<!-- KNOWLEDGE QUIZ -->
 <section class="panel" id="quiz">
-<h2>Airline Knowledge Quiz</h2>
-<p>Choose a level and answer the questions. You will receive feedback and an explanation.</p>
-
-<div class="quizbox">
-<div id="quizStart">
-<label for="level">Select difficulty</label>
-<select id="level">
-<option value="beginner">Beginner</option>
-<option value="intermediate">Intermediate</option>
-<option value="advanced">Advanced</option>
-</select>
-<button class="primary" onclick="startQuiz()">Start quiz</button>
-</div>
-
-<div id="quizRun" hidden>
-<div class="bar"><span id="quizBar"></span></div>
-<p id="questionCount" class="muted"></p>
-<h3 id="questionText"></h3>
-<div class="choices" id="choices"></div>
-<p class="feedback" id="feedback"></p>
-<button class="primary" id="nextQuestion" hidden onclick="nextQuestion()">Next question</button>
-</div>
-
-<div id="quizResult" hidden></div>
-</div>
+  <h2>Airline Knowledge Quiz</h2>
+  <p>Choose a level and answer the questions. You will receive feedback and an explanation.</p>
+  <div class="quizbox">
+    <div id="quizStart">
+      <label for="level">Select difficulty</label>
+      <select id="level">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <button class="primary" onclick="startQuiz()">Start quiz</button>
+    </div>
+    <div id="quizRun" hidden>
+      <div class="bar"><span id="quizBar"></span></div>
+      <p id="questionCount" class="muted"></p>
+      <h3 id="questionText"></h3>
+      <div class="choices" id="choices"></div>
+      <p class="feedback" id="feedback"></p>
+      <button class="primary" id="nextQuestion" hidden onclick="nextQuestion()">Next question</button>
+    </div>
+    <div id="quizResult" hidden></div>
+  </div>
 </section>
 
+<!-- VIDEO LEARNING -->
 <section class="panel" id="videos">
-<h2>Video Learning Centre</h2>
-<p>Use these subject links to find relevant video-learning material. These open YouTube search results, not official training endorsements.</p>
-<div class="lesson-list" id="videoList"></div>
-<div class="notice">You can add your own authorised training video links here later.</div>
+  <h2>Video Learning Centre</h2>
+  <p>Use these subject links to find relevant video-learning material. These open YouTube search results, not official training endorsements.</p>
+  <div class="lesson-list" id="videoList"></div>
+  <div class="notice">You can add your own authorised training video links here later.</div>
 </section>
 
+<!-- AIRLINE KNOWLEDGE -->
 <section class="panel" id="knowledge">
-<h2>Airline Knowledge Reference</h2>
-
-<div class="knowledge-grid">
-
-<div class="reference-card">
-<h3>Aircraft manufacturers</h3>
-<p><strong>Airbus:</strong> A220, A320 family, A330 and A350.</p>
-<p><strong>Boeing:</strong> 737, 747, 767, 777 and 787 families.</p>
-</div>
-
-<div class="reference-card">
-<h3>Airline IATA designators — examples</h3>
-<table>
-<tr><th>Airline</th><th>Code</th></tr>
-<tr><td>American Airlines</td><td>AA</td></tr>
-<tr><td>Delta Air Lines</td><td>DL</td></tr>
-<tr><td>United Airlines</td><td>UA</td></tr>
-<tr><td>Air Canada</td><td>AC</td></tr>
-<tr><td>WestJet</td><td>WS</td></tr>
-<tr><td>British Airways</td><td>BA</td></tr>
-<tr><td>Lufthansa</td><td>LH</td></tr>
-<tr><td>Air India</td><td>AI</td></tr>
-</table>
-</div>
-
-<div class="reference-card">
-<h3>Airport codes — examples</h3>
-<table>
-<tr><th>Airport</th><th>Code</th></tr>
-<tr><td>Kolkata</td><td>CCU</td></tr>
-<tr><td>Delhi</td><td>DEL</td></tr>
-<tr><td>Mumbai</td><td>BOM</td></tr>
-<tr><td>New York JFK</td><td>JFK</td></tr>
-<tr><td>London Heathrow</td><td>LHR</td></tr>
-<tr><td>Toronto Pearson</td><td>YYZ</td></tr>
-<tr><td>Vancouver</td><td>YVR</td></tr>
-<tr><td>Calgary</td><td>YYC</td></tr>
-</table>
-</div>
-
-<div class="reference-card">
-<h3>Learning reminder</h3>
-<p>Airline designators, airport codes and ticket numeric prefixes are different identifiers. Always verify current operational details with an authoritative source.</p>
-</div>
-
-</div>
-
-<p class="notice">These are introductory examples, not a complete operational reference. Always verify current airline codes, ticket prefixes and airport details using an authoritative source.</p>
+  <h2>Airline Knowledge Reference</h2>
+  <div class="knowledge-grid">
+    <div class="reference-card">
+      <h3>Aircraft manufacturers</h3>
+      <p><strong>Airbus:</strong> A220, A320 family, A330 and A350.</p>
+      <p><strong>Boeing:</strong> 737, 747, 767, 777 and 787 families.</p>
+    </div>
+    <div class="reference-card">
+      <h3>Airline IATA designators — examples</h3>
+      <table>
+        <tr><th>Airline</th><th>Code</th></tr>
+        <tr><td>American Airlines</td><td>AA</td></tr>
+        <tr><td>Delta Air Lines</td><td>DL</td></tr>
+        <tr><td>United Airlines</td><td>UA</td></tr>
+        <tr><td>Air Canada</td><td>AC</td></tr>
+        <tr><td>WestJet</td><td>WS</td></tr>
+        <tr><td>British Airways</td><td>BA</td></tr>
+        <tr><td>Lufthansa</td><td>LH</td></tr>
+        <tr><td>Air India</td><td>AI</td></tr>
+      </table>
+    </div>
+    <div class="reference-card">
+      <h3>Airport codes — examples</h3>
+      <table>
+        <tr><th>Airport</th><th>Code</th></tr>
+        <tr><td>Kolkata</td><td>CCU</td></tr>
+        <tr><td>Delhi</td><td>DEL</td></tr>
+        <tr><td>Mumbai</td><td>BOM</td></tr>
+        <tr><td>New York JFK</td><td>JFK</td></tr>
+        <tr><td>London Heathrow</td><td>LHR</td></tr>
+        <tr><td>Toronto Pearson</td><td>YYZ</td></tr>
+        <tr><td>Vancouver</td><td>YVR</td></tr>
+        <tr><td>Calgary</td><td>YYC</td></tr>
+      </table>
+    </div>
+    <div class="reference-card">
+      <h3>Learning reminder</h3>
+      <p>Airline designators, airport codes and ticket numeric prefixes are different identifiers. Always verify current operational details with an authoritative source.</p>
+    </div>
+  </div>
+  <p class="notice">These are introductory examples, not a complete operational reference. Always verify current airline codes, ticket prefixes and airport details using an authoritative source.</p>
 </section>
 
+<!-- AMADEUS PRACTICE -->
 <section class="panel" id="practice">
-<h2>Amadeus Practice — Demo Terminal</h2>
-<p>This is an educational simulator only. It is not connected to the real Amadeus system.</p>
-
-<div class="terminal">
-<label for="command">TRAINING TERMINAL — DEMO MODE</label>
-<br>
-<input id="command" placeholder="Type HELP, AIRLINE, AIRPORT or IG">
-<button class="primary" onclick="runCommand()">Run command</button>
-<div class="terminal-output" id="terminalOutput">Welcome to the Airline Corner demo terminal. Type HELP to see available commands.</div>
-</div>
-
-<p class="notice">This simulator cannot access live flights, passenger records, bookings or ticketing. It is only for introductory learning.</p>
+  <h2>Amadeus Practice — Demo Terminal</h2>
+  <p>This is an educational simulator only. It is not connected to the real Amadeus system.</p>
+  <div class="terminal">
+    <label for="command">TRAINING TERMINAL — DEMO MODE</label><br>
+    <input id="command" placeholder="Type HELP, AIRLINE, AIRPORT or IG">
+    <button class="primary" onclick="runCommand()">Run command</button>
+    <div class="terminal-output" id="terminalOutput">Welcome to the Airline Corner demo terminal. Type HELP to see available commands.</div>
+  </div>
+  <p class="notice">This simulator cannot access live flights, passenger records, bookings or ticketing. It is only for introductory learning.</p>
 </section>
 
+<!-- PROGRESS -->
 <section class="panel" id="progress">
-<h2>My Learning Progress</h2>
-<div class="stats">
-<div class="stat"><strong id="completedCount">0</strong>Lessons completed</div>
-<div class="stat"><strong id="quizCount">0</strong>Quiz attempts</div>
-<div class="stat"><strong id="bestScore">0%</strong>Best score</div>
-</div>
-<p id="progressText" class="muted"></p>
-<button class="primary" onclick="resetProgress()">Reset my progress</button>
+  <h2>My Learning Progress</h2>
+  <div class="stats">
+    <div class="stat"><strong id="completedCount">0</strong>Lessons completed</div>
+    <div class="stat"><strong id="quizCount">0</strong>Quiz attempts</div>
+    <div class="stat"><strong id="bestScore">0%</strong>Best score</div>
+  </div>
+  <p id="progressText" class="muted"></p>
+  <button class="primary" onclick="resetProgress()">Reset my progress</button>
 </section>
 
 <div class="notice">
-<strong>Important training notice:</strong>
-This is an independent educational project. It is not affiliated with or endorsed by Amadeus or any airline. Airline cancellation, change, baggage, pet and unaccompanied-minor policies change and depend on the ticket and itinerary. Always verify current official rules before advising a customer.
+  <strong>Important training notice:</strong> This is an independent educational project. It is not affiliated with or endorsed by Amadeus or any airline. Airline cancellation, change, baggage, pet and unaccompanied-minor policies change and depend on the ticket and itinerary. Always verify current official rules before advising a customer.
 </div>
-
 </main>
 
 <footer class="site-footer">
-AIRLINE CORNER · INDEPENDENT LEARNING ACADEMY ·
-<a href="index.html">WALTER ERIC PETERSON</a>
+  AIRLINE CORNER · INDEPENDENT LEARNING ACADEMY · <a href="index.html">WALTER ERIC PETERSON</a>
 </footer>
 
 <div class="modal" id="lessonModal">
-<div class="modal-card">
-<button class="close" onclick="closeLesson()" aria-label="Close">×</button>
-<p class="eyebrow">AIRLINE CORNER · TRAINING CHAPTER</p>
-<h2 id="modalTitle"></h2>
-<div id="modalBody"></div>
-<div class="modal-actions">
-<button class="primary" id="completeButton" onclick="completeLesson()">Mark as completed ✓</button>
-<button class="close" onclick="closeLesson()">Close</button>
-</div>
-</div>
+  <div class="modal-card">
+    <button class="close" onclick="closeLesson()" aria-label="Close">×</button>
+    <p class="eyebrow">AIRLINE CORNER · TRAINING CHAPTER</p>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="primary" id="completeButton" onclick="completeLesson()">Mark as completed ✓</button>
+      <button class="close" onclick="closeLesson()">Close</button>
+    </div>
+  </div>
 </div>
 
 <script src="training-question-bank.js"></script>
+<script src="training-book.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
