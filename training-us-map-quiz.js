@@ -676,14 +676,17 @@
     if (!section) return;
 
     const observer = new MutationObserver(function () {
-      if (!section.querySelector("#acUSMapQuiz")) {
-        createQuiz();
-      }
-    });
+  const quizHome = section.querySelector(".acq-grid");
+  const mapQuiz = section.querySelector("#acUSMapQuiz");
 
-    observer.observe(section, {
-      childList: true
-    });
+  if (quizHome && !mapQuiz) {
+    createQuiz();
+  }
+});
+
+observer.observe(section, {
+  childList: true
+});
   }
 
   if (document.readyState === "loading") {
